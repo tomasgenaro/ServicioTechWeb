@@ -1,0 +1,35 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /xmlrpc.php
+Disallow: /cgi-bin/
+Disallow: /wp-content/plugins/
+Disallow: /wp-content/themes/
+Disallow: /trackback/
+Disallow: /feed/
+Disallow: /comments/
+Disallow: /category/*/*
+Disallow: /tag/*
+Disallow: */trackback/
+Disallow: */feed/
+Disallow: */comments/
+
+# Evitar la descarga de imágenes y archivos
+Disallow: /wp-content/uploads/*.jpg$
+Disallow: /wp-content/uploads/*.jpeg$
+Disallow: /wp-content/uploads/*.png$
+Disallow: /wp-content/uploads/*.gif$
+Disallow: /wp-content/uploads/*.svg$
+Disallow: /wp-content/uploads/*.pdf$
+Disallow: /wp-content/uploads/*.doc$
+Disallow: /wp-content/uploads/*.docx$
+Disallow: /wp-content/uploads/*.ppt$
+Disallow: /wp-content/uploads/*.pptx$
+Disallow: /wp-content/uploads/*.xls$
+Disallow: /wp-content/uploads/*.xlsx$
+
+# Permitir la indexación de las carpetas necesarias
+Allow: /wp-content/uploads/
+
+Sitemap: https://serviciotech.com/sitemap.xml

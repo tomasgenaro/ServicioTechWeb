@@ -1,0 +1,210 @@
+/* Estilos generales del cuerpo del documento */
+body {
+    background-color: #f0f2f5; /* Color de fondo */
+    color: #333; /* Color del texto */
+    font-family: 'Roboto', sans-serif; /* Familia tipográfica */
+    margin: 0; /* Elimina el margen exterior */
+    padding: 0; /* Elimina el relleno */
+    -webkit-font-smoothing: antialiased; /* Suavizado de fuentes para WebKit */
+    -moz-osx-font-smoothing: grayscale; /* Suavizado de fuentes para macOS */
+}
+
+/* Estilos para el encabezado */
+header {
+    background: linear-gradient(to right, #29abe3, #00ffc9); /* Fondo degradado */
+    padding: 20px; /* Espaciado interno */
+    display: flex; /* Contenedor de elementos en línea */
+    justify-content: center; /* Centra horizontalmente los elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+    border-radius: 0 0 20px 20px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra */
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transiciones suaves */
+}
+
+header:hover {
+    background-color: #1f8ac0; /* Color de fondo al pasar el mouse */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra al pasar el mouse */
+}
+
+/* Estilos para el logo dentro del encabezado */
+#logo {
+    height: 100%; /* Altura */
+    max-height: 80px; /* Altura máxima */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Sombra */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transiciones suaves */
+}
+
+#logo:hover {
+    transform: scale(1.1) rotate(5deg); /* Escalado y rotación al pasar el mouse */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Sombra más intensa al pasar el mouse */
+}
+
+/* Estilos para el carrusel de imágenes */
+.carousel {
+    margin: 20px auto; /* Margen externo y centrado horizontal */
+    width: 400px; /* Ancho */
+    height: 500px; /* Altura */
+    background-color: #26a1da; /* Color de fondo */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Sombra */
+    overflow: hidden; /* Oculta contenido que sobresalga */
+    position: relative; /* Posición relativa para hijos absolutos */
+    transition: transform 0.3s ease-in-out; /* Transición suave de transformaciones */
+}
+
+.carousel img {
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Altura completa */
+    object-fit: contain; /* Ajuste de la imagen sin distorsión */
+    position: absolute; /* Posición absoluta */
+    top: 0; /* Alineación superior */
+    left: 0; /* Alineación izquierda */
+    opacity: 0; /* Opacidad inicial */
+    transition: opacity 1s ease-in-out; /* Transición de opacidad */
+}
+
+.carousel img:nth-child(1) {
+    opacity: 1; /* Primera imagen visible */
+}
+
+.carousel:hover {
+    transform: scale(1.05) rotate(-2deg); /* Escalado y rotación al pasar el mouse */
+}
+/* Estilos para la sección de información de contacto */
+.contact-info {
+    background: linear-gradient(to right, #00ffc9, #29abe3); /* Fondo degradado */
+    padding: 20px; /* Espaciado interno */
+    justify-content: center; /* Centra horizontalmente los elementos */
+    align-items: center; /* Centra verticalmente los elementos */
+    border-radius: 0 0 20px 20px; /* Bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra */
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transiciones suaves */
+    margin: 20px auto; /* Margen externo y centrado horizontal */
+    text-align: center; /* Alineación del texto */
+}
+
+.contact-info:hover {
+    background-color: #1f8ac0; /* Color de fondo al pasar el mouse */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra al pasar el mouse */
+}
+
+.contact-info h2 {
+    margin-bottom: 10px; /* Margen inferior del título */
+}
+
+.contact-info a {
+    color: inherit; /* Color del texto heredado */
+    text-decoration: none; /* Sin decoración de texto */
+    position: relative; /* Posición relativa */
+}
+
+.contact-info a:hover {
+    text-decoration: underline; /* Subrayado al pasar el mouse */
+}
+
+.contact-info button {
+    margin-left: 5px; /* Margen izquierdo */
+    background-color: #29abe3; /* Color de fondo */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    padding: 10px 20px; /* Relleno */
+    cursor: pointer; /* Cursor apuntador */
+    color: white; /* Color del texto */
+    font-weight: bold; /* Negrita */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Sombra */
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Transiciones suaves */
+}
+
+.contact-info button:hover {
+    background: linear-gradient(to right, #29abe3, #00ffc9); /* Fondo degradado al pasar el mouse */
+    transform: scale(0.95); /* Escalado al pasar el mouse */
+}
+
+/* Estilos para los enlaces sociales */
+.social-links {
+    margin-top: 10px; /* Margen superior */
+}
+
+.social-links a {
+    margin-right: 10px; /* Margen derecho */
+    color: #fff; /* Color del texto */
+    transition: transform 0.3s ease-in-out; /* Transición suave de transformaciones */
+}
+
+.social-links a:hover {
+    transform: scale(1.1); /* Escalado al pasar el mouse */
+}
+
+.social-links i {
+    font-size: 30px; /* Tamaño de fuente */
+}
+
+/* Estilos para el pie de página */
+footer {
+    margin-top: 20px; /* Margen superior */
+    padding: 20px; /* Espaciado interno */
+    background-color: #29abe3; /* Color de fondo */
+    color: #fff; /* Color del texto */
+    text-align: center; /* Alineación del texto */
+    border-radius: 20px 20px 0 0; /* Bordes redondeados */
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Transiciones suaves */
+}
+
+footer:hover {
+    background-color: #1f8ac0; /* Color de fondo al pasar el mouse */
+    color: #fff; /* Color del texto al pasar el mouse */
+}
+
+footer p {
+    margin: 0; /* Elimina el margen del párrafo */
+}
+
+/* Estilos para la viñeta de audio */
+.audio-bubble {
+    width: 50px; /* Ancho inicial */
+    height: 50px; /* Altura inicial */
+    background-color: #29abe3; /* Color de fondo */
+    border-radius: 50%; /* Forma circular */
+    position: fixed; /* Posición fija */
+    top: 50%; /* Mitad de la pantalla desde arriba */
+    left: 20px; /* Margen desde la izquierda */
+    display: flex; /* Flexbox */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    cursor: pointer; /* Cursor de mano */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra */
+    transition: width 0.3s ease, height 0.3s ease, top 0.3s ease; /* Transiciones */
+    z-index: 1000; /* Prioridad sobre otros elementos */
+    transform: translateY(-50%); /* Centrar verticalmente */
+}
+
+.audio-bubble i {
+    font-size: 24px; /* Tamaño del icono */
+    color: #fff; /* Color del icono */
+}
+
+.audio-bubble .expanded-content {
+    display: none; /* Oculto por defecto */
+}
+
+.audio-bubble:hover {
+    width: 300px; /* Ancho al expandirse */
+    height: 150px; /* Altura al expandirse */
+    top: 40%; /* Ajuste de posición */
+    border-radius: 20px; /* Bordes redondeados */
+}
+
+.audio-bubble:hover .expanded-content {
+    display: block; /* Mostrar contenido al pasar el mouse */
+    text-align: center; /* Texto centrado */
+    padding: 10px; /* Relleno */
+}
+
+.audio-bubble:hover i {
+    display: none; /* Ocultar icono al expandirse */
+}
+
+.audio-bubble:hover audio {
+    width: 100%; /* Ancho completo */
+}
