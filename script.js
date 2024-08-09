@@ -105,9 +105,13 @@ window.onload = function() {
 
     const miCarrusel = new Carrusel('.carousel');
 
-    function copiarTextoAlPortapapeles(texto) {
+    function copiarTextoAlPortapapeles(texto, boton) {
         navigator.clipboard.writeText(texto).then(() => {
             mostrarToast('Texto copiado al portapapeles');
+            boton.textContent = 'Copiado'; // Cambia el texto del botón
+            setTimeout(() => {
+                boton.textContent = 'Copiar'; // Restaura el texto después de 3 segundos
+            }, 3000);
         }).catch(err => {
             console.error('Error al copiar: ', err);
             mostrarToast('Error al copiar texto');
@@ -119,7 +123,7 @@ window.onload = function() {
         botonCopiar.textContent = 'Copiar';
         botonCopiar.addEventListener('click', () => {
             const texto = enlace.textContent.trim();
-            copiarTextoAlPortapapeles(texto);
+            copiarTextoAlPortapapeles(texto, botonCopiar);
         });
         enlace.parentNode.insertBefore(botonCopiar, enlace.nextSibling);
     }
@@ -138,17 +142,6 @@ window.onload = function() {
         if (!toast) {
             toast = document.createElement('div');
             toast.className = 'toast';
-            toast.style.position = 'fixed';
-            toast.style.bottom = '20px';
-            toast.style.right = '20px';
-            toast.style.backgroundColor = '#29abe3';
-            toast.style.color = 'white';
-            toast.style.padding = '10px 20px';
-            toast.style.borderRadius = '5px';
-            toast.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.3)';
-            toast.style.zIndex = '10000';
-            toast.style.opacity = '0';
-            toast.style.transition = 'opacity 0.5s ease-in-out';
             document.body.appendChild(toast);
         }
 
