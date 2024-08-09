@@ -1,20 +1,20 @@
-// Función que se ejecuta al cargar la página
 window.onload = function() {
-
-    // Clase para manejar el carrusel de imágenes
     class Carrusel {
         constructor(selector) {
             this.imagenes = document.querySelectorAll(selector + ' img');
             this.indiceActual = 0;
-            this.intervalo = 3000; // Intervalo de transición en milisegundos
+            this.intervalo = 3000;
             this.iniciarCarrusel();
             this.agregarControles();
+            this.agregarIndicadores();
+            this.iniciarDeslizamiento();
         }
 
         mostrarImagen(indice) {
             this.imagenes.forEach((img, i) => {
                 img.style.opacity = (i === indice) ? 1 : 0;
             });
+            this.actualizarIndicadores();
         }
 
         siguienteImagen() {
@@ -54,40 +54,117 @@ window.onload = function() {
                 this.reiniciarCarrusel();
             });
         }
+
+        agregarIndicadores() {
+            const indicadores = document.querySelector('.carousel-indicators');
+            this.imagenes.forEach((_, i) => {
+                const indicador = document.createElement('button');
+                indicador.addEventListener('click', () => {
+                    this.indiceActual = i;
+                    this.mostrarImagen(this.indiceActual);
+                    this.reiniciarCarrusel();
+                });
+                indicadores.appendChild(indicador);
+            });
+            this.actualizarIndicadores();
+        }
+
+        actualizarIndicadores() {
+            const indicadores = document.querySelectorAll('.carousel-indicators button');
+            indicadores.forEach((btn, i) => {
+                btn.classList.toggle('active', i === this.indiceActual);
+            });
+        }
+
+        iniciarDeslizamiento() {
+            let startX, endX;
+
+            const handleTouchStart = (e) => {
+                startX = e.touches[0].clientX;
+            };
+
+            const handleTouchMove = (e) => {
+                endX = e.touches[0].clientX;
+            };
+
+            const handleTouchEnd = () => {
+                if (startX - endX > 50) {
+                    this.siguienteImagen();
+                } else if (endX - startX > 50) {
+                    this.imagenAnterior();
+                }
+                this.reiniciarCarrusel();
+            };
+
+            const carouselContainer = document.querySelector('.carousel');
+            carouselContainer.addEventListener('touchstart', handleTouchStart);
+            carouselContainer.addEventListener('touchmove', handleTouchMove);
+            carouselContainer.addEventListener('touchend', handleTouchEnd);
+        }
     }
 
-    // Inicializa el carrusel
     const miCarrusel = new Carrusel('.carousel');
 
-    // Función para copiar texto al portapapeles usando Clipboard API
     function copiarTextoAlPortapapeles(texto) {
         navigator.clipboard.writeText(texto).then(() => {
-            alert('Texto copiado al portapapeles');
+            mostrarToast('Texto copiado al portapapeles');
         }).catch(err => {
             console.error('Error al copiar: ', err);
+            mostrarToast('Error al copiar texto');
         });
     }
 
-    // Función para agregar botones de copiar
     function agregarBotonCopiar(enlace, tipo) {
         const botonCopiar = document.createElement('button');
         botonCopiar.textContent = 'Copiar';
         botonCopiar.addEventListener('click', () => {
             const texto = enlace.textContent.trim();
             copiarTextoAlPortapapeles(texto);
-            alert(`${tipo} copiado: ` + texto);
         });
         enlace.parentNode.insertBefore(botonCopiar, enlace.nextSibling);
     }
 
-    // Agrega botones de copiar para teléfono y correo electrónico
     const enlaceTelefono = document.querySelector('.contact-info a[href^="tel:"]');
     agregarBotonCopiar(enlaceTelefono, 'Número de teléfono');
 
     const enlaceEmail = document.querySelector('.contact-info a[href^="mailto:"]');
     agregarBotonCopiar(enlaceEmail, 'Correo electrónico');
 
-    // Manejo del comportamiento de la burbuja de audio
+    let toastTimeout;
+    function mostrarToast(mensaje) {
+        clearTimeout(toastTimeout);
+
+        let toast = document.querySelector('.toast');
+        if (!toast) {
+            toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.style.position = 'fixed';
+            toast.style.bottom = '20px';
+            toast.style.right = '20px';
+            toast.style.backgroundColor = '#29abe3';
+            toast.style.color = 'white';
+            toast.style.padding = '10px 20px';
+            toast.style.borderRadius = '5px';
+            toast.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.3)';
+            toast.style.zIndex = '10000';
+            toast.style.opacity = '0';
+            toast.style.transition = 'opacity 0.5s ease-in-out';
+            document.body.appendChild(toast);
+        }
+
+        toast.textContent = mensaje;
+        toast.style.opacity = '1';
+
+        toastTimeout = setTimeout(() => {
+            toast.style.opacity = '0';
+            setTimeout(() => {
+                if (toast.style.opacity === '0') {
+                    document.body.removeChild(toast);
+                }
+            }, 500);
+        }, 3000);
+    }
+
     const audioBubble = document.querySelector('.audio-bubble');
     const closeButton = audioBubble.querySelector('.close-button');
 
@@ -96,7 +173,13 @@ window.onload = function() {
     });
 
     closeButton.addEventListener('click', function (e) {
-        e.stopPropagation(); // Evita la propagación del evento para evitar reexpandir
+        e.stopPropagation();
         audioBubble.classList.remove('expanded');
+    });
+
+    document.addEventListener('click', function (e) {
+        if (!audioBubble.contains(e.target) && audioBubble.classList.contains('expanded')) {
+            audioBubble.classList.remove('expanded');
+        }
     });
 };

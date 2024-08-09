@@ -12,17 +12,16 @@
     <link rel="canonical" href="https://serviciotech.com/">
     
     <!-- Favicon e iconos -->
-    <link rel="icon" href="favicon.ico" type="image/x-icon">  <!-- Icono de la pestaña del navegador -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">  <!-- Icono para pestaña fijada en Safari -->
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
     
     <!-- Hojas de estilo -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-    
 </head>
 <body>
     <!-- Encabezado -->
@@ -32,15 +31,19 @@
     
     <!-- Carrusel de imágenes -->
     <section class="carousel" aria-live="polite">       
-        <img src="imagenes/imagen1.jpg" alt="Descripción de la Imagen 1">
-        <img src="imagenes/imagen2.jpg" alt="Descripción de la Imagen 2">
-        <img src="imagenes/imagen3.jpg" alt="Descripción de la Imagen 3">
-        <img src="imagenes/imagen4.jpg" alt="Descripción de la Imagen 4">
-        <img src="imagenes/imagen5.jpg" alt="Descripción de la Imagen 5">
-        <img src="imagenes/imagen6.jpg" alt="Descripción de la Imagen 6">
+        <div class="carousel-images">
+            <img src="imagenes/imagen1.jpg" alt="Descripción de la Imagen 1">
+            <img src="imagenes/imagen2.jpg" alt="Descripción de la Imagen 2">
+            <img src="imagenes/imagen3.jpg" alt="Descripción de la Imagen 3">
+            <img src="imagenes/imagen4.jpg" alt="Descripción de la Imagen 4">
+            <img src="imagenes/imagen5.jpg" alt="Descripción de la Imagen 5">
+            <img src="imagenes/imagen6.jpg" alt="Descripción de la Imagen 6">
+        </div>
         <!-- Botones de navegación del carrusel -->
-        <button class="carousel-prev" aria-label="Imagen anterior">&#9664;</button>
-        <button class="carousel-next" aria-label="Imagen siguiente">&#9654;</button>
+        <button class="carousel-prev" aria-label="Imagen anterior"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-next" aria-label="Imagen siguiente"><i class="fas fa-chevron-right"></i></button>
+        <!-- Puntos de navegación -->
+        <div class="carousel-indicators"></div>
     </section>
 
     <!-- Widget de ElfSight -->

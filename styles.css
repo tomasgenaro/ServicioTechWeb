@@ -55,7 +55,7 @@ header:hover {
 .carousel img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     position: absolute;
     top: 0;
     left: 0;
@@ -75,13 +75,27 @@ header:hover {
 .carousel-next, .carousel-prev {
     position: absolute;
     top: 50%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.3);
     color: white;
     border: none;
     cursor: pointer;
-    padding: 10px;
-    border-radius: 50%;
+    padding: 15px; /* Espacio interno para mejorar el tamaño */
+    border-radius: 50%; /* Hace que el botón sea circular */
     z-index: 100;
+    outline: none;
+    font-size: 10px; /* Tamaño de fuente para las flechas */
+    width: 20px; /* Ancho del botón */
+    height: 20px; /* Alto del botón */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+    transition: background 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+.carousel-next:focus, .carousel-prev:focus {
+    outline: 2px solid #fff;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
 }
 
 .carousel-next {
@@ -90,6 +104,40 @@ header:hover {
 
 .carousel-prev {
     left: 10px;
+}
+
+/* Cambia el fondo a un 50% de opacidad cuando se pasa el mouse */
+.carousel-next:hover, .carousel-prev:hover {
+    background: rgba(0, 0, 0, 0.5); /* Fondo más oscuro al pasar el mouse */
+}
+
+/* Estilos para los indicadores del carrusel */
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+}
+
+.carousel-indicators button {
+    background: rgba(0, 0, 0, 0.3); /* Color de fondo del indicador */
+    border: none;
+    border-radius: 3px; /* Bordes ligeramente redondeados, ajusta según prefieras */
+    width: 12px; /* Ancho del indicador */
+    height: 4px; /* Alto del indicador */
+    cursor: pointer;
+    transition: background 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+.carousel-indicators button.active {
+    background: #fff;
+}
+
+/* Cambia el fondo a un 50% de opacidad cuando se pasa el mouse */
+.carousel-indicators button:hover {
+    background: rgba(0, 0, 0, 0.5); /* Fondo más oscuro al pasar el mouse */
 }
 
 /* Estilos para la sección de información de contacto */
