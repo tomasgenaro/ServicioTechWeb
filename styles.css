@@ -1,210 +1,289 @@
 /* Estilos generales del cuerpo del documento */
 body {
-    background-color: #f0f2f5; /* Color de fondo */
-    color: #333; /* Color del texto */
-    font-family: 'Roboto', sans-serif; /* Familia tipográfica */
-    margin: 0; /* Elimina el margen exterior */
-    padding: 0; /* Elimina el relleno */
-    -webkit-font-smoothing: antialiased; /* Suavizado de fuentes para WebKit */
-    -moz-osx-font-smoothing: grayscale; /* Suavizado de fuentes para macOS */
+    background-color: #f0f2f5;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Estilos para el encabezado */
 header {
-    background: linear-gradient(to right, #29abe3, #00ffc9); /* Fondo degradado */
-    padding: 20px; /* Espaciado interno */
-    display: flex; /* Contenedor de elementos en línea */
-    justify-content: center; /* Centra horizontalmente los elementos */
-    align-items: center; /* Centra verticalmente los elementos */
-    border-radius: 0 0 20px 20px; /* Bordes redondeados */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra */
-    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transiciones suaves */
+    background: linear-gradient(to right, #29abe3, #00ffc9);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 header:hover {
-    background-color: #1f8ac0; /* Color de fondo al pasar el mouse */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra al pasar el mouse */
+    background-color: #1f8ac0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Estilos para el logo dentro del encabezado */
 #logo {
-    height: 100%; /* Altura */
-    max-height: 80px; /* Altura máxima */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Sombra */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transiciones suaves */
+    height: 100%;
+    max-height: 80px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 #logo:hover {
-    transform: scale(1.1) rotate(5deg); /* Escalado y rotación al pasar el mouse */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Sombra más intensa al pasar el mouse */
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
 }
 
 /* Estilos para el carrusel de imágenes */
 .carousel {
-    margin: 20px auto; /* Margen externo y centrado horizontal */
-    width: 400px; /* Ancho */
-    height: 500px; /* Altura */
-    background-color: #26a1da; /* Color de fondo */
-    border-radius: 10px; /* Bordes redondeados */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Sombra */
-    overflow: hidden; /* Oculta contenido que sobresalga */
-    position: relative; /* Posición relativa para hijos absolutos */
-    transition: transform 0.3s ease-in-out; /* Transición suave de transformaciones */
+    margin: 20px auto;
+    width: 400px;
+    height: 500px;
+    background-color: #26a1da;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
 }
 
 .carousel img {
-    width: 100%; /* Ancho completo */
-    height: 100%; /* Altura completa */
-    object-fit: contain; /* Ajuste de la imagen sin distorsión */
-    position: absolute; /* Posición absoluta */
-    top: 0; /* Alineación superior */
-    left: 0; /* Alineación izquierda */
-    opacity: 0; /* Opacidad inicial */
-    transition: opacity 1s ease-in-out; /* Transición de opacidad */
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 
 .carousel img:nth-child(1) {
-    opacity: 1; /* Primera imagen visible */
+    opacity: 1;
 }
 
 .carousel:hover {
-    transform: scale(1.05) rotate(-2deg); /* Escalado y rotación al pasar el mouse */
+    transform: scale(1.05) rotate(-2deg);
 }
+
+/* Estilos para los botones de control del carrusel */
+.carousel-next, .carousel-prev {
+    position: absolute;
+    top: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 100;
+}
+
+.carousel-next {
+    right: 10px;
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
 /* Estilos para la sección de información de contacto */
 .contact-info {
-    background: linear-gradient(to right, #00ffc9, #29abe3); /* Fondo degradado */
-    padding: 20px; /* Espaciado interno */
-    justify-content: center; /* Centra horizontalmente los elementos */
-    align-items: center; /* Centra verticalmente los elementos */
-    border-radius: 0 0 20px 20px; /* Bordes redondeados */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra */
-    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transiciones suaves */
-    margin: 20px auto; /* Margen externo y centrado horizontal */
-    text-align: center; /* Alineación del texto */
+    background: linear-gradient(to right, #00ffc9, #29abe3);
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin: 20px auto;
+    text-align: center;
 }
 
 .contact-info:hover {
-    background-color: #1f8ac0; /* Color de fondo al pasar el mouse */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Sombra al pasar el mouse */
+    background-color: #1f8ac0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .contact-info h2 {
-    margin-bottom: 10px; /* Margen inferior del título */
+    margin-bottom: 10px;
 }
 
 .contact-info a {
-    color: inherit; /* Color del texto heredado */
-    text-decoration: none; /* Sin decoración de texto */
-    position: relative; /* Posición relativa */
+    color: inherit;
+    text-decoration: none;
+    position: relative;
 }
 
 .contact-info a:hover {
-    text-decoration: underline; /* Subrayado al pasar el mouse */
+    text-decoration: underline;
 }
 
 .contact-info button {
-    margin-left: 5px; /* Margen izquierdo */
-    background-color: #29abe3; /* Color de fondo */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    padding: 10px 20px; /* Relleno */
-    cursor: pointer; /* Cursor apuntador */
-    color: white; /* Color del texto */
-    font-weight: bold; /* Negrita */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Sombra */
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Transiciones suaves */
+    margin-left: 5px;
+    background-color: #29abe3;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .contact-info button:hover {
-    background: linear-gradient(to right, #29abe3, #00ffc9); /* Fondo degradado al pasar el mouse */
-    transform: scale(0.95); /* Escalado al pasar el mouse */
+    background: linear-gradient(to right, #29abe3, #00ffc9);
+    transform: scale(0.95);
 }
 
 /* Estilos para los enlaces sociales */
 .social-links {
-    margin-top: 10px; /* Margen superior */
+    margin-top: 10px;
 }
 
 .social-links a {
-    margin-right: 10px; /* Margen derecho */
-    color: #fff; /* Color del texto */
-    transition: transform 0.3s ease-in-out; /* Transición suave de transformaciones */
+    margin-right: 10px;
+    color: #fff;
+    transition: transform 0.3s ease-in-out;
 }
 
 .social-links a:hover {
-    transform: scale(1.1); /* Escalado al pasar el mouse */
+    transform: scale(1.1);
 }
 
 .social-links i {
-    font-size: 30px; /* Tamaño de fuente */
+    font-size: 30px;
 }
 
 /* Estilos para el pie de página */
 footer {
-    margin-top: 20px; /* Margen superior */
-    padding: 20px; /* Espaciado interno */
-    background-color: #29abe3; /* Color de fondo */
-    color: #fff; /* Color del texto */
-    text-align: center; /* Alineación del texto */
-    border-radius: 20px 20px 0 0; /* Bordes redondeados */
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1); /* Sombra */
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Transiciones suaves */
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #29abe3;
+    color: #fff;
+    text-align: center;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
 footer:hover {
-    background-color: #1f8ac0; /* Color de fondo al pasar el mouse */
-    color: #fff; /* Color del texto al pasar el mouse */
+    background-color: #1f8ac0;
+    color: #fff;
 }
 
 footer p {
-    margin: 0; /* Elimina el margen del párrafo */
+    margin: 0;
 }
 
 /* Estilos para la viñeta de audio */
 .audio-bubble {
-    width: 50px; /* Ancho inicial */
-    height: 50px; /* Altura inicial */
-    background-color: #29abe3; /* Color de fondo */
-    border-radius: 50%; /* Forma circular */
-    position: fixed; /* Posición fija */
-    top: 50%; /* Mitad de la pantalla desde arriba */
-    left: 20px; /* Margen desde la izquierda */
-    display: flex; /* Flexbox */
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
-    cursor: pointer; /* Cursor de mano */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra */
-    transition: width 0.3s ease, height 0.3s ease, top 0.3s ease; /* Transiciones */
-    z-index: 1000; /* Prioridad sobre otros elementos */
-    transform: translateY(-50%); /* Centrar verticalmente */
+    width: 50px;
+    height: 50px;
+    background-color: #29abe3;
+    border-radius: 50%;
+    position: fixed;
+    top: 50%;
+    left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, opacity 0.3s ease;
+    z-index: 1000;
+    transform: translateY(-50%);
 }
 
 .audio-bubble i {
-    font-size: 24px; /* Tamaño del icono */
-    color: #fff; /* Color del icono */
+    font-size: 24px;
+    color: #fff;
+    transition: opacity 0.3s ease;
+}
+
+/* Oculta el icono de la nota musical cuando la burbuja se expande */
+.audio-bubble.expanded i {
+    opacity: 0;
 }
 
 .audio-bubble .expanded-content {
-    display: none; /* Oculto por defecto */
+    display: none;
 }
 
-.audio-bubble:hover {
-    width: 300px; /* Ancho al expandirse */
-    height: 150px; /* Altura al expandirse */
-    top: 40%; /* Ajuste de posición */
-    border-radius: 20px; /* Bordes redondeados */
+.audio-bubble.expanded {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    transform: translateY(-50%);
+    background: linear-gradient(45deg, #29abe3, #00ffc9);
+    animation: pulse 2s infinite;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-.audio-bubble:hover .expanded-content {
-    display: block; /* Mostrar contenido al pasar el mouse */
-    text-align: center; /* Texto centrado */
-    padding: 10px; /* Relleno */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
 }
 
-.audio-bubble:hover i {
-    display: none; /* Ocultar icono al expandirse */
+.audio-bubble.expanded .expanded-content {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 
-.audio-bubble:hover audio {
-    width: 100%; /* Ancho completo */
+.audio-bubble .close-button {
+    position: absolute; /* Posición absoluta */
+    top: -25px; /* Ajusta la distancia desde la parte superior de la burbuja para que sobresalga */
+    right: -10px; /* Ajusta la distancia desde el borde derecho para que sobresalga */
+    font-size: 16px; /* Tamaño reducido de la fuente */
+    color: white; /* Color del botón */
+    cursor: pointer; /* Cursor de mano */
+    z-index: 1100; /* Asegura que la X esté por encima de otros elementos */
+}
+
+.audio-bubble.expanded .expanded-content p {
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.audio-bubble.expanded .expanded-content button {
+    background-color: #00ffc9;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.audio-bubble.expanded .expanded-content button:hover {
+    background: #29abe3;
+    transform: scale(0.95);
 }
