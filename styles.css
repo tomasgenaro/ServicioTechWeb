@@ -1,353 +1,375 @@
 /* Estilos generales del cuerpo del documento */
 body {
-    background-color: #f0f2f5;
-    color: #333;
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    background-color: #f0f2f5; /* Color de fondo claro para el cuerpo del documento */
+    color: #333; /* Color de texto oscuro para un buen contraste con el fondo */
+    font-family: 'Roboto', sans-serif; /* Fuente tipográfica 'Roboto' como fuente principal */
+    margin: 0; /* Elimina el margen predeterminado del navegador alrededor del cuerpo */
+    padding: 0; /* Elimina el relleno predeterminado del navegador alrededor del cuerpo */
+    -webkit-font-smoothing: antialiased; /* Mejora la suavidad de la fuente en navegadores WebKit */
+    -moz-osx-font-smoothing: grayscale; /* Mejora la suavidad de la fuente en macOS Firefox */
 }
 
 /* Estilos para el encabezado */
 header {
-    background: linear-gradient(to right, #29abe3, #00ffc9);
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0 0 20px 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    background: linear-gradient(to right, #29abe3, #00ffc9); /* Fondo con un degradado lineal de azul a verde */
+    padding: 20px; /* Espacio interno de 20px alrededor del contenido del encabezado */
+    display: flex; /* Usa el diseño Flexbox para alinear los elementos dentro del encabezado */
+    justify-content: center; /* Centra horizontalmente el contenido del encabezado */
+    align-items: center; /* Centra verticalmente el contenido del encabezado */
+    border-radius: 0 0 20px 20px; /* Bordes redondeados solo en la parte inferior del encabezado */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra suave en el encabezado para darle profundidad */
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transiciones suaves para cambios en el color de fondo y sombra */
 }
 
 header:hover {
-    background-color: #1f8ac0;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background-color: #1f8ac0; /* Cambia el color de fondo cuando se pasa el cursor sobre el encabezado */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Aumenta el tamaño y suaviza la sombra del encabezado al pasar el cursor */
 }
 
 /* Estilos para el logo dentro del encabezado */
 #logo {
-    height: 100%;
-    max-height: 80px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    height: 100%; /* Asegura que el logo ocupe todo el espacio vertical del encabezado */
+    max-height: 80px; /* Limita la altura máxima del logo a 80px para mantener las proporciones */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Sombra suave alrededor del logo */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transiciones suaves para transformaciones y sombras */
 }
 
 #logo:hover {
-    transform: scale(1.1) rotate(5deg);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    transform: scale(1.1) rotate(5deg); /* Amplía y rota el logo ligeramente al pasar el cursor sobre él */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Aumenta la sombra alrededor del logo cuando se pasa el cursor sobre él */
 }
 
 /* Estilos para el carrusel de imágenes */
 .carousel {
-    margin: 20px auto;
-    width: 400px;
-    height: 500px;
-    background-color: #26a1da;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
-    position: relative;
-    transition: transform 0.3s ease-in-out;
+    margin: 20px auto; /* Margen automático en los lados y 20px en la parte superior e inferior */
+    width: 400px; /* Ancho del carrusel */
+    height: 500px; /* Alto del carrusel */
+    background-color: #26a1da; /* Color de fondo azul para el carrusel */
+    border-radius: 10px; /* Bordes redondeados del carrusel */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Sombra suave alrededor del carrusel para darle profundidad */
+    overflow: hidden; /* Oculta el contenido que se desborda fuera del carrusel */
+    position: relative; /* Posiciona el carrusel relativamente para los elementos hijos posicionados absolutamente */
+    transition: transform 0.3s ease-in-out; /* Transición suave para el cambio de escala y rotación del carrusel */
 }
 
 .carousel img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
+    width: 100%; /* Asegura que las imágenes ocupen todo el ancho del carrusel */
+    height: 100%; /* Asegura que las imágenes ocupen todo el alto del carrusel */
+    object-fit: cover; /* Ajusta la imagen para que cubra el área del carrusel sin distorsionarse */
+    position: absolute; /* Posiciona las imágenes absolutamente dentro del carrusel */
+    top: 0; /* Alinea las imágenes en la parte superior del carrusel */
+    left: 0; /* Alinea las imágenes en la parte izquierda del carrusel */
+    opacity: 0; /* Hace que las imágenes sean invisibles por defecto */
+    transition: opacity 1s ease-in-out; /* Transición suave para el cambio de opacidad de las imágenes */
 }
 
 .carousel img:nth-child(1) {
-    opacity: 1;
+    opacity: 1; /* Hace visible la primera imagen del carrusel */
 }
 
 .carousel:hover {
-    transform: scale(1.05) rotate(-2deg);
+    transform: scale(1.05) rotate(-2deg); /* Amplía y rota ligeramente el carrusel al pasar el cursor sobre él */
 }
 
 /* Estilos para los botones de control del carrusel */
 .carousel-next, .carousel-prev {
-    position: absolute;
-    top: 50%;
-    background: rgba(0, 0, 0, 0.3);
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 15px; /* Espacio interno para mejorar el tamaño */
-    border-radius: 50%; /* Hace que el botón sea circular */
-    z-index: 100;
-    outline: none;
-    font-size: 10px; /* Tamaño de fuente para las flechas */
+    position: absolute; /* Posiciona los botones absolutamente dentro del carrusel */
+    top: 50%; /* Centra verticalmente los botones en el medio del carrusel */
+    background: rgba(0, 0, 0, 0.3); /* Fondo oscuro y semi-translúcido para los botones */
+    color: white; /* Color del texto de los botones */
+    border: none; /* Sin borde para los botones */
+    cursor: pointer; /* Cambia el cursor a una mano para indicar que es clicable */
+    padding: 15px; /* Espacio interno para mejorar el tamaño y la apariencia de los botones */
+    border-radius: 50%; /* Hace que los botones sean circulares */
+    z-index: 100; /* Asegura que los botones estén encima de otros elementos */
+    outline: none; /* Elimina el contorno predeterminado del botón al recibir el foco */
+    font-size: 10px; /* Tamaño de fuente para las flechas de los botones */
     width: 20px; /* Ancho del botón */
     height: 20px; /* Alto del botón */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transform: translateY(-50%);
-    transition: background 0.3s ease; /* Transición suave para el cambio de color */
+    display: flex; /* Usa Flexbox para centrar el contenido dentro del botón */
+    align-items: center; /* Alinea verticalmente el contenido del botón */
+    justify-content: center; /* Alinea horizontalmente el contenido del botón */
+    transform: translateY(-50%); /* Ajusta la posición vertical del botón para centrarlo en el medio del carrusel */
+    transition: background 0.3s ease; /* Transición suave para el cambio de color de fondo del botón */
 }
 
 .carousel-next:focus, .carousel-prev:focus {
-    outline: 2px solid #fff;
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+    outline: 2px solid #fff; /* Contorno blanco alrededor del botón cuando recibe el foco */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.7); /* Sombra blanca alrededor del botón cuando recibe el foco */
 }
 
 .carousel-next {
-    right: 10px;
+    right: 10px; /* Posiciona el botón 'next' en el lado derecho del carrusel */
 }
 
 .carousel-prev {
-    left: 10px;
+    left: 10px; /* Posiciona el botón 'prev' en el lado izquierdo del carrusel */
 }
 
 /* Cambia el fondo a un 50% de opacidad cuando se pasa el mouse */
 .carousel-next:hover, .carousel-prev:hover {
-    background: rgba(0, 0, 0, 0.5); /* Fondo más oscuro al pasar el mouse */
+    background: rgba(0, 0, 0, 0.5); /* Fondo más oscuro para los botones al pasar el mouse sobre ellos */
 }
 
 /* Estilos para los indicadores del carrusel */
 .carousel-indicators {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 5px;
+    position: absolute; /* Posiciona los indicadores absolutamente dentro del carrusel */
+    bottom: 10px; /* Posiciona los indicadores en la parte inferior del carrusel */
+    left: 50%; /* Centra los indicadores horizontalmente en el medio del carrusel */
+    transform: translateX(-50%); /* Ajusta la posición horizontal para centrar los indicadores */
+    display: flex; /* Usa Flexbox para alinear los indicadores en una fila */
+    gap: 5px; /* Espacio entre los indicadores */
 }
 
 .carousel-indicators button {
-    background: rgba(0, 0, 0, 0.3); /* Color de fondo del indicador */
-    border: none;
-    border-radius: 3px; /* Bordes ligeramente redondeados, ajusta según prefieras */
-    width: 12px; /* Ancho del indicador */
-    height: 4px; /* Alto del indicador */
-    cursor: pointer;
-    transition: background 0.3s ease; /* Transición suave para el cambio de color */
+    background: rgba(0, 0, 0, 0.3); /* Color de fondo oscuro y semi-translúcido para los indicadores */
+    border: none; /* Sin borde para los botones de indicadores */
+    border-radius: 3px; /* Bordes ligeramente redondeados para los botones de indicadores */
+    width: 12px; /* Ancho de los botones de indicadores */
+    height: 4px; /* Alto de los botones de indicadores */
+    cursor: pointer; /* Cambia el cursor a una mano para indicar que es clicable */
+    transition: background 0.3s ease; /* Transición suave para el cambio de color de fondo de los indicadores */
 }
 
 .carousel-indicators button.active {
-    background: #fff;
+    background: #fff; /* Fondo blanco para el indicador activo */
 }
 
 /* Cambia el fondo a un 50% de opacidad cuando se pasa el mouse */
 .carousel-indicators button:hover {
-    background: rgba(0, 0, 0, 0.5); /* Fondo más oscuro al pasar el mouse */
+    background: rgba(0, 0, 0, 0.5); /* Fondo más oscuro para los indicadores al pasar el mouse sobre ellos */
 }
 
 /* Estilos para la sección de información de contacto */
 .contact-info {
-    background: linear-gradient(to right, #00ffc9, #29abe3);
-    padding: 20px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0 0 20px 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    margin: 20px auto;
-    text-align: center;
+    background: linear-gradient(to right, #00ffc9, #29abe3); /* Fondo con un degradado lineal de verde a azul */
+    padding: 20px; /* Espacio interno de 20px alrededor del contenido de la sección */
+    justify-content: center; /* Centra horizontalmente el contenido dentro de la sección (para elementos flexibles) */
+    align-items: center; /* Centra verticalmente el contenido dentro de la sección (para elementos flexibles) */
+    border-radius: 0 0 20px 20px; /* Bordes redondeados solo en la parte inferior de la sección */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra suave alrededor de la sección para darle profundidad */
+    transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transiciones suaves para cambios en el color de fondo y sombra */
+    margin: 20px auto; /* Margen automático en los lados y 20px en la parte superior e inferior */
+    text-align: center; /* Centra el texto y los elementos hijos horizontalmente dentro de la sección */
 }
 
 .contact-info:hover {
-    background-color: #1f8ac0;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background-color: #1f8ac0; /* Cambia el color de fondo cuando se pasa el cursor sobre la sección */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Aumenta el tamaño y suaviza la sombra al pasar el cursor sobre la sección */
 }
 
 .contact-info h2 {
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Añade un margen inferior de 10px al título h2 */
 }
 
 .contact-info a {
-    color: inherit;
-    text-decoration: none;
-    position: relative;
+    color: inherit; /* Hereda el color del elemento padre para los enlaces */
+    text-decoration: none; /* Elimina el subrayado de los enlaces por defecto */
+    position: relative; /* Posiciona el enlace de manera relativa para los posibles efectos (no afecta a este enlace en particular) */
 }
 
 .contact-info a:hover {
-    text-decoration: underline;
+    text-decoration: underline; /* Añade un subrayado a los enlaces cuando se pasa el cursor sobre ellos */
 }
 
 .contact-info button {
-    margin-left: 5px;
-    background-color: #29abe3;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    color: white;
-    font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    margin-left: 5px; /* Añade un margen izquierdo de 5px a los botones */
+    background-color: #29abe3; /* Color de fondo azul para el botón */
+    border: none; /* Sin borde para los botones */
+    border-radius: 5px; /* Bordes ligeramente redondeados del botón */
+    padding: 10px 20px; /* Espacio interno de 10px arriba y abajo, 20px a los lados del botón */
+    cursor: pointer; /* Cambia el cursor a una mano para indicar que el botón es clicable */
+    color: white; /* Color del texto del botón en blanco */
+    font-weight: bold; /* Hace el texto del botón en negrita */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Sombra suave alrededor del botón para darle profundidad */
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Transiciones suaves para el cambio de color de fondo y transformación */
 }
 
 .contact-info button:hover {
-    background: linear-gradient(to right, #29abe3, #00ffc9);
-    transform: scale(0.95);
+    background: linear-gradient(to right, #29abe3, #00ffc9); /* Cambia el fondo del botón a un degradado lineal de azul a verde al pasar el cursor */
+    transform: scale(0.95); /* Reduce ligeramente el tamaño del botón cuando se pasa el cursor sobre él */
 }
 
 /* Estilos para los enlaces sociales */
 .social-links {
-    margin-top: 10px;
+    margin-top: 10px; /* Añade un margen superior de 10px a la sección de enlaces sociales */
 }
 
 .social-links a {
-    margin-right: 10px;
-    color: #fff;
-    transition: transform 0.3s ease-in-out;
+    margin-right: 10px; /* Añade un margen derecho de 10px a cada enlace social para separarlos entre sí */
+    color: #fff; /* Color base blanco para los íconos dentro de los enlaces sociales */
+    transition: transform 0.3s ease-in-out; /* Transición suave para el cambio de escala de los íconos al pasar el cursor */
 }
 
 .social-links a:hover {
-    transform: scale(1.1);
+    transform: scale(1.1); /* Aumenta el tamaño del ícono al pasar el cursor sobre el enlace social */
 }
 
 .social-links i {
-    font-size: 30px;
+    font-size: 30px; /* Tamaño de fuente de 30px para los íconos dentro de los enlaces sociales */
+    transition: color 0.3s ease; /* Transición suave para el cambio de color de los íconos */
+}
+
+/* Cambia el color a negro al pasar el mouse sobre el enlace social */
+.social-links a:hover i {
+    color: #000; /* Cambia el color de los íconos a negro cuando se pasa el cursor sobre el enlace social */
+}
+
+/* Opcional: Cambia el color cuando el ícono está activo o en foco */
+.social-links a:focus i {
+    color: #000; /* Cambia el color de los íconos a negro cuando el enlace social está en foco */
 }
 
 /* Estilos para el pie de página */
 footer {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #29abe3;
-    color: #fff;
-    text-align: center;
-    border-radius: 20px 20px 0 0;
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    margin-top: 20px; /* Añade un margen superior de 20px al pie de página para separarlo del contenido anterior */
+    padding: 20px; /* Añade un espacio interno de 20px alrededor del contenido del pie de página */
+    background-color: #29abe3; /* Color de fondo azul para el pie de página */
+    color: #fff; /* Color del texto en blanco */
+    text-align: center; /* Centra el texto dentro del pie de página */
+    border-radius: 20px 20px 0 0; /* Bordes redondeados en la parte superior del pie de página */
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil en la parte superior del pie de página para darle profundidad */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out; /* Transiciones suaves para cambios en el color de fondo y del texto */
 }
 
 footer:hover {
-    background-color: #1f8ac0;
-    color: #fff;
+    background-color: #1f8ac0; /* Cambia el color de fondo a un tono más oscuro de azul cuando se pasa el cursor sobre el pie de página */
+    color: #fff; /* Mantiene el color del texto en blanco cuando se pasa el cursor sobre el pie de página */
 }
 
 footer p {
-    margin: 0;
+    margin: 0; /* Elimina el margen por defecto del párrafo para asegurar que se alinee correctamente con el pie de página */
 }
 
 /* Estilos para la viñeta de audio */
 .audio-bubble {
-    width: 50px;
-    height: 50px;
-    background-color: #29abe3;
-    border-radius: 50%;
-    position: fixed;
-    top: 50%;
-    left: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, opacity 0.3s ease;
-    z-index: 1000;
-    transform: translateY(-50%);
+    width: 50px; /* Ancho inicial de la burbuja de audio */
+    height: 50px; /* Alto inicial de la burbuja de audio */
+    background-color: #29abe3; /* Color de fondo azul para la burbuja */
+    border-radius: 50%; /* Forma circular de la burbuja */
+    position: fixed; /* Posiciona la burbuja de manera fija en la pantalla */
+    top: 50%; /* Coloca la burbuja verticalmente centrada */
+    left: 20px; /* Posiciona la burbuja a 20px del borde izquierdo de la pantalla */
+    display: flex; /* Utiliza flexbox para alinear el contenido dentro de la burbuja */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    cursor: pointer; /* Cambia el cursor a una mano para indicar que es clicable */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Sombra suave alrededor de la burbuja para darle profundidad */
+    transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, opacity 0.3s ease; /* Transiciones suaves para cambios en tamaño, posición y opacidad */
+    z-index: 1000; /* Asegura que la burbuja esté encima de otros elementos */
+    transform: translateY(-50%); /* Ajusta la posición vertical para centrar la burbuja en la pantalla */
 }
 
 .audio-bubble i {
-    font-size: 24px;
-    color: #fff;
-    transition: opacity 0.3s ease;
+    font-size: 24px; /* Tamaño del ícono dentro de la burbuja */
+    color: #fff; /* Color blanco para el ícono */
+    transition: opacity 0.3s ease; /* Transición suave para el cambio de opacidad del ícono */
 }
 
 /* Oculta el icono de la nota musical cuando la burbuja se expande */
 .audio-bubble.expanded i {
-    opacity: 0;
+    opacity: 0; /* Hace que el ícono sea transparente cuando la burbuja está expandida */
 }
 
 .audio-bubble .expanded-content {
-    display: none;
+    display: none; /* Oculta el contenido expandido por defecto */
 }
 
 .audio-bubble.expanded {
-    width: 300px;
-    height: 300px;
-    top: 10%;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    z-index: 1000;
-    transform: translateY(-50%);
-    background: linear-gradient(45deg, #29abe3, #00ffc9);
-    animation: pulse 2s infinite;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    width: 300px; /* Aumenta el ancho de la burbuja cuando está expandida */
+    height: 300px; /* Aumenta el alto de la burbuja cuando está expandida */
+    top: 10%; /* Mueve la burbuja a 10% desde la parte superior de la pantalla cuando está expandida */
+    border-radius: 50%; /* Mantiene la forma circular cuando está expandida */
+    display: flex; /* Utiliza flexbox para alinear el contenido dentro de la burbuja */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    cursor: pointer; /* Cambia el cursor a una mano para indicar que es clicable */
+    z-index: 1000; /* Asegura que la burbuja esté encima de otros elementos */
+    transform: translateY(-50%); /* Ajusta la posición vertical para centrar la burbuja en la pantalla */
+    background: linear-gradient(45deg, #29abe3, #00ffc9); /* Degradado de fondo de azul a verde cuando está expandida */
+    animation: pulse 2s infinite; /* Animación de pulso que hace que la burbuja "late" */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Sombra más grande para darle más profundidad cuando está expandida */
 }
 
 @keyframes pulse {
     0% {
-        transform: scale(1);
+        transform: scale(1); /* Escala normal al inicio de la animación */
     }
     50% {
-        transform: scale(1.05);
+        transform: scale(1.05); /* Escala ligeramente el tamaño al 50% de la animación */
     }
     100% {
-        transform: scale(1);
+        transform: scale(1); /* Escala normal al final de la animación */
     }
 }
 
 .audio-bubble.expanded .expanded-content {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    display: block; /* Muestra el contenido expandido cuando la burbuja está expandida */
+    position: absolute; /* Posiciona el contenido expandido de manera absoluta dentro de la burbuja */
+    top: 50%; /* Coloca el contenido verticalmente en el centro de la burbuja */
+    left: 50%; /* Coloca el contenido horizontalmente en el centro de la burbuja */
+    transform: translate(-50%, -50%); /* Ajusta la posición del contenido para centrarlo dentro de la burbuja */
+    text-align: center; /* Centra el texto dentro del contenido expandido */
 }
 
 .audio-bubble .close-button {
-    position: absolute; /* Posición absoluta */
-    top: -25px; /* Ajusta la distancia desde la parte superior de la burbuja para que sobresalga */
-    right: -10px; /* Ajusta la distancia desde el borde derecho para que sobresalga */
-    font-size: 16px; /* Tamaño reducido de la fuente */
-    color: white; /* Color del botón */
-    cursor: pointer; /* Cursor de mano */
-    z-index: 1100; /* Asegura que la X esté por encima de otros elementos */
+    position: absolute; /* Posiciona el botón de cerrar de manera absoluta */
+    top: -25px; /* Coloca el botón de cerrar por encima de la burbuja */
+    right: -10px; /* Coloca el botón de cerrar a la derecha de la burbuja */
+    font-size: 16px; /* Tamaño reducido de la fuente para el botón de cerrar */
+    color: white; /* Color blanco para el botón de cerrar */
+    cursor: pointer; /* Cambia el cursor a una mano para indicar que es clicable */
+    z-index: 1100; /* Asegura que el botón de cerrar esté por encima de otros elementos */
 }
 
 .audio-bubble.expanded .expanded-content p {
-    color: white;
-    font-size: 16px;
-    padding: 10px;
-    margin: 0;
-    line-height: 1.5;
+    color: white; /* Color blanco para el texto dentro del contenido expandido */
+    font-size: 16px; /* Tamaño de fuente de 16px para el texto */
+    padding: 10px; /* Espacio interno de 10px alrededor del texto */
+    margin: 0; /* Elimina el margen por defecto del párrafo */
+    line-height: 1.5; /* Altura de línea de 1.5 para mejorar la legibilidad del texto */
 }
 
 .audio-bubble.expanded .expanded-content button {
-    background-color: #00ffc9;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
-    cursor: pointer;
-    color: #fff;
-    font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+    background-color: #00ffc9; /* Color de fondo verde para el botón dentro del contenido expandido */
+    border: none; /* Sin borde para el botón */
+    border-radius: 20px; /* Bordes redondeados del botón */
+    padding: 10px 20px; /* Espacio interno de 10px arriba y abajo, 20px a los lados del botón */
+    cursor: pointer; /* Cambia el cursor a una mano para indicar que el botón es clicable */
+    color: #fff; /* Color blanco para el texto del botón */
+    font-weight: bold; /* Hace el texto del botón en negrita */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Sombra suave alrededor del botón para darle profundidad */
+    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Transiciones suaves para el cambio de color de fondo y transformación */
 }
 
 .audio-bubble.expanded .expanded-content button:hover {
-    background: #29abe3;
-    transform: scale(0.95);
+    background: #29abe3; /* Cambia el color de fondo a azul cuando se pasa el cursor sobre el botón */
+    transform: scale(0.95); /* Reduce ligeramente el tamaño del botón cuando se pasa el cursor sobre él */
 }
 
+/* Estilos para las notificaciones (toast) */
 .toast {
-    position: fixed;
-    top: 50%;
-    right: -10px; /* Coloca el toast fuera del borde derecho */
-    transform: translateY(-50%);
-    background-color: #29abe3;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    z-index: 10000;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    white-space: nowrap; /* Evita que el texto se rompa */
+    position: fixed; /* Posiciona la notificación de manera fija en la pantalla */
+    top: 50%; /* Coloca la notificación verticalmente en el centro de la pantalla */
+    right: -300px; /* Inicialmente coloca la notificación fuera del borde derecho de la pantalla */
+    transform: translateY(-50%); /* Ajusta la posición vertical para centrar la notificación */
+    background-color: #29abe3; /* Color de fondo azul para la notificación */
+    color: white; /* Color del texto blanco dentro de la notificación */
+    padding: 10px 20px; /* Espacio interno de 10px arriba y abajo, 20px a los lados */
+    border-radius: 5px; /* Bordes redondeados para darle una apariencia más suave */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); /* Sombra suave alrededor de la notificación para darle profundidad */
+    z-index: 10000; /* Asegura que la notificación esté encima de otros elementos */
+    opacity: 0; /* Inicialmente oculta la notificación */
+    transition: opacity 0.5s ease-in-out, right 0.5s ease-in-out; /* Transiciones suaves para el cambio en opacidad y posición */
+    white-space: nowrap; /* Evita que el texto dentro de la notificación se rompa en varias líneas */
+}
+
+.toast.show {
+    right: 0px; /* Posición final visible de la notificación al estar activa */
+    opacity: 1; /* Hace visible la notificación */
+}
+
+.toast.hide {
+    right: -300px; /* Posición fuera del borde derecho de la pantalla cuando está oculta */
+    opacity: 0; /* Oculta la notificación */
 }
