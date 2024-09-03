@@ -32,4 +32,4 @@ Disallow: /wp-content/uploads/*.xlsx$
 # Permitir la indexación de las carpetas necesarias
 Allow: /wp-content/uploads/
 
-Sitemap: https://serviciotech.com/sitemap.xml
+Sitemap: https://www.serviciotech.com/sitemap.xml
