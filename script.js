@@ -212,3 +212,14 @@ window.onload = function() {
         });
     }
 };
+
+// vacia automáticamente el formulario después de enviarlo
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.querySelector("form");
+
+    form.addEventListener("submit", function(event) {
+        setTimeout(() => {
+            form.reset();  // Vacía el formulario después de enviarlo
+        }, 500);  // Pequeño retraso para asegurar que se envíe correctamente antes de vaciar
+    });
+});
