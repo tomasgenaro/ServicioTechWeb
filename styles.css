@@ -1,12 +1,26 @@
 /* Estilos generales del cuerpo del documento */
 body {
-    background-color: #f0f2f5; /* Color de fondo claro para el cuerpo del documento */
+    /*background-color: #f0f2f5; /* Color de fondo claro para el cuerpo del documento */
+    background: url('imagenes/fondo.jpg') no-repeat center center fixed;
+    background-size: cover; /* Escalar la imagen para que cubra toda la pantalla */
+    position: relative;
     color: #333; /* Color de texto oscuro para un buen contraste con el fondo */
     font-family: 'Roboto', sans-serif; /* Fuente tipográfica 'Roboto' como fuente principal */
     margin: 0; /* Elimina el margen predeterminado del navegador alrededor del cuerpo */
     padding: 0; /* Elimina el relleno predeterminado del navegador alrededor del cuerpo */
     -webkit-font-smoothing: antialiased; /* Mejora la suavidad de la fuente en navegadores WebKit */
     -moz-osx-font-smoothing: grayscale; /* Mejora la suavidad de la fuente en macOS Firefox */
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente blanco */
+    z-index: -1; /* Asegura que esté detrás del contenido */
 }
 
 /* Estilos para el encabezado */
@@ -17,14 +31,15 @@ header {
     justify-content: center; /* Centra horizontalmente el contenido del encabezado */
     align-items: center; /* Centra verticalmente el contenido del encabezado */
     border-radius: 0 0 20px 20px; /* Bordes redondeados solo en la parte inferior del encabezado */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra suave en el encabezado para darle profundidad */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave inicialmente */
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transiciones suaves para cambios en el color de fondo y sombra */
 }
 
 header:hover {
     background-color: #1f8ac0; /* Cambia el color de fondo cuando se pasa el cursor sobre el encabezado */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Aumenta el tamaño y suaviza la sombra del encabezado al pasar el cursor */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4); /* Aumenta la sombra de forma más profunda al pasar el cursor */
 }
+
 
 /* Estilos para el logo dentro del encabezado */
 #logo {
@@ -147,7 +162,7 @@ header:hover {
     justify-content: center; /* Centra horizontalmente el contenido dentro de la sección (para elementos flexibles) */
     align-items: center; /* Centra verticalmente el contenido dentro de la sección (para elementos flexibles) */
     border-radius: 0 0 20px 20px; /* Bordes redondeados solo en la parte inferior de la sección */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Sombra suave alrededor de la sección para darle profundidad */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave inicialmente */
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transiciones suaves para cambios en el color de fondo y sombra */
     margin: 20px auto; /* Margen automático en los lados y 20px en la parte superior e inferior */
     text-align: center; /* Centra el texto y los elementos hijos horizontalmente dentro de la sección */
@@ -155,7 +170,7 @@ header:hover {
 
 .contact-info:hover {
     background-color: #1f8ac0; /* Cambia el color de fondo cuando se pasa el cursor sobre la sección */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Aumenta el tamaño y suaviza la sombra al pasar el cursor sobre la sección */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Aumenta la sombra de forma más profunda al pasar el cursor */
 }
 
 .contact-info h2 {
@@ -173,7 +188,7 @@ header:hover {
 }
 
 .contact-info button {
-    margin-left: 5px; /* Añade un margen izquierdo de 5px a los botones */
+    margin-left: 20px; /* Añade un margen izquierdo de 5px a los botones */
     background-color: #29abe3; /* Color de fondo azul para el botón */
     border: none; /* Sin borde para los botones */
     border-radius: 5px; /* Bordes ligeramente redondeados del botón */
@@ -181,13 +196,112 @@ header:hover {
     cursor: pointer; /* Cambia el cursor a una mano para indicar que el botón es clicable */
     color: white; /* Color del texto del botón en blanco */
     font-weight: bold; /* Hace el texto del botón en negrita */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Sombra suave alrededor del botón para darle profundidad */
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Transiciones suaves para el cambio de color de fondo y transformación */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Sombra suave alrededor del botón */
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out; /* Transiciones suaves para la sombra y transformación */
 }
 
 .contact-info button:hover {
-    background: linear-gradient(to right, #29abe3, #00ffc9); /* Cambia el fondo del botón a un degradado lineal de azul a verde al pasar el cursor */
-    transform: scale(0.95); /* Reduce ligeramente el tamaño del botón cuando se pasa el cursor sobre él */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.6); /* Sombra más profunda al pasar el cursor */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño para enfatizar el efecto */
+}
+
+.contact-info button:active {
+    transform: scale(0.95); /* Reduce ligeramente el tamaño del botón cuando se hace clic */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Vuelve a la sombra original al hacer clic */
+}
+
+/* Estilos para el formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Alinea los elementos en el centro */
+    max-width: 600px; /* Limita el ancho del formulario */
+    width: 100%; /* Asegura que el formulario use el ancho máximo disponible sin desbordar */
+    padding: 30px; /* Más espacio alrededor del formulario */
+    background-color: #fff; /* Fondo blanco */
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+    font-family: 'Arial', sans-serif;
+    margin: 0 auto; /* Centra el formulario horizontalmente */
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out; /* Añadir transiciones para el cambio de sombra y tamaño */
+}
+
+/* Efecto al pasar el mouse */
+form:hover {
+    transform: scale(1.02); /* Agranda ligeramente el formulario */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Aumenta la sombra al pasar el cursor */
+}
+
+/* Títulos dentro del formulario */
+form h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilos para las etiquetas de los campos */
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Estilos para los campos de entrada */
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #f1f1f1;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Efecto en los campos de entrada al estar en foco */
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form textarea:focus {
+    border-color: #3498db;
+    background-color: #eaf4ff;
+    outline: none;
+}
+
+/* Estilos para el área de texto */
+form textarea {
+    resize: vertical;
+    height: 150px;
+}
+
+/* Botón de envío */
+form button[type="submit"] {
+    /*background-color: #29abe3;*/
+    /*color: #fff;*/
+    font-size: 16px;
+    padding: 14px 20px;
+    border: none;
+    border-radius: 8px;
+    /*cursor: pointer;*/
+    /*transition: background-color 0.3s ease;*/
+}
+
+/* Efecto en el botón al pasar el mouse */
+/*form button[type="submit"]:hover {
+    background-color: #29abe3;
+}
+
+/* Enlaces dentro del formulario */
+form a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+form a:hover {
+    text-decoration: underline;
 }
 
 /* Estilos para los enlaces sociales */
