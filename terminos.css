@@ -1,0 +1,73 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #fff; /* Fondo blanco */
+    color: #333; /* Texto gris oscuro */
+}
+
+/* Encabezado */
+header {
+    background-color: #333; /* Fondo gris oscuro */
+    color: #fff; /* Texto blanco */
+    padding: 1.5em 1em;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+header p {
+    margin: 0.5em 0 0;
+    font-size: 0.9rem;
+}
+
+/* Contenido principal */
+main {
+    max-width: 800px;
+    margin: 2em auto;
+    padding: 1em;
+    background: #fff; /* Fondo blanco */
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra gris suave */
+}
+
+h2 {
+    color: #333; /* Gris oscuro */
+    margin-top: 1em;
+    font-size: 1.5rem;
+}
+
+p, ul {
+    margin: 1em 0;
+    color: #666; /* Gris medio */
+}
+
+ul {
+    padding-left: 1.5em;
+    list-style-type: disc;
+}
+
+/* Enlaces */
+a {
+    color: #333; /* Gris oscuro */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #666; /* Gris medio al pasar el ratón */
+}
+
+/* Pie de página */
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background-color: #f1f1f1; /* Gris claro */
+    font-size: 0.9rem;
+    color: #666; /* Gris medio */
+}

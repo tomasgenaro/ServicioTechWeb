@@ -277,6 +277,67 @@ form textarea {
     height: 150px;
 }
 
+/* Estilo para la casilla de términos y políticas */
+.terms {
+    display: flex;
+    align-items: center; /* Asegura que los elementos estén centrados verticalmente */
+    margin-top: 20px;
+    font-size: 14px;
+    color: #333; /* Gris oscuro */
+    width: 100%;
+}
+
+/* Estilo para el checkbox */
+.terms input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: #29abe3; /* Color azul del checkbox */
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ccc; /* Borde gris claro */
+    border-radius: 4px; /* Bordes redondeados */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #fff; /* Fondo blanco por defecto */
+}
+
+/* Efecto cuando el checkbox está marcado */
+.terms input[type="checkbox"]:checked {
+    background-color: #29abe3; /* Azul */
+    border-color: #29abe3;
+}
+
+/* Personalización del check cuando está marcado */
+.terms input[type="checkbox"]:checked::after {
+    content: "✓";
+    font-size: 14px;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra el símbolo del check */
+}
+
+/* Estilo para el texto y enlaces */
+.terms label {
+    color: #333; /* Gris oscuro */
+    font-size: 14px;
+    line-height: 18px; /* Esto asegura que el texto tenga la misma altura que el checkbox */
+    display: inline-block;
+    vertical-align: middle; /* Esto garantiza la alineación vertical del texto */
+    margin-top: 8px; /* Ajusta este valor para mover el texto hacia abajo */
+}
+
+.terms a {
+    color: #29abe3; /* Azul */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.terms a:hover {
+    text-decoration: underline;
+    color: #3498db; /* Azul más claro al pasar el ratón */
+}
+
 /* Botón de envío */
 form button[type="submit"] {
     /*background-color: #29abe3;*/
@@ -285,6 +346,7 @@ form button[type="submit"] {
     padding: 14px 20px;
     border: none;
     border-radius: 8px;
+    margin-top: 20px; /* Espacio superior del botón */
     /*cursor: pointer;*/
     /*transition: background-color 0.3s ease;*/
 }
