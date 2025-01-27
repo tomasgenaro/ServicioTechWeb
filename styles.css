@@ -10,6 +10,7 @@ body {
     padding: 0; /* Elimina el relleno predeterminado del navegador alrededor del cuerpo */
     -webkit-font-smoothing: antialiased; /* Mejora la suavidad de la fuente en navegadores WebKit */
     -moz-osx-font-smoothing: grayscale; /* Mejora la suavidad de la fuente en macOS Firefox */
+    overflow-x: hidden;
 }
 
 body::before {
@@ -58,6 +59,7 @@ header:hover {
 .carousel {
     margin: 20px auto; /* Margen automático en los lados y 20px en la parte superior e inferior */
     width: 400px; /* Ancho del carrusel */
+    max-width: 90%;
     height: 500px; /* Alto del carrusel */
     background-color: #26a1da; /* Color de fondo azul para el carrusel */
     border-radius: 10px; /* Bordes redondeados del carrusel */
@@ -166,6 +168,14 @@ header:hover {
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transiciones suaves para cambios en el color de fondo y sombra */
     margin: 20px auto; /* Margen automático en los lados y 20px en la parte superior e inferior */
     text-align: center; /* Centra el texto y los elementos hijos horizontalmente dentro de la sección */
+    overflow-x: hidden;
+}
+
+@media (max-width: 600px) {
+    .google-reviews {
+        max-width: 100%;  /* Usa todo el ancho disponible en móviles */
+        padding: 10px;     /* Ajusta el espacio interno para móviles */
+    }
 }
 
 .contact-info:hover {
@@ -198,6 +208,7 @@ header:hover {
     font-weight: bold; /* Hace el texto del botón en negrita */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Sombra suave alrededor del botón */
     transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out; /* Transiciones suaves para la sombra y transformación */
+    text-align: center;  /* Asegura la alineación del texto */
 }
 
 .contact-info button:hover {
@@ -210,16 +221,23 @@ header:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Vuelve a la sombra original al hacer clic */
 }
 
+@media (max-width: 600px) {
+    .contact-info button {
+        display: none;  /* Oculta los botones de copiar en móviles */
+    }
+}
+
 /* Estilos para el formulario */
 form {
     display: flex;
     flex-direction: column;
     align-items: center; /* Alinea los elementos en el centro */
     max-width: 600px; /* Limita el ancho del formulario */
-    width: 100%; /* Asegura que el formulario use el ancho máximo disponible sin desbordar */
-    padding: 30px; /* Más espacio alrededor del formulario */
+    width: 40%; /* Asegura que el formulario use el ancho máximo disponible sin desbordar */
+    padding: 20px; /* Más espacio alrededor del formulario */
     background-color: #fff; /* Fondo blanco */
     border-radius: 10px;
+    box-sizing: border-box; /* Evita que el padding aumente el ancho total */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
     font-family: 'Arial', sans-serif;
     margin: 0 auto; /* Centra el formulario horizontalmente */
@@ -252,14 +270,15 @@ form label {
 form input[type="text"],
 form input[type="email"],
 form textarea {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    background-color: #f1f1f1;
-    transition: border-color 0.3s ease, background-color 0.3s ease;
+    width: 100%;  /* Mantiene el ancho adaptable */
+    max-width: 500px; /* Limita el ancho máximo a 500px en pantallas grandes */
+    padding: 10px; /* Añade espacio interno para comodidad al escribir */
+    margin-bottom: 20px; /* Separa los campos con un margen inferior */
+    border: 1px solid #ccc; /* Borde gris claro de 1 píxel */
+    border-radius: 6px; /* Esquinas redondeadas para apariencia suave. */
+    font-size: 14px; /* Texto de tamaño adecuado para lectura. */
+    background-color: #f1f1f1; /* Fondo gris claro para destacar el campo. */
+    transition: border-color 0.3s ease, background-color 0.3s ease; /*Animación suave en cambios de estilo al interactuar. */
 }
 
 /* Efecto en los campos de entrada al estar en foco */
@@ -275,6 +294,14 @@ form textarea:focus {
 form textarea {
     resize: vertical;
     height: 150px;
+}
+
+@media (max-width: 600px) {
+    form {
+        width: 90%; /* Reduce el ancho del formulario */
+        margin: 0 auto; /* Centra el formulario */
+        padding: 15px; /* Ajusta el espacio interno */
+    }
 }
 
 /* Estilo para la casilla de términos y políticas */
@@ -340,20 +367,18 @@ form textarea {
 
 /* Botón de envío */
 form button[type="submit"] {
-    /*background-color: #29abe3;*/
-    /*color: #fff;*/
+    display: flex;    /* Hace que el botón ocupe una línea completa */
+    justify-content: center; /* Centra horizontalmente el texto */
+    align-items: center;     /* Centra verticalmente el texto */
+    margin: 20px auto; /* Centra el botón horizontalmente */
+    width: 30%;       /* Ocupará todo el ancho disponible */
+    max-width: 100px;  /* Máximo ancho para evitar botones demasiado grandes */
     font-size: 16px;
     padding: 14px 20px;
     border: none;
     border-radius: 8px;
     margin-top: 20px; /* Espacio superior del botón */
-    /*cursor: pointer;*/
-    /*transition: background-color 0.3s ease;*/
-}
 
-/* Efecto en el botón al pasar el mouse */
-/*form button[type="submit"]:hover {
-    background-color: #29abe3;
 }
 
 /* Enlaces dentro del formulario */
@@ -548,4 +573,14 @@ footer p {
 .toast.hide {
     right: -300px; /* Posición fuera del borde derecho de la pantalla cuando está oculta */
     opacity: 0; /* Oculta la notificación */
+}
+
+@media (max-width: 600px) {
+    form input[type="text"],
+    form input[type="email"],
+    form textarea {
+        max-width: 100%;  /* Usa todo el ancho disponible */
+        font-size: 12px;  /* Texto más pequeño para móviles */
+        padding: 8px;     /* Reduce aún más el relleno interno */
+    }
 }
