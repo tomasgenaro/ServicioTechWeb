@@ -269,6 +269,7 @@ form label {
 /* Estilos para los campos de entrada */
 form input[type="text"],
 form input[type="email"],
+form input[type="tel"],
 form textarea {
     width: 100%;  /* Mantiene el ancho adaptable */
     max-width: 500px; /* Limita el ancho máximo a 500px en pantallas grandes */
@@ -284,6 +285,7 @@ form textarea {
 /* Efecto en los campos de entrada al estar en foco */
 form input[type="text"]:focus,
 form input[type="email"]:focus,
+form input[type="tel"]:focus,
 form textarea:focus {
     border-color: #3498db;
     background-color: #eaf4ff;
