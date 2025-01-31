@@ -71,3 +71,52 @@ footer {
     font-size: 0.9rem;
     color: #666; /* Gris medio */
 }
+
+/* Media Queries para hacer el diseño responsive */
+@media (max-width: 768px) {
+    /* Ajustes para tablets y móviles */
+    header h1 {
+        font-size: 1.8rem; /* Reducir tamaño del título */
+    }
+
+    header p {
+        font-size: 0.8rem; /* Reducir tamaño del subtítulo */
+    }
+
+    main {
+        margin: 1em; /* Reducir margen */
+        padding: 0.8em; /* Reducir padding */
+    }
+
+    h2 {
+        font-size: 1.3rem; /* Reducir tamaño de los títulos */
+    }
+
+    p, ul {
+        font-size: 0.9rem; /* Reducir tamaño del texto */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajustes para móviles pequeños */
+    header h1 {
+        font-size: 1.5rem; /* Título más pequeño */
+    }
+
+    header p {
+        font-size: 0.75rem; /* Subtítulo más pequeño */
+    }
+
+    main {
+        margin: 0.5em; /* Margen más pequeño */
+        padding: 0.5em; /* Padding más pequeño */
+    }
+
+    h2 {
+        font-size: 1.2rem; /* Títulos más pequeños */
+    }
+
+    p, ul {
+        font-size: 0.85rem; /* Texto más pequeño */
+    }
+}

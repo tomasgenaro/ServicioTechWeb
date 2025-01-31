@@ -48,10 +48,13 @@ header:hover {
     max-height: 80px; /* Limita la altura máxima del logo a 80px para mantener las proporciones */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5); /* Sombra suave alrededor del logo */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transiciones suaves para transformaciones y sombras */
+    backface-visibility: hidden; /* Mejora el renderizado */
+    will-change: transform; /* Optimiza el renderizado */
 }
 
 #logo:hover {
-    transform: scale(1.1) rotate(5deg); /* Amplía y rota el logo ligeramente al pasar el cursor sobre él */
+    transform: scale(1.1) rotate(5deg) translateZ(0); /* Amplía y rota el logo ligeramente al pasar el cursor sobre él */
+    outline: 1px solid transparent; /* Suaviza los bordes */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Aumenta la sombra alrededor del logo cuando se pasa el cursor sobre él */
 }
 
