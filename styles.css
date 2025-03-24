@@ -1,7 +1,7 @@
 /* Estilos generales del cuerpo del documento */
 body {
     /*background-color: #f0f2f5; /* Color de fondo claro para el cuerpo del documento */
-    background: url('imagenes/fondo.jpg') no-repeat center center fixed;
+    /*background: url('imagenes/fondo.jpg') no-repeat center center fixed;*/
     background-size: cover; /* Escalar la imagen para que cubra toda la pantalla */
     position: relative;
     color: #333; /* Color de texto oscuro para un buen contraste con el fondo */
