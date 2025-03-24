@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Manejador de envío de formulario con Formspree
-    const form = document.getElementById('contact-form');
+    /*const form = document.getElementById('contact-form');
     if (form) {
         form.addEventListener("submit", function (event) {
             event.preventDefault();
@@ -174,5 +174,5 @@ document.addEventListener("DOMContentLoaded", function () {
                     mostrarToast('Error al enviar el mensaje');
                 });
         });
-    }
+    }*/
 });
