@@ -148,43 +148,62 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    document.addEventListener("DOMContentLoaded", function () {
+
     // Manejador de envío de formulario con Formspree
-const form = document.getElementById('contact-form');
-if (form) {
-   form.addEventListener("submit", function (event) {
-    event.preventDefault();
+    const form = document.getElementById('contact-form');
+    if (form) {
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
 
-    // Capturamos los datos del formulario
-    const formData = new FormData(form);
+            // Capturamos los datos del formulario
+            const formData = new FormData(form);
 
-    // Mostrar los datos del formulario en la consola
-    formData.forEach((value, key) => {
-        console.log(`${key}: ${value}`);
-    });
+            // Mostrar los datos del formulario en la consola
+            formData.forEach((value, key) => {
+                console.log(`${key}: ${value}`);
+            });
 
-    // Enviar los datos a Formspree
-    fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'Accept': 'application/json' // Asegúrate de que Formspree acepte la solicitud
-        }
-    })
-    .then(response => response.json()) // Convertimos la respuesta a JSON
-    .then(data => {
-        if (data.ok) {
-            mostrarToast('Mensaje enviado correctamente');
-            form.reset();
-        } else {
-            console.error('Error al enviar el mensaje:', data);
-            mostrarToast('Error al enviar el mensaje');
-        }
-    })
-    .catch(error => {
-        console.error('Error en la solicitud:', error);
-        mostrarToast('Error al enviar el mensaje');
-    });
-});
+            // Enviar los datos a Formspree
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json' // Asegúrate de que Formspree acepte la solicitud
+                }
+            })
+            .then(response => {
+                console.log("Respuesta del servidor:", response); // Mostrar respuesta completa
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    // Si el código de estado no es 200, mostrar el error
+                    throw new Error('Error al enviar el mensaje. Código de respuesta: ' + response.status);
+                }
+            })
+            .then(data => {
+                console.log("Respuesta del servidor en formato JSON:", data); // Mostrar la respuesta como JSON
+                if (data.ok) {
+                    mostrarToast('Mensaje enviado correctamente');
+                    form.reset();
+                } else {
+                    console.error('Error al enviar el mensaje:', data);
+                    mostrarToast('Error al enviar el mensaje');
+                }
+            })
+            .catch(error => {
+                console.error('Error en la solicitud:', error);
+                mostrarToast('Error al enviar el mensaje');
+            });
+        });
+    }
 
-  }
+    // Función para mostrar toasts (notificaciones en la pantalla)
+    function mostrarToast(mensaje) {
+        let toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.textContent = mensaje;
+        document.body.appendChild(toast);
+        setTimeout(() => document.body.removeChild(toast), 3000); // Se elimina el toast después de 3 segundos
+    }
 });
