@@ -149,30 +149,42 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Manejador de envío de formulario con Formspree
-    /*const form = document.getElementById('contact-form');
-    if (form) {
-        form.addEventListener("submit", function (event) {
-            event.preventDefault();
+const form = document.getElementById('contact-form');
+if (form) {
+    form.addEventListener("submit", function (event) {
+        // No prevenir el envío si Formspree está funcionando
+        event.preventDefault();
 
-            fetch(form.action, {
-                method: 'POST',
-                body: new FormData(form),
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-                .then(response => {
-                    if (response.ok) {
-                        mostrarToast('Mensaje enviado correctamente');
-                        form.reset();
-                    } else {
-                        mostrarToast('Error al enviar el mensaje');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    mostrarToast('Error al enviar el mensaje');
-                });
+        // Asegúrate de que los datos del formulario se están enviando correctamente
+        const formData = new FormData(form);
+
+        // Verificar los datos antes de enviarlos
+        formData.forEach((value, key) => {
+            console.log(`${key}: ${value}`);
         });
-    }*/
+
+        // Enviar el formulario usando fetch
+        fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json' // Asegúrate de que Formspree acepte la solicitud
+            }
+        })
+        .then(response => {
+            // Comprobamos la respuesta del servidor
+            if (response.ok) {
+                mostrarToast('Mensaje enviado correctamente');
+                form.reset();
+            } else {
+                console.error('Error al enviar el mensaje:', response.statusText);
+                mostrarToast('Error al enviar el mensaje');
+            }
+        })
+        .catch(error => {
+            console.error('Error en la solicitud:', error);
+            mostrarToast('Error al enviar el mensaje');
+        });
+    });
+  }
 });
