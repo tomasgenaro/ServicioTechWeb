@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Clase Carrusel (sin cambios)
+    // Clase Carrusel
     class Carrusel {
         constructor(selector) {
             this.imagenes = document.querySelectorAll(selector + ' img');
@@ -94,7 +94,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
     new Carrusel('.carousel');
 
-    // Funciones para copiar texto al portapapeles (sin cambios)
+    // Función para mostrar notificaciones tipo toast
+    let toastTimeout;
+    function mostrarToast(mensaje) {
+        clearTimeout(toastTimeout);
+        let toast = document.querySelector('.toast') || document.createElement('div');
+        toast.className = 'toast hide';
+        toast.textContent = mensaje;
+        document.body.appendChild(toast);
+        toast.offsetHeight;
+        toast.classList.replace('hide', 'show');
+
+        toastTimeout = setTimeout(() => {
+            toast.classList.replace('show', 'hide');
+            setTimeout(() => {
+                if (toast.parentNode) toast.parentNode.removeChild(toast);
+            }, 500);
+        }, 3000);
+    }
+
+    // Copiar texto al portapapeles
     async function copiarTextoAlPortapapeles(texto, boton) {
         try {
             await navigator.clipboard.writeText(texto);
@@ -118,24 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
     agregarBotonCopiar(document.querySelector('.contact-info a[href^="tel:"]'));
     agregarBotonCopiar(document.querySelector('.contact-info a[href^="mailto:"]'));
 
-    // Función para mostrar toasts (sin cambios)
-    let toastTimeout;
-    function mostrarToast(mensaje) {
-        clearTimeout(toastTimeout);
-        let toast = document.querySelector('.toast') || document.createElement('div');
-        toast.className = 'toast hide';
-        toast.textContent = mensaje;
-        document.body.appendChild(toast);
-        toast.offsetHeight;
-        toast.classList.replace('hide', 'show');
-
-        toastTimeout = setTimeout(() => {
-            toast.classList.replace('show', 'hide');
-            setTimeout(() => document.body.removeChild(toast), 500);
-        }, 3000);
-    }
-
-    // Manejador de la burbuja de audio (sin cambios)
+    // Manejador para la burbuja de audio
     const audioBubble = document.querySelector('.audio-bubble');
     if (audioBubble) {
         audioBubble.addEventListener('click', () => audioBubble.classList.toggle('expanded'));
@@ -144,23 +146,19 @@ document.addEventListener("DOMContentLoaded", function () {
             audioBubble.classList.remove('expanded');
         });
         document.addEventListener('click', (e) => {
-            if (!audioBubble.contains(e.target)) audioBubble.classList.remove('expanded');
+            if (!audioBubble.contains(e.target)) {
+                audioBubble.classList.remove('expanded');
+            }
         });
     }
 
-    document.addEventListener("DOMContentLoaded", function () {
-
+    // Envío de formulario
     const form = document.getElementById('contact-form');
     if (form) {
         form.addEventListener("submit", function (event) {
             event.preventDefault();
 
             const formData = new FormData(form);
-
-            // Mostrar los datos del formulario en la consola para depuración
-            formData.forEach((value, key) => {
-                console.log(`${key}: ${value}`);
-            });
 
             fetch(form.action, {
                 method: 'POST',
@@ -170,14 +168,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             })
             .then(response => {
-                // Verificar si la respuesta es exitosa (200 OK)
-                if (!response.ok) {
-                    throw new Error(`Error: ${response.statusText}`);
-                }
-                return response.json(); // Convertir la respuesta en JSON
+                if (!response.ok) throw new Error(`Error: ${response.statusText}`);
+                return response.json();
             })
             .then(data => {
-                console.log("Respuesta de Formspree:", data);
                 if (data.ok) {
                     mostrarToast('Mensaje enviado correctamente');
                     form.reset();
@@ -191,14 +185,4 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
-
-    // Función para mostrar notificaciones en la pantalla
-    function mostrarToast(mensaje) {
-        let toast = document.createElement('div');
-        toast.className = 'toast';
-        toast.textContent = mensaje;
-        document.body.appendChild(toast);
-        setTimeout(() => document.body.removeChild(toast), 3000);
-    }
 });
-
