@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Clase Carrusel
     class Carrusel {
         constructor(selector) {
-            this.imagenes = document.querySelectorAll(selector + ' .carousel-images img');
+            this.imagenes = document.querySelectorAll(selector + ' img');
             this.indiceActual = 0;
             this.intervalo = 3000;
             this.iniciarCarrusel();
@@ -167,22 +167,22 @@ document.addEventListener("DOMContentLoaded", function () {
                     'Accept': 'application/json'
                 }
             })
-            .then(response => {
-                if (!response.ok) throw new Error(`Error: ${response.statusText}`);
-                return response.json();
-            })
-            .then(data => {
-                if (data.ok) {
-                    mostrarToast('Mensaje enviado correctamente');
-                    form.reset();
-                } else {
-                    throw new Error('Error en los datos enviados');
-                }
-            })
-            .catch(error => {
-                console.error('Error al enviar el mensaje:', error);
-                mostrarToast('Error al enviar el mensaje');
-            });
+                .then(response => {
+                    if (!response.ok) throw new Error(`Error: ${response.statusText}`);
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.ok) {
+                        mostrarToast('Mensaje enviado correctamente');
+                        form.reset();
+                    } else {
+                        throw new Error('Error en los datos enviados');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error al enviar el mensaje:', error);
+                    mostrarToast('Error al enviar el mensaje');
+                });
         });
     }
 });
