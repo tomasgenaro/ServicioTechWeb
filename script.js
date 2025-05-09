@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Clase Carrusel
     class Carrusel {
         constructor(selector) {
-            this.imagenes = document.querySelectorAll(selector + ' img');
+            this.imagenes = document.querySelectorAll(selector + ' .carousel-images img');
             this.indiceActual = 0;
             this.intervalo = 3000;
             this.iniciarCarrusel();
