@@ -49,12 +49,6 @@ header:hover {
     will-change: transform;
 }
 
-#logo:hover {
-    transform: scale(1.1) rotate(5deg) translateZ(0);
-    outline: 1px solid transparent;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-}
-
 .carousel {
     margin: 20px auto;
     width: 400px;
@@ -88,8 +82,28 @@ header:hover {
     opacity: 1;
 }
 
-.carousel:hover {
-    transform: scale(1.05) rotate(-2deg);
+@media (hover: hover) and (pointer: fine) {
+    #logo:hover {
+        transform: scale(1.1) rotate(5deg) translateZ(0);
+        outline: 1px solid transparent;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    }
+
+    .carousel:hover {
+        transform: scale(1.05) rotate(-2deg);
+    }
+}
+
+@media (hover: none), (pointer: coarse) {
+    #logo:hover,
+    #logo:active {
+        transform: none !important;
+    }
+
+    .carousel:hover,
+    .carousel:active {
+        transform: none !important;
+    }
 }
 
 .carousel-next,
@@ -418,10 +432,11 @@ footer p {
     margin: 0;
 }
 
+/* Burbuja de audio mejorada */
 .audio-bubble {
-    width: 50px;
-    height: 50px;
-    background-color: #29abe3;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #29abe3, #00ffc9);
     border-radius: 50%;
     position: fixed;
     top: 50%;
@@ -430,10 +445,105 @@ footer p {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, background 0.22s ease;
     z-index: 1000;
     transform: translateY(-50%);
+}
+
+.audio-bubble::before {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    background: rgba(41, 171, 227, 0.18);
+    opacity: 0;
+    transform: scale(0.85);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+}
+
+.audio-bubble i {
+    font-size: 24px;
+    color: #fff;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    position: relative;
+    z-index: 2;
+}
+
+.audio-bubble .expanded-content {
+    position: absolute;
+    left: 68px;
+    top: 50%;
+    width: 300px;
+    max-width: calc(100vw - 110px);
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(41, 171, 227, 0.98), rgba(0, 255, 201, 0.98));
+    border-radius: 22px;
+    box-sizing: border-box;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.32);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-50%) translateX(-14px) scale(0.96);
+    transform-origin: left center;
+    transition:
+        opacity 0.22s ease,
+        transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+        visibility 0s linear 0.32s;
+}
+
+.audio-bubble.expanded .expanded-content {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(-50%) translateX(0) scale(1);
+    transition:
+        opacity 0.22s ease,
+        transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+        visibility 0s;
+}
+
+.audio-bubble.expanded i {
+    opacity: 0;
+    transform: scale(0.75);
+}
+
+.audio-bubble .expanded-content h2 {
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.25;
+    margin: 0 24px 14px 0;
+}
+
+.audio-bubble .expanded-content audio {
+    width: 100%;
+    display: block;
+}
+
+.audio-bubble .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 16px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease;
+    z-index: 3;
+}
+
+.audio-bubble .close-button:hover {
+    background: rgba(255, 255, 255, 0.32);
+    transform: scale(1.06);
 }
 
 .audio-bubble:focus-visible {
@@ -441,92 +551,23 @@ footer p {
     outline-offset: 4px;
 }
 
-.audio-bubble i {
-    font-size: 24px;
-    color: #fff;
-    transition: opacity 0.3s ease;
-}
-
-.audio-bubble.expanded i {
-    opacity: 0;
-}
-
-.audio-bubble .expanded-content {
-    display: none;
-}
-
-.audio-bubble.expanded {
-    width: 300px;
-    height: 300px;
-    top: 10%;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    z-index: 1000;
-    transform: translateY(-50%);
-    background: linear-gradient(45deg, #29abe3, #00ffc9);
-    animation: pulse 2s infinite;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-@keyframes pulse {
-    0% {
-        transform: scale(1);
+@media (hover: hover) and (pointer: fine) {
+    .audio-bubble:hover {
+        transform: translateY(-50%) scale(1.04);
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.34);
     }
 
-    50% {
-        transform: scale(1.05);
-    }
-
-    100% {
+    .audio-bubble:hover::before {
+        opacity: 1;
         transform: scale(1);
     }
 }
 
-.audio-bubble.expanded .expanded-content {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-.audio-bubble .close-button {
-    position: absolute;
-    top: -25px;
-    right: -10px;
-    font-size: 16px;
-    color: white;
-    cursor: pointer;
-    z-index: 1100;
-}
-
-.audio-bubble.expanded .expanded-content p {
-    color: white;
-    font-size: 16px;
-    padding: 10px;
-    margin: 0;
-    line-height: 1.5;
-}
-
-.audio-bubble.expanded .expanded-content button {
-    background-color: #00ffc9;
-    border: none;
-    border-radius: 20px;
-    padding: 10px 20px;
-    cursor: pointer;
-    color: #fff;
-    font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-    transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
-}
-
-.audio-bubble.expanded .expanded-content button:hover {
-    background: #29abe3;
-    transform: scale(0.95);
+@media (hover: none), (pointer: coarse) {
+    .audio-bubble:hover,
+    .audio-bubble:active {
+        transform: translateY(-50%) !important;
+    }
 }
 
 .toast {
@@ -588,6 +629,23 @@ textarea:focus-visible {
         font-size: 12px;
         padding: 8px;
     }
+
+    .audio-bubble {
+        left: 16px;
+        width: 52px;
+        height: 52px;
+    }
+
+    .audio-bubble .expanded-content {
+        left: 62px;
+        width: calc(100vw - 90px);
+        max-width: none;
+        padding: 18px;
+    }
+
+    .audio-bubble .expanded-content h2 {
+        font-size: 16px;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -597,7 +655,12 @@ textarea:focus-visible {
         scroll-behavior: auto !important;
     }
 
-    .audio-bubble.expanded {
-        animation: none;
+    .audio-bubble,
+    .audio-bubble::before,
+    .audio-bubble i,
+    .audio-bubble .expanded-content,
+    .audio-bubble .close-button {
+        transition: none !important;
+        animation: none !important;
     }
 }
