@@ -1431,3 +1431,32 @@ textarea:focus-visible {
         bottom: calc(18px + env(safe-area-inset-bottom));
     }
 }
+
+/* V6.1.3 - Footer mobile termina correctamente */
+
+@media (max-width: 600px) {
+    body {
+        padding-bottom: 0 !important;
+    }
+
+    footer {
+        margin: 20px 0 0;
+        padding: 18px 18px calc(82px + env(safe-area-inset-bottom));
+        min-height: 0 !important;
+        border-radius: 18px 18px 0 0;
+        box-sizing: border-box;
+    }
+
+    footer p {
+        max-width: 300px;
+        margin: 0 auto;
+        font-size: 14px;
+        line-height: 1.4;
+        text-align: center;
+    }
+
+    .audio-bubble,
+    .whatsapp-float {
+        bottom: calc(18px + env(safe-area-inset-bottom));
+    }
+}
