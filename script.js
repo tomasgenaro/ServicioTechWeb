@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
             this.agregarIndicadores();
             this.iniciarDeslizamiento();
             this.mostrarImagen(this.indiceActual);
-            this.iniciarCarrusel();
+            this.iniciarAutoplayDiferido();
             this.optimizarEventosDePausa();
         }
 
@@ -149,6 +149,33 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         }
 
+        iniciarAutoplayDiferido() {
+            let autoplayIniciado = false;
+
+            const iniciar = () => {
+                if (autoplayIniciado) return;
+
+                autoplayIniciado = true;
+                this.iniciarCarrusel();
+            };
+
+            const iniciarPorInteraccion = () => {
+                iniciar();
+
+                window.removeEventListener("scroll", iniciarPorInteraccion);
+                window.removeEventListener("touchstart", iniciarPorInteraccion);
+                window.removeEventListener("click", iniciarPorInteraccion);
+                window.removeEventListener("keydown", iniciarPorInteraccion);
+            };
+
+            window.addEventListener("scroll", iniciarPorInteraccion, { once: true, passive: true });
+            window.addEventListener("touchstart", iniciarPorInteraccion, { once: true, passive: true });
+            window.addEventListener("click", iniciarPorInteraccion, { once: true });
+            window.addEventListener("keydown", iniciarPorInteraccion, { once: true });
+
+            window.setTimeout(iniciar, 25000);
+        }
+
         optimizarEventosDePausa() {
             this.contenedor.addEventListener("mouseenter", () => this.detenerCarrusel());
             this.contenedor.addEventListener("mouseleave", () => this.iniciarCarrusel());
@@ -266,8 +293,24 @@ document.addEventListener("DOMContentLoaded", function () {
         const closeButton = audioBubble.querySelector(".close-button");
         const expandedContent = audioBubble.querySelector(".expanded-content");
 
+        const cambiarEstadoAudioBubble = (expandido) => {
+            audioBubble.classList.toggle("expanded", expandido);
+            audioBubble.setAttribute("aria-expanded", expandido ? "true" : "false");
+            audioBubble.setAttribute(
+                "aria-label",
+                expandido ? "Cerrar reproductor de audio" : "Abrir reproductor de audio"
+            );
+        };
+
         audioBubble.addEventListener("click", () => {
-            audioBubble.classList.toggle("expanded");
+            cambiarEstadoAudioBubble(!audioBubble.classList.contains("expanded"));
+        });
+
+        audioBubble.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                cambiarEstadoAudioBubble(!audioBubble.classList.contains("expanded"));
+            }
         });
 
         expandedContent?.addEventListener("click", (e) => {
@@ -276,20 +319,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
         closeButton?.addEventListener("click", (e) => {
             e.stopPropagation();
-            audioBubble.classList.remove("expanded");
+            cambiarEstadoAudioBubble(false);
         });
 
         document.addEventListener("click", (e) => {
             if (!audioBubble.contains(e.target)) {
-                audioBubble.classList.remove("expanded");
+                cambiarEstadoAudioBubble(false);
             }
         });
 
         document.addEventListener("keydown", (e) => {
             if (e.key === "Escape") {
-                audioBubble.classList.remove("expanded");
+                cambiarEstadoAudioBubble(false);
             }
         });
+    }
+
+    // Carga diferida del widget de reseñas ElfSight
+    function cargarWidgetResenas() {
+        const widgetResenas = document.querySelector("[data-elfsight-app-lazy]");
+        const scriptExistente = document.querySelector('script[data-elfsight-platform="true"]');
+
+        if (!widgetResenas || scriptExistente) return;
+
+        const script = document.createElement("script");
+
+        script.src = "https://static.elfsight.com/platform/platform.js";
+        script.async = true;
+        script.dataset.elfsightPlatform = "true";
+
+        document.body.appendChild(script);
+    }
+
+    if ("requestIdleCallback" in window) {
+        window.requestIdleCallback(cargarWidgetResenas, { timeout: 5000 });
+    } else {
+        window.setTimeout(cargarWidgetResenas, 3500);
     }
 
     // Envío de formulario

@@ -140,119 +140,121 @@
 
   <!-- Encabezado -->
   <header>
-    <img id="logo" src="imagenes/logo.png" alt="Logo de ServicioTech" decoding="async">
+    <img id="logo" src="imagenes/logo.png" alt="Logo de ServicioTech" width="240" height="80" decoding="async" fetchpriority="high">
   </header>
 
-  <!-- Carrusel de imágenes -->
-  <section class="carousel" aria-live="polite">
-    <div class="carousel-images">
-      <img src="imagenes/imagen1.jpg" alt="Servicio técnico de computadoras, notebooks, consolas, televisores y celulares en Chivilcoy" decoding="async" fetchpriority="high">
+  <main id="contenido-principal">
 
-      <img src="imagenes/imagen2.jpg" alt="Reparación y mantenimiento de equipos tecnológicos en ServicioTech Chivilcoy" loading="lazy" decoding="async">
+    <!-- Carrusel de imágenes -->
+    <section class="carousel" aria-live="polite">
+      <div class="carousel-images">
+        <img src="imagenes/imagen1.jpg" width="400" height="500" alt="Servicio técnico de computadoras, notebooks, consolas, televisores y celulares en Chivilcoy" loading="eager" decoding="async" fetchpriority="high">
 
-      <img src="imagenes/imagen3.jpg" alt="Diagnóstico técnico profesional para PC, notebooks y consolas" loading="lazy" decoding="async">
+        <img src="imagenes/imagen2.jpg" width="400" height="500" alt="Reparación y mantenimiento de equipos tecnológicos en ServicioTech Chivilcoy" loading="lazy" decoding="async">
 
-      <img src="imagenes/imagen4.jpg" alt="Servicio técnico rápido para equipos electrónicos en Chivilcoy" loading="lazy" decoding="async">
+        <img src="imagenes/imagen3.jpg" width="400" height="500" alt="Diagnóstico técnico profesional para PC, notebooks y consolas" loading="lazy" decoding="async">
 
-      <img src="imagenes/imagen5.jpg" alt="Reparación de computadoras y notebooks con atención personalizada" loading="lazy" decoding="async">
+        <img src="imagenes/imagen4.jpg" width="400" height="500" alt="Servicio técnico rápido para equipos electrónicos en Chivilcoy" loading="lazy" decoding="async">
 
-      <img src="imagenes/imagen6.jpg" alt="Mantenimiento y reparación de consolas, televisores y celulares" loading="lazy" decoding="async">
+        <img src="imagenes/imagen5.jpg" width="400" height="500" alt="Reparación de computadoras y notebooks con atención personalizada" loading="lazy" decoding="async">
 
-      <img src="imagenes/imagen7.jpg" alt="Soluciones técnicas para equipos que fallan o funcionan lento" loading="lazy" decoding="async">
+        <img src="imagenes/imagen6.jpg" width="400" height="500" alt="Mantenimiento y reparación de consolas, televisores y celulares" loading="lazy" decoding="async">
 
-      <img src="imagenes/imagen8.jpg" alt="ServicioTech Chivilcoy, reparación de tecnología y soporte técnico" loading="lazy" decoding="async">
-    </div>
+        <img src="imagenes/imagen7.jpg" width="400" height="500" alt="Soluciones técnicas para equipos que fallan o funcionan lento" loading="lazy" decoding="async">
 
-    <!-- Botones de navegación del carrusel -->
-    <button class="carousel-prev" aria-label="Imagen anterior">
-      <i class="fas fa-chevron-left" aria-hidden="true"></i>
-    </button>
-
-    <button class="carousel-next" aria-label="Imagen siguiente">
-      <i class="fas fa-chevron-right" aria-hidden="true"></i>
-    </button>
-
-    <!-- Puntos de navegación -->
-    <div class="carousel-indicators"></div>
-  </section>
-
-  <!-- Widget de ElfSight -->
-  <script src="https://static.elfsight.com/platform/platform.js" async></script>
-
-  <div class="google-reviews">
-    <div class="elfsight-app-d7cfff56-1541-42d8-9850-9e566b2eb8f2" data-elfsight-app-lazy></div>
-  </div>
-
-  <!-- Información de contacto -->
-  <section class="contact-info">
-    <h2>Contacto</h2>
-
-    <p>Teléfono: <a href="tel:+54-2346-610009">+54-2346-610009</a></p>
-
-    <p>e-Mail: <a href="mailto:serviciotechchivilcoy@gmail.com">serviciotechchivilcoy@gmail.com</a></p>
-
-    <!-- Enlaces a redes sociales -->
-    <nav class="social-links" aria-label="Redes sociales de ServicioTech">
-      <a href="https://wa.link/09788r" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
-        <i class="fab fa-whatsapp" aria-hidden="true"></i>
-      </a>
-
-      <a href="https://www.instagram.com/serviciotechchivilcoy" target="_blank" rel="noopener noreferrer" aria-label="Ver Instagram de ServicioTech">
-        <i class="fab fa-instagram-square" aria-hidden="true"></i>
-      </a>
-
-      <a href="https://www.tiktok.com/@serviciotech" target="_blank" rel="noopener noreferrer" aria-label="Ver TikTok de ServicioTech">
-        <i class="fab fa-tiktok" aria-hidden="true"></i>
-      </a>
-
-      <a href="https://ar.linkedin.com/company/serviciotech" target="_blank" rel="noopener noreferrer" aria-label="Ver LinkedIn de ServicioTech">
-        <i class="fab fa-linkedin" aria-hidden="true"></i>
-      </a>
-    </nav>
-
-    <!-- Formulario de contacto -->
-    <h3>Envíanos tu consulta</h3>
-
-    <form id="contact-form" action="https://formspree.io/f/xovjjozk" method="POST">
-      <!-- Campo para el nombre -->
-      <label for="name">Nombre:</label>
-
-      <input type="text" id="name" name="name" autocomplete="given-name" required>
-
-      <!-- Campo para el apellido -->
-      <label for="apellido">Apellido:</label>
-
-      <input type="text" id="apellido" name="apellido" autocomplete="family-name" required>
-
-      <!-- Campo para el correo electrónico -->
-      <label for="email">Correo Electrónico:</label>
-
-      <input type="email" id="email" name="email" autocomplete="email" required>
-
-      <!-- Campo para el teléfono -->
-      <label for="telefono">Teléfono:</label>
-
-      <input type="tel" id="telefono" name="telefono" autocomplete="tel" required>
-
-      <!-- Campo para el mensaje -->
-      <label for="message">Mensaje:</label>
-
-      <textarea id="message" name="message" required></textarea>
-
-      <!-- Casilla para términos y políticas -->
-      <div class="terms">
-        <input type="checkbox" id="accept-terms" name="accept-terms" required>
-
-        <label for="accept-terms">
-          He leído y acepto los <a href="politica-privacidad.html" target="_blank" rel="noopener noreferrer">términos de servicio</a> y la
-          <a href="politica-privacidad.html" target="_blank" rel="noopener noreferrer">política de privacidad</a>.
-        </label>
+        <img src="imagenes/imagen8.jpg" width="400" height="500" alt="ServicioTech Chivilcoy, reparación de tecnología y soporte técnico" loading="lazy" decoding="async">
       </div>
 
-      <!-- Botón de envío -->
-      <button type="submit">Enviar</button>
-    </form>
-  </section>
+      <!-- Botones de navegación del carrusel -->
+      <button class="carousel-prev" aria-label="Imagen anterior">
+        <i class="fas fa-chevron-left" aria-hidden="true"></i>
+      </button>
+
+      <button class="carousel-next" aria-label="Imagen siguiente">
+        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+      </button>
+
+      <!-- Puntos de navegación -->
+      <div class="carousel-indicators"></div>
+    </section>
+
+    <!-- Widget de ElfSight -->
+    <div class="google-reviews">
+      <div class="elfsight-app-d7cfff56-1541-42d8-9850-9e566b2eb8f2" data-elfsight-app-lazy></div>
+    </div>
+
+    <!-- Información de contacto -->
+    <section class="contact-info">
+      <h2>Contacto</h2>
+
+      <p>Teléfono: <a href="tel:+54-2346-610009">+54-2346-610009</a></p>
+
+      <p>e-Mail: <a href="mailto:serviciotechchivilcoy@gmail.com">serviciotechchivilcoy@gmail.com</a></p>
+
+      <!-- Enlaces a redes sociales -->
+      <nav class="social-links" aria-label="Redes sociales de ServicioTech">
+        <a href="https://wa.link/09788r" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp">
+          <i class="fab fa-whatsapp" aria-hidden="true"></i>
+        </a>
+
+        <a href="https://www.instagram.com/serviciotechchivilcoy" target="_blank" rel="noopener noreferrer" aria-label="Ver Instagram de ServicioTech">
+          <i class="fab fa-instagram-square" aria-hidden="true"></i>
+        </a>
+
+        <a href="https://www.tiktok.com/@serviciotech" target="_blank" rel="noopener noreferrer" aria-label="Ver TikTok de ServicioTech">
+          <i class="fab fa-tiktok" aria-hidden="true"></i>
+        </a>
+
+        <a href="https://ar.linkedin.com/company/serviciotech" target="_blank" rel="noopener noreferrer" aria-label="Ver LinkedIn de ServicioTech">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </nav>
+
+      <!-- Formulario de contacto -->
+      <h3>Envíanos tu consulta</h3>
+
+      <form id="contact-form" action="https://formspree.io/f/xovjjozk" method="POST">
+        <!-- Campo para el nombre -->
+        <label for="name">Nombre:</label>
+
+        <input type="text" id="name" name="name" autocomplete="given-name" required>
+
+        <!-- Campo para el apellido -->
+        <label for="apellido">Apellido:</label>
+
+        <input type="text" id="apellido" name="apellido" autocomplete="family-name" required>
+
+        <!-- Campo para el correo electrónico -->
+        <label for="email">Correo Electrónico:</label>
+
+        <input type="email" id="email" name="email" autocomplete="email" required>
+
+        <!-- Campo para el teléfono -->
+        <label for="telefono">Teléfono:</label>
+
+        <input type="tel" id="telefono" name="telefono" autocomplete="tel" required>
+
+        <!-- Campo para el mensaje -->
+        <label for="message">Mensaje:</label>
+
+        <textarea id="message" name="message" required></textarea>
+
+        <!-- Casilla para términos y políticas -->
+        <div class="terms">
+          <input type="checkbox" id="accept-terms" name="accept-terms" required>
+
+          <label for="accept-terms">
+            He leído y acepto los <a href="politica-privacidad.html" target="_blank" rel="noopener noreferrer">términos de servicio</a> y la
+            <a href="politica-privacidad.html" target="_blank" rel="noopener noreferrer">política de privacidad</a>.
+          </label>
+        </div>
+
+        <!-- Botón de envío -->
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+  </main>
 
   <!-- Pie de página -->
   <footer>
@@ -260,8 +262,8 @@
   </footer>
 
   <!-- Burbuja del reproductor de audio -->
-  <div class="audio-bubble">
-    <i class="fas fa-music" aria-label="Reproductor de audio"></i>
+  <div class="audio-bubble" role="button" tabindex="0" aria-label="Abrir reproductor de audio" aria-expanded="false">
+    <i class="fas fa-music" aria-hidden="true"></i>
 
     <div class="expanded-content">
       <button class="close-button" aria-label="Cerrar">&#10005;</button>

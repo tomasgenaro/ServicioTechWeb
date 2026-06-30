@@ -39,7 +39,9 @@ header:hover {
 }
 
 #logo {
-    height: 100%;
+    width: 240px;
+    height: auto;
+    max-width: 100%;
     max-height: 80px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -133,28 +135,40 @@ header:hover {
 
 .carousel-indicators {
     position: absolute;
-    bottom: 10px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 5px;
+    gap: 0;
 }
 
 .carousel-indicators button {
-    background: rgba(0, 0, 0, 0.3);
+    position: relative;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    background: transparent;
     border: none;
-    border-radius: 3px;
+    cursor: pointer;
+}
+
+.carousel-indicators button::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 6px;
     width: 12px;
     height: 4px;
-    cursor: pointer;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 3px;
     transition: background 0.3s ease;
 }
 
-.carousel-indicators button.active {
+.carousel-indicators button.active::before {
     background: #fff;
 }
 
-.carousel-indicators button:hover {
+.carousel-indicators button:hover::before {
     background: rgba(0, 0, 0, 0.5);
 }
 
@@ -412,6 +426,11 @@ footer p {
     transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, opacity 0.3s ease;
     z-index: 1000;
     transform: translateY(-50%);
+}
+
+.audio-bubble:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 4px;
 }
 
 .audio-bubble i {
