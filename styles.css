@@ -1130,3 +1130,242 @@ textarea:focus-visible {
         animation: none !important;
     }
 }
+
+/* V6.1.1 - Ajustes finales mobile */
+
+@media (max-width: 600px) {
+    body {
+        padding-bottom: calc(82px + env(safe-area-inset-bottom));
+    }
+
+    header {
+        padding: 14px 16px;
+    }
+
+    #logo {
+        width: 210px;
+        max-height: 70px;
+    }
+
+    .hero-conversion {
+        margin: 16px auto 14px;
+        padding: 0 12px;
+    }
+
+    .hero-content {
+        padding: 26px 16px 28px;
+        border-radius: 22px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(26px, 8vw, 34px);
+        line-height: 1.12;
+        margin-bottom: 14px;
+    }
+
+    .hero-description {
+        font-size: 15.5px;
+        line-height: 1.55;
+    }
+
+    .hero-actions {
+        margin-top: 20px;
+        gap: 12px;
+    }
+
+    .hero-trust {
+        display: none;
+    }
+
+    .carousel {
+        width: calc(100% - 36px);
+        max-width: 620px;
+        height: auto;
+        aspect-ratio: 4 / 5;
+        margin: 22px auto 30px;
+    }
+
+    .services-section {
+        margin: 30px auto;
+    }
+
+    .section-heading h2 {
+        font-size: clamp(28px, 8vw, 36px);
+    }
+
+    .section-heading p {
+        font-size: 17px;
+        line-height: 1.55;
+    }
+
+    .service-card {
+        padding: 22px;
+        border-radius: 22px;
+    }
+
+    .service-card h3 {
+        font-size: 21px;
+    }
+
+    .service-card p {
+        font-size: 17px;
+        line-height: 1.55;
+    }
+
+    .reviews-section {
+        margin: 30px auto 26px;
+    }
+
+    .reviews-heading {
+        margin-bottom: 10px;
+    }
+
+    .google-reviews {
+        margin-bottom: 18px;
+    }
+
+    .conversion-banner {
+        margin: 26px 14px;
+        padding: 22px 18px;
+        border-radius: 22px;
+    }
+
+    .conversion-banner h2 {
+        font-size: clamp(28px, 8vw, 34px);
+        line-height: 1.15;
+    }
+
+    .conversion-banner p {
+        font-size: 17px;
+        line-height: 1.55;
+    }
+
+    .contact-info {
+        margin: 28px 14px 20px;
+        padding: 30px 16px 96px;
+        border-radius: 24px;
+    }
+
+    .contact-info h2 {
+        font-size: 34px;
+        margin-bottom: 22px;
+    }
+
+    .contact-info > p {
+        font-size: 19px;
+        line-height: 1.45;
+        gap: 10px;
+        margin: 18px 0;
+    }
+
+    .contact-info button {
+        display: inline-flex !important;
+        justify-content: center;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 22px;
+        margin-top: 4px;
+    }
+
+    .social-links {
+        margin-top: 20px;
+        margin-bottom: 22px;
+    }
+
+    .social-links i {
+        font-size: 34px;
+    }
+
+    .contact-info h3 {
+        font-size: 27px;
+        line-height: 1.2;
+        margin-top: 24px;
+        margin-bottom: 22px;
+    }
+
+    form {
+        width: 100%;
+        padding: 22px 16px;
+        border-radius: 16px;
+    }
+
+    form label {
+        font-size: 17px;
+        margin-bottom: 8px;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form input[type="tel"],
+    form textarea {
+        min-height: 48px;
+        font-size: 16px;
+        padding: 10px;
+        margin-bottom: 24px;
+    }
+
+    form textarea {
+        min-height: 190px;
+    }
+
+    .terms {
+        gap: 14px;
+        margin-top: 18px;
+    }
+
+    .terms label {
+        font-size: 15.5px;
+        line-height: 1.45;
+    }
+
+    form button[type="submit"] {
+        width: 100%;
+        min-height: 54px;
+        font-size: 17px;
+        margin-top: 24px;
+    }
+
+    .audio-bubble {
+        top: auto;
+        left: 18px;
+        bottom: calc(18px + env(safe-area-inset-bottom));
+        width: 52px;
+        height: 52px;
+        transform: none;
+        z-index: 1250;
+    }
+
+    .audio-bubble:hover,
+    .audio-bubble:active {
+        transform: none !important;
+    }
+
+    .audio-bubble .expanded-content {
+        left: 0;
+        top: auto;
+        bottom: 64px;
+        width: calc(100vw - 36px);
+        max-width: 360px;
+        padding: 18px;
+        transform: translateY(10px) scale(0.98);
+        transform-origin: left bottom;
+    }
+
+    .audio-bubble.expanded .expanded-content {
+        transform: translateY(0) scale(1);
+    }
+
+    .whatsapp-float {
+        right: 18px;
+        bottom: calc(18px + env(safe-area-inset-bottom));
+        min-height: 48px;
+        padding: 0 16px;
+        font-size: 14px;
+        z-index: 1240;
+    }
+
+    footer {
+        margin-top: 20px;
+        padding: 20px 20px calc(88px + env(safe-area-inset-bottom));
+    }
+}
