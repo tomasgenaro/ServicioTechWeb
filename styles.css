@@ -172,6 +172,14 @@ header:hover {
     background: rgba(0, 0, 0, 0.5);
 }
 
+.google-reviews {
+    max-width: 900px;
+    min-height: 220px;
+    margin: 20px auto;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
 .contact-info {
     background: linear-gradient(to right, #00ffc9, #29abe3);
     padding: 20px;
@@ -558,6 +566,7 @@ textarea:focus-visible {
 @media (max-width: 600px) {
     .google-reviews {
         max-width: 100%;
+        min-height: 180px;
         padding: 10px;
     }
 

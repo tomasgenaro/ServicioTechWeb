@@ -351,10 +351,28 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.appendChild(script);
     }
 
-    if ("requestIdleCallback" in window) {
-        window.requestIdleCallback(cargarWidgetResenas, { timeout: 5000 });
+    const contenedorResenas = document.querySelector(".google-reviews");
+
+    if (contenedorResenas && "IntersectionObserver" in window) {
+        const observadorResenas = new IntersectionObserver(
+            (entradas, observador) => {
+                const estaCerca = entradas.some((entrada) => entrada.isIntersecting);
+
+                if (!estaCerca) return;
+
+                cargarWidgetResenas();
+                observador.disconnect();
+            },
+            {
+                root: null,
+                rootMargin: "350px 0px",
+                threshold: 0
+            }
+        );
+
+        observadorResenas.observe(contenedorResenas);
     } else {
-        window.setTimeout(cargarWidgetResenas, 3500);
+        window.setTimeout(cargarWidgetResenas, 8000);
     }
 
     // Envío de formulario
