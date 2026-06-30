@@ -49,8 +49,140 @@ header:hover {
     will-change: transform;
 }
 
+main {
+    display: block;
+}
+
+/* Hero comercial */
+.hero-conversion {
+    max-width: 1100px;
+    margin: 22px auto 18px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.hero-content {
+    background:
+        radial-gradient(circle at top left, rgba(0, 255, 201, 0.18), transparent 35%),
+        linear-gradient(135deg, rgba(41, 171, 227, 0.98), rgba(0, 255, 201, 0.92));
+    color: #fff;
+    text-align: center;
+    border-radius: 28px;
+    padding: 34px 26px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-content::after {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    right: -90px;
+    bottom: -120px;
+    background: rgba(255, 255, 255, 0.16);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.hero-kicker,
+.section-kicker {
+    margin: 0 0 10px;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.hero-content h1 {
+    max-width: 820px;
+    margin: 0 auto 16px;
+    font-size: clamp(30px, 4.5vw, 46px);
+    line-height: 1.08;
+    font-weight: 900;
+}
+
+.hero-description {
+    max-width: 760px;
+    margin: 0 auto;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.hero-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-top: 22px;
+}
+
+.btn-primary,
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 22px;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        background 0.22s ease;
+}
+
+.btn-primary {
+    background: #ffffff;
+    color: #1688bd;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.42);
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.28);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.24);
+}
+
+.hero-trust {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.hero-trust span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.17);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* Carrusel */
 .carousel {
-    margin: 20px auto;
+    margin: 18px auto 30px;
     width: 400px;
     max-width: 90%;
     height: 500px;
@@ -147,7 +279,6 @@ header:hover {
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
 }
 
-/* Indicadores del carrusel como puntos */
 .carousel-indicators {
     position: absolute;
     bottom: 12px;
@@ -197,25 +328,151 @@ header:hover {
     background: rgba(255, 255, 255, 0.8);
 }
 
+/* Servicios */
+.services-section {
+    max-width: 1100px;
+    margin: 34px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.section-heading {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 24px;
+}
+
+.section-heading .section-kicker {
+    color: #1688bd;
+}
+
+.section-heading h2 {
+    margin: 0 0 10px;
+    color: #222;
+    font-size: clamp(26px, 4vw, 38px);
+    line-height: 1.15;
+}
+
+.section-heading p {
+    margin: 0;
+    color: #555;
+    font-size: 17px;
+    line-height: 1.55;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.service-card {
+    background: #fff;
+    padding: 22px;
+    border-radius: 20px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(41, 171, 227, 0.12);
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease;
+}
+
+.service-card h3 {
+    margin: 0 0 10px;
+    color: #1688bd;
+    font-size: 20px;
+}
+
+.service-card p {
+    margin: 0;
+    color: #555;
+    line-height: 1.55;
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.13);
+    border-color: rgba(41, 171, 227, 0.32);
+}
+
+/* Reseñas */
+.reviews-section {
+    max-width: 1100px;
+    margin: 34px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.reviews-heading {
+    margin-bottom: 12px;
+}
+
+.reviews-heading .section-kicker {
+    color: #1688bd;
+}
+
 .google-reviews {
     max-width: 900px;
     min-height: 220px;
-    margin: 20px auto;
+    margin: 8px auto 20px;
     padding: 10px;
     box-sizing: border-box;
 }
 
+/* Banner de conversión */
+.conversion-banner {
+    max-width: 1100px;
+    margin: 34px auto 24px;
+    padding: 26px;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 24px;
+    border: 1px solid rgba(41, 171, 227, 0.16);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+}
+
+.conversion-banner .section-kicker {
+    color: #1688bd;
+}
+
+.conversion-banner h2 {
+    margin: 0 0 8px;
+    color: #222;
+    font-size: clamp(24px, 3.5vw, 34px);
+}
+
+.conversion-banner p {
+    margin: 0;
+    color: #555;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.conversion-banner .btn-primary {
+    background: linear-gradient(135deg, #29abe3, #00ffc9);
+    color: #fff;
+    flex-shrink: 0;
+}
+
+/* Contacto */
 .contact-info {
+    max-width: 1100px;
     background: linear-gradient(to right, #00ffc9, #29abe3);
-    padding: 20px;
+    padding: 34px 22px;
     justify-content: center;
     align-items: center;
-    border-radius: 0 0 20px 20px;
+    border-radius: 28px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    margin: 20px auto;
+    margin: 34px auto 20px;
     text-align: center;
     overflow-x: hidden;
+    box-sizing: border-box;
 }
 
 .contact-info:hover {
@@ -224,7 +481,18 @@ header:hover {
 }
 
 .contact-info h2 {
-    margin-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+
+.contact-info > p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin: 14px 0;
 }
 
 .contact-info a {
@@ -238,7 +506,7 @@ header:hover {
 }
 
 .contact-info button {
-    margin-left: 20px;
+    margin-left: 0;
     background-color: #29abe3;
     border: none;
     border-radius: 5px;
@@ -261,24 +529,31 @@ header:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
 
+.contact-info h3 {
+    margin-top: 22px;
+    margin-bottom: 18px;
+    font-size: 22px;
+}
+
+/* Formulario */
 form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     max-width: 600px;
-    width: 40%;
-    padding: 20px;
+    width: min(92%, 560px);
+    padding: 28px;
     background-color: #fff;
     border-radius: 10px;
     box-sizing: border-box;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     font-family: 'Arial', sans-serif;
     margin: 0 auto;
-    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+    transition: box-shadow 0.3s ease-in-out;
 }
 
 form:hover {
-    transform: scale(1.02);
+    transform: none;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
@@ -291,9 +566,12 @@ form h3 {
 
 form label {
     display: block;
-    margin-bottom: 8px;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto 8px;
     font-weight: bold;
     color: #333;
+    text-align: left;
 }
 
 form input[type="text"],
@@ -303,12 +581,13 @@ form textarea {
     width: 100%;
     max-width: 500px;
     padding: 10px;
-    margin-bottom: 20px;
+    margin: 0 auto 20px;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 14px;
     background-color: #f1f1f1;
     transition: border-color 0.3s ease, background-color 0.3s ease;
+    box-sizing: border-box;
 }
 
 form input[type="text"]:focus,
@@ -327,15 +606,18 @@ form textarea {
 
 .terms {
     display: flex;
-    align-items: center;
-    margin-top: 20px;
+    align-items: flex-start;
+    gap: 12px;
+    max-width: 500px;
+    margin: 20px auto 0;
     font-size: 14px;
     color: #333;
     width: 100%;
 }
 
 .terms input[type="checkbox"] {
-    margin-right: 10px;
+    flex-shrink: 0;
+    margin: 2px 0 0;
     accent-color: #29abe3;
     width: 18px;
     height: 18px;
@@ -354,10 +636,11 @@ form textarea {
 .terms label {
     color: #333;
     font-size: 14px;
-    line-height: 18px;
+    line-height: 1.45;
     display: inline-block;
     vertical-align: middle;
-    margin-top: 8px;
+    margin: 0;
+    text-align: left;
 }
 
 .terms a {
@@ -375,14 +658,26 @@ form button[type="submit"] {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 20px auto;
-    width: 30%;
-    max-width: 100px;
+    margin: 24px auto 10px;
+    width: auto;
+    max-width: none;
+    min-width: 120px;
+    min-height: 48px;
     font-size: 16px;
-    padding: 14px 20px;
+    padding: 0 26px;
     border: none;
     border-radius: 8px;
-    margin-top: 20px;
+    background: linear-gradient(135deg, #29abe3, #00ffc9);
+    color: #fff;
+    font-weight: 800;
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+form button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
 }
 
 form button[type="submit"]:disabled {
@@ -399,14 +694,19 @@ form a:hover {
     text-decoration: underline;
 }
 
+/* Redes */
 .social-links {
-    margin-top: 10px;
+    margin-top: 12px;
 }
 
 .social-links a {
     margin-right: 10px;
     color: #fff;
     transition: transform 0.3s ease-in-out;
+}
+
+.social-links a:last-child {
+    margin-right: 0;
 }
 
 .social-links a:hover {
@@ -423,6 +723,7 @@ form a:hover {
     color: #000;
 }
 
+/* Footer */
 footer {
     margin-top: 20px;
     padding: 20px;
@@ -443,7 +744,7 @@ footer p {
     margin: 0;
 }
 
-/* Burbuja de audio mejorada */
+/* Burbuja de audio */
 .audio-bubble {
     width: 56px;
     height: 56px;
@@ -581,6 +882,37 @@ footer p {
     }
 }
 
+/* WhatsApp flotante */
+.whatsapp-float {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 1200;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 18px;
+    border-radius: 999px;
+    background: #25d366;
+    color: #fff;
+    font-weight: 900;
+    text-decoration: none;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        background 0.22s ease;
+}
+
+.whatsapp-float:hover {
+    background: #1ebe5d;
+    transform: translateY(-2px);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, 0.34);
+    text-decoration: none;
+}
+
+/* Toast */
 .toast {
     position: fixed;
     top: 50%;
@@ -607,6 +939,7 @@ footer p {
     opacity: 0;
 }
 
+/* Accesibilidad */
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
@@ -615,21 +948,122 @@ textarea:focus-visible {
     outline-offset: 3px;
 }
 
+/* Responsive tablet */
+@media (max-width: 850px) {
+    .services-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .conversion-banner {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+/* Responsive mobile */
 @media (max-width: 600px) {
+    .hero-conversion {
+        margin-top: 16px;
+        margin-bottom: 14px;
+        padding: 0 14px;
+    }
+
+    .hero-content {
+        padding: 28px 16px;
+        border-radius: 22px;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(28px, 9vw, 38px);
+    }
+
+    .hero-description {
+        font-size: 15.5px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .hero-trust {
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .hero-trust span {
+        width: 100%;
+        justify-content: center;
+        box-sizing: border-box;
+    }
+
+    .carousel {
+        margin-top: 14px;
+    }
+
+    .services-section {
+        padding: 0 14px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        padding: 20px;
+    }
+
+    .reviews-section {
+        padding: 0 14px;
+        margin: 28px auto;
+    }
+
     .google-reviews {
         max-width: 100%;
         min-height: 180px;
         padding: 10px;
     }
 
+    .conversion-banner {
+        margin-left: 14px;
+        margin-right: 14px;
+        padding: 22px;
+    }
+
+    .contact-info {
+        margin: 28px 14px 18px;
+        padding: 28px 16px;
+        border-radius: 24px;
+    }
+
+    .contact-info > p {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .contact-info a {
+        word-break: break-word;
+    }
+
     .contact-info button {
-        display: none;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 40px;
     }
 
     form {
-        width: 90%;
-        margin: 0 auto;
-        padding: 15px;
+        width: 100%;
+        padding: 22px 16px;
+    }
+
+    form label {
+        max-width: 100%;
     }
 
     form input[type="text"],
@@ -639,6 +1073,14 @@ textarea:focus-visible {
         max-width: 100%;
         font-size: 12px;
         padding: 8px;
+    }
+
+    .terms {
+        max-width: 100%;
+    }
+
+    form button[type="submit"] {
+        width: 100%;
     }
 
     .audio-bubble {
@@ -657,8 +1099,17 @@ textarea:focus-visible {
     .audio-bubble .expanded-content h2 {
         font-size: 16px;
     }
+
+    .whatsapp-float {
+        right: 14px;
+        bottom: 14px;
+        min-height: 46px;
+        padding: 0 16px;
+        font-size: 14px;
+    }
 }
 
+/* Reducir movimiento */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -666,6 +1117,10 @@ textarea:focus-visible {
         scroll-behavior: auto !important;
     }
 
+    .btn-primary,
+    .btn-secondary,
+    .service-card,
+    .whatsapp-float,
     .audio-bubble,
     .audio-bubble::before,
     .audio-bubble i,
