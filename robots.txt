@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://www.serviciotech.com/sitemap.xml
+Sitemap: https://tomasgenaro.github.io/ServicioTechWeb/sitemap.xml

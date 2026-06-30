@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.serviciotech.com/</loc>
+    <loc>https://tomasgenaro.github.io/ServicioTechWeb/</loc>
     <lastmod>2025-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.serviciotech.com/#contacto</loc>
+    <loc>https://tomasgenaro.github.io/ServicioTechWeb/#contacto</loc>
     <lastmod>2025-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.serviciotech.com/#servicios</loc>
+    <loc>https://tomasgenaro.github.io/ServicioTechWeb/#servicios</loc>
     <lastmod>2025-05-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.serviciotech.com/politica-privacidad.html</loc>
+    <loc>https://tomasgenaro.github.io/ServicioTechWeb/politica-privacidad.html</loc>
     <lastmod>2025-05-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
