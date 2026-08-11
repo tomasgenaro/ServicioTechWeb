@@ -1,0 +1,22 @@
+{
+  "name": "ServicioTech",
+  "short_name": "ServicioTech",
+  "description": "Servicio técnico profesional en Chivilcoy.",
+  "lang": "es-AR",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f5f9fb",
+  "theme_color": "#0a2735",
+  "icons": [
+    {
+      "src": "assets/icons/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

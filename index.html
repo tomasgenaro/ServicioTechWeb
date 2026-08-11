@@ -1,335 +1,565 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ServicioTech - Servicio Técnico en Chivilcoy</title>
+<html lang="es-AR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0a2735">
+    <meta name="color-scheme" content="light">
+    <meta name="application-version" content="24">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta
+      name="description"
+      content="Servicio técnico profesional en Chivilcoy para PC, notebooks, consolas, TV, celulares, sonido y joysticks. Diagnóstico previo, garantía y atención personalizada."
+    >
 
-    <meta name="description" content="Servicio técnico en Chivilcoy para computadoras, notebooks, celulares, consolas, televisores e impresoras. Diagnóstico claro, atención personalizada y presupuesto antes de reparar.">
-    <meta name="keywords" content="servicio técnico, reparación de PC, reparación de notebooks, reparación de celulares, reparación de celulares en Chivilcoy, reparación de consolas, reparación de televisores, reparación de impresoras, Chivilcoy, Buenos Aires, ServicioTech">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="ServicioTech">
+    <title>Servicio técnico en Chivilcoy | ServicioTech</title>
     <link rel="canonical" href="https://tomasgenaro.github.io/ServicioTechWeb/">
 
-    <meta property="og:title" content="ServicioTech - Servicio técnico en Chivilcoy">
-    <meta property="og:description" content="Reparación y diagnóstico de computadoras, notebooks, celulares, consolas, televisores e impresoras en Chivilcoy.">
-    <meta property="og:image" content="https://tomasgenaro.github.io/ServicioTechWeb/imagenes/og-image.jpg">
-    <meta property="og:url" content="https://tomasgenaro.github.io/ServicioTechWeb/">
-    <meta property="og:type" content="website">
     <meta property="og:locale" content="es_AR">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ServicioTech">
+    <meta property="og:title" content="Servicio técnico en Chivilcoy | ServicioTech">
+    <meta
+      property="og:description"
+      content="Reparamos PC, notebooks, consolas, televisores y más con diagnóstico previo, garantía y atención personalizada."
+    >
+    <meta property="og:url" content="https://tomasgenaro.github.io/ServicioTechWeb/">
+    <meta
+      property="og:image"
+      content="https://tomasgenaro.github.io/ServicioTechWeb/assets/images/actualiza-tu-equipo.webp"
+    >
+    <meta property="og:image:width" content="720">
+    <meta property="og:image:height" content="900">
+    <meta property="og:image:alt" content="ServicioTech: actualización y reparación de equipos">
 
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="ServicioTech - Reparación profesional en Chivilcoy">
-    <meta name="twitter:description" content="Servicio técnico para computadoras, notebooks, celulares, consolas, televisores e impresoras.">
-    <meta name="twitter:image" content="https://tomasgenaro.github.io/ServicioTechWeb/imagenes/og-image.jpg">
+    <meta name="twitter:title" content="Servicio técnico en Chivilcoy | ServicioTech">
+    <meta
+      name="twitter:description"
+      content="Diagnóstico previo, garantía y atención personalizada para tus equipos."
+    >
+    <meta
+      name="twitter:image"
+      content="https://tomasgenaro.github.io/ServicioTechWeb/assets/images/actualiza-tu-equipo.webp"
+    >
 
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="icon" href="imagenes/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="imagenes/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="imagenes/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="imagenes/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="imagenes/favicon-96x96.png">
-    <link rel="icon" type="image/svg+xml" href="imagenes/favicon.svg">
-    <link rel="manifest" href="imagenes/site.webmanifest">
-    <link rel="mask-icon" href="imagenes/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="imagenes/favicon.ico">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="stylesheet" href="css/styles.css?v=24">
 
     <script type="application/ld+json">
-    {
+      {
         "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "LocalBusiness",
-                "name": "ServicioTech",
-                "image": "https://tomasgenaro.github.io/ServicioTechWeb/imagenes/logo.png",
-                "url": "https://tomasgenaro.github.io/ServicioTechWeb/",
-                "telephone": "+54-2346-610009",
-                "address": {
-                    "@type": "PostalAddress",
-                    "addressLocality": "Chivilcoy",
-                    "addressRegion": "Buenos Aires",
-                    "addressCountry": "AR"
-                },
-                "description": "Servicio técnico en Chivilcoy para computadoras, notebooks, celulares, consolas, televisores e impresoras. Atención personalizada, diagnóstico claro y presupuesto antes de reparar.",
-                "openingHours": "Mo-Sa 09:00-18:00",
-                "priceRange": "$$",
-                "sameAs": [
-                    "https://www.instagram.com/serviciotechchivilcoy",
-                    "https://www.tiktok.com/@serviciotech",
-                    "https://ar.linkedin.com/company/serviciotech"
-                ]
-            },
-            {
-                "@type": "FAQPage",
-                "mainEntity": [
-                    {
-                        "@type": "Question",
-                        "name": "¿Dónde están ubicados?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "ServicioTech atiende en Chivilcoy, Buenos Aires."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "¿Qué tipos de equipos reparan?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Trabajamos con computadoras, notebooks, celulares, consolas, televisores, impresoras y otros equipos de uso diario."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "¿Puedo consultar por WhatsApp?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Sí. Podés escribir por WhatsApp para contar qué problema tiene tu equipo y recibir orientación sobre los próximos pasos."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "¿Hacen presupuesto antes de reparar?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Sí. La idea es revisar el caso, explicar el problema de forma clara y avanzar con presupuesto antes de realizar la reparación."
-                        }
-                    },
-                    {
-                        "@type": "Question",
-                        "name": "¿Cuánto tarda una reparación?",
-                        "acceptedAnswer": {
-                            "@type": "Answer",
-                            "text": "Depende del tipo de falla, la disponibilidad de repuestos y el diagnóstico técnico de cada equipo."
-                        }
-                    }
-                ]
-            }
-        ]
-    }
+        "@type": "LocalBusiness",
+        "name": "ServicioTech",
+        "url": "https://tomasgenaro.github.io/ServicioTechWeb/",
+        "logo": "https://tomasgenaro.github.io/ServicioTechWeb/assets/images/logo-serviciotech.png",
+        "image": "https://tomasgenaro.github.io/ServicioTechWeb/assets/images/actualiza-tu-equipo.webp",
+        "telephone": "+54 2346 610009",
+        "email": "serviciotechchivilcoy@gmail.com",
+        "description": "Servicio técnico profesional de computadoras, notebooks, consolas, celulares, televisores, sistemas de sonido y joysticks en Chivilcoy.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Moreno 318",
+          "addressLocality": "Chivilcoy",
+          "addressRegion": "Buenos Aires",
+          "postalCode": "6620",
+          "addressCountry": "AR"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "Chivilcoy"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "10:00",
+            "closes": "20:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "10:00",
+            "closes": "12:00"
+          }
+        ],
+        "sameAs": [
+          "https://www.instagram.com/serviciotechchivilcoy",
+          "https://www.tiktok.com/@serviciotech",
+          "https://ar.linkedin.com/company/serviciotech",
+          "https://share.google/xZL7XsQYP9ql9aATU"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Servicios técnicos",
+          "itemListElement": [
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Reparación de PC y notebooks"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Reparación de consolas"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Reparación de televisores"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Reparación de celulares"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Reparación de sistemas de sonido"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Reparación de joysticks"}},
+            {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Asesoramiento técnico"}}
+          ]
+        }
+      }
     </script>
-</head>
+  </head>
 
-<body>
-    <header>
-        <img id="logo" src="imagenes/logo.png" alt="Logo de ServicioTech" width="240" height="80" decoding="async" fetchpriority="high">
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+    <header class="site-header" data-header>
+      <div class="container header-inner">
+        <a class="brand" href="#inicio" aria-label="ServicioTech, ir al inicio">
+          <img
+            src="assets/images/logo-serviciotech.svg"
+            width="150"
+            height="50"
+            alt="ServicioTech"
+          >
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="main-navigation"
+          aria-label="Abrir menú"
+          data-menu-toggle
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="main-nav" id="main-navigation" aria-label="Navegación principal" data-navigation>
+          <ul>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#proceso">Cómo trabajamos</a></li>
+            <li><a href="#opiniones">Opiniones</a></li>
+            <li><a href="#ubicacion">Ubicación</a></li>
+          </ul>
+          <a
+            class="button button--small button--primary nav-cta"
+            href="https://api.whatsapp.com/send?phone=542346610009&amp;text=%C2%A1Hola%20ServicioTech!%20Quiero%20hacer%20una%20consulta.%20"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Consultar
+          </a>
+        </nav>
+      </div>
     </header>
 
-    <main id="contenido-principal">
-        <section class="hero-conversion" aria-labelledby="hero-title">
-            <div class="hero-content">
+    <main id="contenido">
+      <section class="hero" id="inicio" aria-labelledby="hero-title">
+        <div class="hero-glow hero-glow--one" aria-hidden="true"></div>
+        <div class="hero-glow hero-glow--two" aria-hidden="true"></div>
 
-                <h1 id="hero-title">Reparamos tus equipos con atención clara, rápida y personalizada</h1>
+        <div class="container hero-grid">
+          <div class="hero-copy reveal">
+            <p class="eyebrow eyebrow--light">Servicio técnico profesional · Chivilcoy</p>
+            <h1 id="hero-title">Tu equipo vuelve a funcionar. <span>Sin vueltas.</span></h1>
+            <p class="hero-lead">
+              Diagnosticamos y reparamos tus equipos con atención personalizada, comunicación clara y garantía sobre el trabajo realizado.
+            </p>
 
-                <p class="hero-description">
-                    Soluciones para computadoras, notebooks, celulares, consolas y televisores.
-                </p>
-                <p class="hero-description">
-                    Diagnóstico técnico, presupuesto claro y acompañamiento durante todo el proceso.
-                </p>
-
-                <div class="hero-actions">
-                    <a class="btn-primary" href="https://wa.link/09788r" target="_blank" rel="noopener noreferrer">
-                        Consultar por WhatsApp
-                    </a>
-
-                    <a class="btn-secondary" href="#servicios">
-                        Ver servicios
-                    </a>
-                </div>
+            <div class="hero-actions">
+              <a
+                class="button button--whatsapp"
+                href="https://api.whatsapp.com/send?phone=542346610009&amp;text=%C2%A1Hola%20ServicioTech!%20Quiero%20hacer%20una%20consulta.%20"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+                </svg>
+                Consultar por WhatsApp
+              </a>
+              <a class="button button--ghost-light" href="#servicios">Ver servicios</a>
             </div>
-        </section>
+          </div>
 
-        <section class="carousel" aria-live="polite" aria-label="Galería de trabajos y servicios de ServicioTech">
-            <div class="carousel-images">
-                <img src="imagenes/imagen1.jpg" alt="Servicio técnico de computadoras, notebooks, consolas, televisores y celulares en Chivilcoy" width="400" height="500" loading="eager" decoding="async" fetchpriority="high">
-                <img src="imagenes/imagen2.jpg" alt="Reparación y mantenimiento de equipos tecnológicos en ServicioTech Chivilcoy" width="400" height="500" loading="lazy" decoding="async">
-                <img src="imagenes/imagen3.jpg" alt="Diagnóstico técnico profesional para PC, notebooks y consolas" width="400" height="500" loading="lazy" decoding="async">
-                <img src="imagenes/imagen4.jpg" alt="Servicio técnico rápido para equipos electrónicos en Chivilcoy" width="400" height="500" loading="lazy" decoding="async">
-                <img src="imagenes/imagen5.jpg" alt="Reparación de computadoras y notebooks con atención personalizada" width="400" height="500" loading="lazy" decoding="async">
-                <img src="imagenes/imagen6.jpg" alt="Mantenimiento y reparación de consolas, televisores y celulares" width="400" height="500" loading="lazy" decoding="async">
-                <img src="imagenes/imagen7.jpg" alt="Soluciones técnicas para equipos que fallan o funcionan lento" width="400" height="500" loading="lazy" decoding="async">
-                <img src="imagenes/imagen8.jpg" alt="ServicioTech Chivilcoy, reparación de tecnología y soporte técnico" width="400" height="500" loading="lazy" decoding="async">
-            </div>
+          <div class="hero-showcase reveal" role="group" aria-label="Servicios destacados de ServicioTech">
+            <figure class="showcase-card showcase-card--main">
+              <img
+                src="assets/images/actualiza-tu-equipo.webp"
+                width="720"
+                height="900"
+                alt="Actualización de una computadora antigua por un equipo moderno"
+                fetchpriority="high"
+              >
+            </figure>
+            <figure class="showcase-card showcase-card--console">
+              <img
+                src="assets/images/mantenimiento-playstation.webp"
+                width="720"
+                height="900"
+                alt="Limpieza y mantenimiento de consolas PlayStation"
+                loading="lazy"
+              >
+            </figure>
+            <figure class="showcase-card showcase-card--tv">
+              <img
+                src="assets/images/servicio-tv.webp"
+                width="720"
+                height="900"
+                alt="Servicio técnico de televisores"
+                loading="lazy"
+              >
+            </figure>
+          </div>
+        </div>
+      </section>
 
-            <button type="button" class="carousel-prev" aria-label="Imagen anterior">
-                <i class="fas fa-chevron-left" aria-hidden="true"></i>
-            </button>
+      <section class="trust-strip" aria-label="Motivos para elegir ServicioTech">
+        <div class="container trust-grid">
+          <div class="trust-item">
+            <span class="trust-icon" aria-hidden="true">01</span>
+            <div><strong>Diagnóstico previo</strong><span>Primero entendemos la falla.</span></div>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon" aria-hidden="true">02</span>
+            <div><strong>Trabajo con garantía</strong><span>Respaldo sobre la reparación.</span></div>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon" aria-hidden="true">03</span>
+            <div><strong>Atención personalizada</strong><span>Cada equipo se evalúa en detalle.</span></div>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon" aria-hidden="true">04</span>
+            <div><strong>Respuesta ágil</strong><span>Coordinación directa por WhatsApp.</span></div>
+          </div>
+        </div>
+      </section>
 
-            <button type="button" class="carousel-next" aria-label="Imagen siguiente">
-                <i class="fas fa-chevron-right" aria-hidden="true"></i>
-            </button>
+      <section class="section services" id="servicios" aria-labelledby="services-title">
+        <div class="container">
+          <div class="section-heading section-heading--center reveal">
+            <p class="eyebrow">Servicios</p>
+            <h2 id="services-title">Soluciones técnicas para los equipos que usás todos los días</h2>
+            <p>
+              Evaluamos el problema, te explicamos las alternativas y avanzamos cuando la solución tiene sentido para vos.
+            </p>
+          </div>
 
-            <div class="carousel-indicators" aria-label="Seleccionar imagen del carrusel"></div>
-        </section>
+          <div class="featured-services">
+            <article class="service-card service-card--featured reveal">
+              <h3>PC y notebooks</h3>
+              <p>Diagnóstico, reparación, mantenimiento, optimización y actualización de equipos de escritorio y portátiles.</p>
+              <ul>
+                <li>Fallas de encendido y rendimiento</li>
+                <li>Mantenimiento y temperaturas</li>
+                <li>Actualizaciones de hardware</li>
+              </ul>
+              <a
+                class="text-link"
+                href="https://api.whatsapp.com/send?phone=542346610009&amp;text=%C2%A1Hola%20ServicioTech!%20Quiero%20consultar%20por%20una%20PC%20o%20notebook.%20"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Consultar por este servicio <span aria-hidden="true">→</span></a>
+            </article>
 
-        <section class="services-section" id="servicios" aria-labelledby="services-title">
-            <div class="section-heading">
-                <p class="section-kicker">Servicios</p>
+            <article class="service-card service-card--featured reveal">
+              <h3>Consolas</h3>
+              <p>Revisión técnica, mantenimiento y reparación de consolas para resolver fallas y mejorar su funcionamiento.</p>
+              <ul>
+                <li>Problemas de encendido o imagen</li>
+                <li>Temperatura y mantenimiento</li>
+                <li>Revisión general del equipo</li>
+              </ul>
+              <a
+                class="text-link"
+                href="https://api.whatsapp.com/send?phone=542346610009&amp;text=%C2%A1Hola%20ServicioTech!%20Quiero%20consultar%20por%20una%20consola.%20"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Consultar por este servicio <span aria-hidden="true">→</span></a>
+            </article>
 
-                <h2 id="services-title">¿Qué podemos reparar o mejorar?</h2>
+            <article class="service-card service-card--featured reveal">
+              <h3>Televisores</h3>
+              <p>Diagnóstico y reparación de fallas de funcionamiento para que puedas decidir con información clara.</p>
+              <ul>
+                <li>Fallas de encendido</li>
+                <li>Problemas de imagen o sonido</li>
+                <li>Evaluación técnica del equipo</li>
+              </ul>
+              <a
+                class="text-link"
+                href="https://api.whatsapp.com/send?phone=542346610009&amp;text=%C2%A1Hola%20ServicioTech!%20Quiero%20consultar%20por%20un%20televisor.%20"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Consultar por este servicio <span aria-hidden="true">→</span></a>
+            </article>
+          </div>
 
-                <p>
-                    Trabajamos con equipos de uso diario, entretenimiento y trabajo. Te explicamos el problema
-                    de forma simple y buscamos la solución más conveniente.
-                </p>
-            </div>
+          <div class="secondary-services" role="group" aria-label="Otros servicios">
+            <article class="mini-service reveal">
+              <span class="mini-service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                  <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/>
+                  <path d="M12 18h.01"/>
+                </svg>
+              </span>
+              <div><h3>Celulares</h3><p>Diagnóstico y reparación de fallas habituales.</p></div>
+            </article>
+            <article class="mini-service reveal">
+              <span class="mini-service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                  <rect width="16" height="20" x="4" y="2" rx="2"/>
+                  <path d="M12 6h.01"/>
+                  <circle cx="12" cy="14" r="4"/>
+                </svg>
+              </span>
+              <div><h3>Sistemas de sonido</h3><p>Revisión técnica de equipos y sistemas de audio.</p></div>
+            </article>
+            <article class="mini-service reveal">
+              <span class="mini-service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                  <path d="M6 11h4M8 9v4M15 12h.01M18 10h.01"/>
+                  <path d="M17.32 5H6.68a4 4 0 0 0-3.98 3.59C2.41 11.7 2.5 16 4.5 18c1.25 1.25 3.25 1.25 4.5 0l1-1h4l1 1c1.25 1.25 3.25 1.25 4.5 0 2-2 2.09-6.3 1.8-9.41A4 4 0 0 0 17.32 5Z"/>
+                </svg>
+              </span>
+              <div><h3>Joysticks</h3><p>Reparación y mantenimiento de controles.</p></div>
+            </article>
+            <article class="mini-service reveal">
+              <span class="mini-service-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24">
+                  <path d="M9 18h6M10 22h4"/>
+                  <path d="M15.09 14c.18-.68.66-1.06 1.13-1.6A6 6 0 1 0 7.78 12.4c.48.54.96.92 1.13 1.6"/>
+                </svg>
+              </span>
+              <div><h3>Asesoramiento técnico</h3><p>Orientación para elegir, actualizar o mejorar equipos.</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
 
-            <div class="services-grid">
-                <article class="service-card">
-                    <h3>Computadoras y notebooks</h3>
-                    <p>Reparación, mantenimiento, optimización, instalación de programas y actualizacion de hardware.</p>
-                </article>
+      <section class="section process" id="proceso" aria-labelledby="process-title">
+        <div class="container process-layout">
+          <div class="process-copy reveal">
+            <p class="eyebrow">Cómo trabajamos</p>
+            <h2 id="process-title">Un proceso claro desde la consulta hasta la entrega</h2>
+            <p>
+              Sin formularios largos ni pasos innecesarios. Coordinamos por WhatsApp y recibimos tu equipo en el local con cita previa o según disponibilidad.
+            </p>
+            <a
+              class="button button--primary"
+              href="https://api.whatsapp.com/send?phone=542346610009&amp;text=%C2%A1Hola%20ServicioTech!%20Quiero%20coordinar%20una%20revisi%C3%B3n.%20"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Coordinar una revisión</a>
+          </div>
 
-                <article class="service-card">
-                    <h3>Celulares</h3>
-                    <p>Diagnóstico de fallas, problemas de carga, problemas de pantalla, configuración y consultas técnicas.</p>
-                </article>
+          <ol class="process-list">
+            <li class="process-step reveal">
+              <span>01</span>
+              <div><h3>Nos contás el problema</h3><p>Escribinos por WhatsApp con el tipo de equipo y la falla que presenta.</p></div>
+            </li>
+            <li class="process-step reveal">
+              <span>02</span>
+              <div><h3>Recibimos el equipo</h3><p>Coordinamos para que lo acerques a Moreno 318, Chivilcoy.</p></div>
+            </li>
+            <li class="process-step reveal">
+              <span>03</span>
+              <div><h3>Diagnosticamos</h3><p>Revisamos la falla y te comunicamos la solución antes de avanzar.</p></div>
+            </li>
+            <li class="process-step reveal">
+              <span>04</span>
+              <div><h3>Reparamos y probamos</h3><p>Realizamos el trabajo, verificamos el funcionamiento y entregamos con garantía.</p></div>
+            </li>
+          </ol>
+        </div>
+      </section>
 
-                <article class="service-card">
-                    <h3>Consolas y joysticks</h3>
-                    <p>Mantenimiento, diagnóstico de fallas, problemas de temperatura y revisión general.</p>
-                </article>
-
-                <article class="service-card">
-                    <h3>Televisores</h3>
-                    <p>Revisión técnica, diagnóstico inicial, reparacion e informe tecnico para seguros.</p>
-                </article>
-
-                <article class="service-card">
-                    <h3>Impresoras</h3>
-                    <p>Configuración, revisión de errores, conexión, mantenimiento y asistencia para uso diario.</p>
-                </article>
-
-                <article class="service-card">
-                    <h3>Asesoramiento técnico</h3>
-                    <p>Te ayudamos a elegir, mejorar o configurar tus equipos para que funcionen mejor y duren más.</p>
-                </article>
-            </div>
-        </section>
-
-        <section class="reviews-section" aria-labelledby="reviews-title">
-            <div class="section-heading reviews-heading">
-                <p class="section-kicker">Reseñas</p>
-
-                <h2 id="reviews-title">Opiniones de clientes</h2>
-
-                <p>
-                    Experiencias reales de personas que ya confiaron en ServicioTech.
-                </p>
-            </div>
-
-            <div class="google-reviews">
-                <div class="elfsight-app-d7cfff56-1541-42d8-9850-9e566b2eb8f2" data-elfsight-app-lazy></div>
-            </div>
-        </section>
-
-        <section class="conversion-banner" aria-labelledby="conversion-title">
+      <section class="section work-gallery" aria-labelledby="gallery-title">
+        <div class="container">
+          <div class="gallery-heading reveal">
             <div>
-                <p class="section-kicker">Consulta rápida</p>
+              <p class="eyebrow">Nuestro trabajo</p>
+              <h2 id="gallery-title">Mucho más que una reparación puntual</h2>
+            </div>
+            <p>También mantenemos, actualizamos y mejoramos equipos para extender su vida útil.</p>
+          </div>
 
-                <h2 id="conversion-title">¿Tu equipo falla o funciona lento?</h2>
-
-                <p>
-                    Escribinos por WhatsApp, contanos qué le pasa y te orientamos con los próximos pasos.
-                </p>
+          <div class="gallery-shell" data-carousel>
+            <div class="gallery-track" tabindex="0" aria-label="Galería de servicios" data-carousel-track>
+              <figure class="gallery-card">
+                <img src="assets/images/servicio-notebooks.webp" width="720" height="900" loading="lazy" alt="Servicio técnico de notebooks">
+              </figure>
+              <figure class="gallery-card">
+                <img src="assets/images/actualiza-tu-equipo.webp" width="720" height="900" loading="lazy" alt="Actualización de equipos antiguos">
+              </figure>
+              <figure class="gallery-card">
+                <img src="assets/images/servicio-pc.webp" width="720" height="900" loading="lazy" alt="Servicio técnico de computadoras de escritorio">
+              </figure>
+              <figure class="gallery-card">
+                <img src="assets/images/servicio-tv.webp" width="720" height="900" loading="lazy" alt="Servicio técnico de televisores">
+              </figure>
+              <figure class="gallery-card">
+                <img src="assets/images/pc-a-medida.webp" width="720" height="900" loading="lazy" alt="Armado de computadoras a medida">
+              </figure>
+              <figure class="gallery-card">
+                <img src="assets/images/servicio-sonido.webp" width="720" height="900" loading="lazy" alt="Servicio técnico de sistemas de sonido">
+              </figure>
+              <figure class="gallery-card">
+                <img src="assets/images/mantenimiento-playstation.webp" width="720" height="900" loading="lazy" alt="Limpieza y mantenimiento de PlayStation">
+              </figure>
+              <figure class="gallery-card">
+                <img src="assets/images/reparacion-joystick.webp" width="720" height="900" loading="lazy" alt="Reparación de joysticks">
+              </figure>
             </div>
 
-            <a class="btn-primary" href="https://wa.link/09788r" target="_blank" rel="noopener noreferrer">
-                Escribir ahora
-            </a>
-        </section>
+            <div class="gallery-controls" hidden data-carousel-controls>
+              <button type="button" aria-label="Ver imagen anterior" data-carousel-prev>
+                <svg class="gallery-control-icon" aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="m14.5 5.5-6.5 6.5 6.5 6.5"></path>
+                </svg>
+              </button>
+              <div class="gallery-dots" role="group" aria-label="Seleccionar imagen" data-carousel-dots></div>
+              <button type="button" aria-label="Ver imagen siguiente" data-carousel-next>
+                <svg class="gallery-control-icon" aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="m9.5 5.5 6.5 6.5-6.5 6.5"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        <section class="contact-info" aria-labelledby="contact-title">
-            <h2 id="contact-title">Contacto</h2>
+      <section class="section reviews" id="opiniones" aria-labelledby="reviews-title">
+        <div class="container reviews-layout">
+          <div class="reviews-intro reveal">
+            <p class="eyebrow eyebrow--light">Opiniones</p>
+            <h2 id="reviews-title">La confianza se construye con cada equipo</h2>
+            <p>Experiencias compartidas por clientes de ServicioTech en Google.</p>
+            <div class="google-rating" role="group" aria-label="Calificación de cinco estrellas en Google">
+              <span aria-hidden="true">★★★★★</span>
+              <strong>Reseñas verificadas en Google</strong>
+            </div>
+            <a
+              class="button button--ghost-light"
+              href="https://share.google/xZL7XsQYP9ql9aATU"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Ver perfil en Google</a>
+          </div>
 
-            <p>
-                Teléfono:
-                <a href="tel:+542346610009">+54-2346-610009</a>
-            </p>
+          <div class="review-grid">
+            <article class="review-card reveal">
+              <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
+              <blockquote>“Excelente y rápido. Lo recomiendo.”</blockquote>
+              <footer><span class="avatar" aria-hidden="true">P</span><div><strong>Pamela Judith Burcez</strong><span>Reseña en Google</span></div></footer>
+            </article>
+            <article class="review-card reveal">
+              <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
+              <blockquote>“Excelente y altamente recomendable. Gracias.”</blockquote>
+              <footer><span class="avatar" aria-hidden="true">M</span><div><strong>Marisa</strong><span>Reseña en Google</span></div></footer>
+            </article>
+            <article class="review-card reveal">
+              <div class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</div>
+              <blockquote>“El arreglo del control de la Play quedó perfecto.”</blockquote>
+              <footer><span class="avatar" aria-hidden="true">M</span><div><strong>Martín Badiola</strong><span>Reseña en Google</span></div></footer>
+            </article>
+          </div>
+        </div>
+      </section>
 
-            <p>
-                e-Mail:
-                <a href="mailto:serviciotechchivilcoy@gmail.com">serviciotechchivilcoy@gmail.com</a>
-            </p>
+      <section class="section location" id="ubicacion" aria-labelledby="location-title">
+        <div class="container location-card">
+          <div class="location-map reveal">
+            <iframe
+              title="Ubicación de ServicioTech en Moreno 318, Chivilcoy"
+              src="https://www.google.com/maps?q=Moreno%20318%2C%20Chivilcoy%2C%20Buenos%20Aires&amp;output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+            ></iframe>
+          </div>
 
-            <nav class="social-links" aria-label="Redes sociales de ServicioTech">
-                <a href="https://wa.link/09788r" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp de ServicioTech">
-                    <i class="fab fa-whatsapp" aria-hidden="true"></i>
-                </a>
+          <div class="location-info reveal">
+            <p class="eyebrow">Ubicación y horarios</p>
+            <h2 id="location-title">Te esperamos en Chivilcoy</h2>
+            <p>La atención es exclusivamente en el local, con cita previa o según disponibilidad.</p>
 
-                <a href="https://www.instagram.com/serviciotechchivilcoy" target="_blank" rel="noopener noreferrer" aria-label="Instagram de ServicioTech">
-                    <i class="fab fa-instagram-square" aria-hidden="true"></i>
-                </a>
+            <dl class="contact-details">
+              <div><dt>Dirección</dt><dd>Moreno 318, Chivilcoy</dd></div>
+              <div><dt>Lunes a viernes</dt><dd>10:00 a 20:00</dd></div>
+              <div><dt>Sábados</dt><dd>10:00 a 12:00</dd></div>
+              <div><dt>Teléfono</dt><dd><a href="tel:+542346610009">02346&nbsp;610009</a></dd></div>
+            </dl>
 
-                <a href="https://www.tiktok.com/@serviciotech" target="_blank" rel="noopener noreferrer" aria-label="TikTok de ServicioTech">
-                    <i class="fab fa-tiktok" aria-hidden="true"></i>
-                </a>
+            <div class="location-actions">
+              <a
+                class="button button--primary"
+                href="https://share.google/xZL7XsQYP9ql9aATU"
+                target="_blank"
+                rel="noopener noreferrer"
+              >Ver cómo llegar</a>
+              <a class="text-link" href="mailto:serviciotechchivilcoy@gmail.com">Enviar un email <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+        </div>
+      </section>
 
-                <a href="https://ar.linkedin.com/company/serviciotech" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn de ServicioTech">
-                    <i class="fab fa-linkedin" aria-hidden="true"></i>
-                </a>
-            </nav>
-
-            <h3>Envíanos tu consulta</h3>
-
-            <form id="contact-form" action="https://formspree.io/f/xovjjozk" method="POST">
-                <label for="name">Nombre:</label>
-                <input type="text" id="name" name="name" autocomplete="given-name" required>
-
-                <label for="apellido">Apellido:</label>
-                <input type="text" id="apellido" name="apellido" autocomplete="family-name" required>
-
-                <label for="email">Correo Electrónico:</label>
-                <input type="email" id="email" name="email" autocomplete="email" required>
-
-                <label for="telefono">Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono" autocomplete="tel" required>
-
-                <label for="message">Mensaje:</label>
-                <textarea id="message" name="message" required></textarea>
-
-                <div class="terms">
-                    <input type="checkbox" id="accept-terms" name="accept-terms" required>
-
-                    <label for="accept-terms">
-                        He leído y acepto los
-                        <a href="politica-privacidad.html" target="_blank" rel="noopener noreferrer">términos de servicio</a>
-                        y la
-                        <a href="politica-privacidad.html" target="_blank" rel="noopener noreferrer">política de privacidad</a>.
-                    </label>
-                </div>
-
-                <button type="submit">Enviar</button>
-            </form>
-        </section>
+      <section class="final-cta" aria-labelledby="final-cta-title">
+        <div class="container final-cta-inner reveal">
+          <div>
+            <p class="eyebrow eyebrow--light">Consulta rápida</p>
+            <h2 id="final-cta-title">¿Tu equipo falla o funciona lento?</h2>
+            <p>Contanos qué le pasa y coordinamos los próximos pasos.</p>
+          </div>
+          <a
+            class="button button--whatsapp button--large"
+            href="https://api.whatsapp.com/send?phone=542346610009&amp;text=%C2%A1Hola%20ServicioTech!%20Quiero%20hacer%20una%20consulta.%20"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Escribir por WhatsApp</a>
+        </div>
+      </section>
     </main>
 
-    <footer>
-        <p>&copy; 2026 ServicioTech. Todos los derechos reservados.</p>
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-column">
+          <h2>Contacto</h2>
+          <a href="tel:+542346610009">02346&nbsp;610009</a>
+          <a href="mailto:serviciotechchivilcoy@gmail.com">serviciotechchivilcoy@gmail.com</a>
+          <span>Moreno 318 · Chivilcoy</span>
+        </div>
+
+        <div class="footer-column">
+          <h2>Seguinos</h2>
+          <a href="https://www.instagram.com/serviciotechchivilcoy" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.tiktok.com/@serviciotech" target="_blank" rel="noopener noreferrer">TikTok</a>
+          <a href="https://ar.linkedin.com/company/serviciotech" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p>© <span data-current-year>2026</span> ServicioTech. Todos los derechos reservados.</p>
+        <a href="privacidad.html">Privacidad</a>
+      </div>
     </footer>
 
-    <div class="audio-bubble" role="button" tabindex="0" aria-label="Abrir reproductor de audio" aria-expanded="false">
-        <i class="fas fa-music" aria-hidden="true"></i>
-
-        <div class="expanded-content">
-            <button type="button" class="close-button" aria-label="Cerrar">&#10005;</button>
-
-            <h2>Escucha el jingle que creamos con IA</h2>
-
-            <audio controls preload="none">
-                <source src="JingleServicioTech.mp3" type="audio/mpeg">
-                Tu navegador no soporta la reproducción de audio.
-            </audio>
-        </div>
-    </div>
-
-    <a class="whatsapp-float" href="https://wa.link/09788r" target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp">
-        WhatsApp
+    <a
+      class="floating-whatsapp"
+      href="https://api.whatsapp.com/send?phone=542346610009&amp;text=%C2%A1Hola%20ServicioTech!%20Quiero%20hacer%20una%20consulta.%20"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Consultar a ServicioTech por WhatsApp"
+    >
+      <svg aria-hidden="true" viewBox="0 0 24 24" width="29" height="29">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+      </svg>
+      <span>WhatsApp</span>
     </a>
 
-    <script src="script.js"></script>
-</body>
+    <script src="js/main.js?v=24" defer></script>
+  </body>
 </html>
