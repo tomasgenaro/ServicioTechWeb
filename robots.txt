@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tomasgenaro.github.io/ServicioTechWeb/sitemap.xml
+Sitemap: https://serviciotech.com.ar/sitemap.xml

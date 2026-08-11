@@ -97,7 +97,7 @@ También puede abrirse `index.html` directamente, aunque un servidor estático r
 
 La configuración actual de enlaces canónicos, Open Graph y sitemap utiliza:
 
-`https://tomasgenaro.github.io/ServicioTechWeb/`
+`https://serviciotech.com.ar/`
 
 Si cambia la dirección pública, hay que reemplazar esa URL en `index.html`, `privacidad.html`, `robots.txt` y `sitemap.xml`.
 
