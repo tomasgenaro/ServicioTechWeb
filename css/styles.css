@@ -151,6 +151,24 @@ h3 {
 
 p {
   color: var(--color-muted);
+  hanging-punctuation: first last;
+  text-wrap: pretty;
+}
+
+li,
+blockquote,
+dd {
+  text-wrap: pretty;
+}
+
+.headline-line,
+.editorial-line,
+.copy-line {
+  display: block;
+}
+
+.copy-line + .copy-line {
+  margin-top: 0.15rem;
 }
 
 ul,
@@ -474,10 +492,10 @@ ol {
   max-width: 12ch;
   margin-bottom: 1.5rem;
   color: #fff;
+  line-height: 1.04;
 }
 
-.hero h1 span {
-  display: block;
+.hero h1 .headline-line--accent {
   color: #77ead9;
 }
 
@@ -673,6 +691,10 @@ ol {
 .section-heading--center {
   margin-inline: auto;
   text-align: center;
+}
+
+.section-heading--wide {
+  max-width: 58rem;
 }
 
 .section-heading h2,
@@ -892,8 +914,10 @@ ol {
 }
 
 .gallery-heading h2 {
-  max-width: 15ch;
+  max-width: 19ch;
   margin-bottom: 0;
+  font-size: clamp(2rem, 7vw, 3.25rem);
+  line-height: 1.06;
 }
 
 .gallery-heading > p {
@@ -1161,9 +1185,10 @@ ol {
   min-height: 4.5rem;
   margin-bottom: 1.5rem;
   color: #fff;
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 650;
-  line-height: 1.55;
+  line-height: 1.52;
+  text-wrap: balance;
 }
 
 .review-card footer {
@@ -1719,11 +1744,17 @@ ol {
   }
 
   .hero-grid {
-    grid-template-columns: minmax(0, 1.05fr) minmax(28rem, 0.95fr);
+    grid-template-columns: minmax(0, 1.12fr) minmax(24rem, 0.88fr);
+    gap: clamp(3.5rem, 5vw, 5.25rem);
   }
 
   .hero-copy {
     padding-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    max-width: none;
+    font-size: clamp(3.6rem, 5vw, 4.05rem);
   }
 
   .hero-showcase {
@@ -1756,9 +1787,14 @@ ol {
   }
 
   .process-layout {
-    grid-template-columns: minmax(19rem, 0.78fr) minmax(0, 1.22fr);
+    grid-template-columns: minmax(24rem, 0.92fr) minmax(0, 1.08fr);
     align-items: start;
-    gap: clamp(4rem, 8vw, 7rem);
+    gap: clamp(3.5rem, 6vw, 5.5rem);
+  }
+
+  .process-copy h2 {
+    font-size: clamp(2.65rem, 4vw, 3.2rem);
+    line-height: 1.06;
   }
 
   .process-copy {
@@ -1871,13 +1907,18 @@ ol {
   }
 
   .reviews-layout {
-    grid-template-columns: minmax(18rem, 0.66fr) minmax(0, 1.34fr);
+    grid-template-columns: minmax(24.5rem, 0.7fr) minmax(0, 1.3fr);
     align-items: center;
-    gap: clamp(4rem, 8vw, 7rem);
+    gap: clamp(2.75rem, 4vw, 4rem);
   }
 
-  .review-grid {
-    grid-template-columns: repeat(3, 1fr);
+  .reviews-intro h2 {
+    font-size: clamp(2.4rem, 3vw, 2.65rem);
+    line-height: 1.08;
+  }
+
+  .review-card {
+    padding: clamp(1.25rem, 1.7vw, 1.5rem);
   }
 
   .review-card:nth-child(2) {
@@ -1903,8 +1944,13 @@ ol {
 }
 
 @media (min-width: 80rem) {
-  .hero-grid {
-    gap: 7rem;
+  .editorial-line,
+  .copy-line {
+    white-space: nowrap;
+  }
+
+  .review-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   .service-card {
