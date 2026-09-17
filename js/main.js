@@ -107,6 +107,129 @@
     revealElements.forEach((element) => element.classList.add("is-visible"));
   }
 
+  const initializeReviewRotator = () => {
+    const reviewGrid = document.querySelector("[data-review-rotator]");
+    if (!reviewGrid) return;
+
+    const cards = [...reviewGrid.querySelectorAll("[data-review-card]")];
+    const reviews = [
+      {
+        quote: "Excelente y rápido. Lo recomiendo.",
+        name: "Pamela Judith Burcez",
+      },
+      {
+        quote: "Excelente y altamente recomendable. Gracias.",
+        name: "Marisa",
+      },
+      {
+        quote: "El arreglo del control de la Play quedó perfecto.",
+        name: "Martín Badiola",
+      },
+      {
+        quote: "Excelente atención y orientación para el arreglo.",
+        name: "Soledad Simone",
+      },
+      {
+        quote: "Muy buena atención y excelente servicio.",
+        name: "Selva Figueroa",
+      },
+      {
+        quote:
+          "Detectaron súper rápido la falla de mi PC y enseguida lo resolvieron.",
+        name: "Agustina Larrea",
+      },
+    ];
+
+    if (cards.length === 0 || reviews.length <= cards.length) return;
+
+    let nextCardIndex = 0;
+    let nextReviewIndex = cards.length;
+    let rotationTimer = null;
+    let isInView = !("IntersectionObserver" in window);
+    let isInteractionPaused = false;
+    const rotationDelay = 6400;
+    const transitionDelay = 240;
+
+    const renderReview = (card, review, reviewIndex) => {
+      const quote = card.querySelector("[data-review-quote]");
+      const name = card.querySelector("[data-review-name]");
+      const avatar = card.querySelector("[data-review-avatar]");
+
+      if (quote) quote.textContent = `“${review.quote}”`;
+      if (name) name.textContent = review.name;
+      if (avatar) avatar.textContent = review.name.trim().charAt(0).toUpperCase();
+      card.dataset.reviewIndex = String(reviewIndex);
+    };
+
+    const rotateReview = () => {
+      const card = cards[nextCardIndex];
+      const reviewIndex = nextReviewIndex;
+      const review = reviews[reviewIndex];
+      const commitReview = () => {
+        renderReview(card, review, reviewIndex);
+        card.classList.remove("is-review-changing");
+      };
+
+      if (reducedMotion.matches) {
+        commitReview();
+      } else {
+        card.classList.add("is-review-changing");
+        window.setTimeout(commitReview, transitionDelay);
+      }
+
+      nextCardIndex = (nextCardIndex + 1) % cards.length;
+      nextReviewIndex = (nextReviewIndex + 1) % reviews.length;
+    };
+
+    const stopRotation = () => {
+      if (!rotationTimer) return;
+      window.clearInterval(rotationTimer);
+      rotationTimer = null;
+    };
+
+    const updateRotation = () => {
+      stopRotation();
+      if (document.hidden || !isInView || isInteractionPaused) return;
+      rotationTimer = window.setInterval(rotateReview, rotationDelay);
+    };
+
+    const pauseForInteraction = () => {
+      isInteractionPaused = true;
+      updateRotation();
+    };
+
+    const resumeAfterInteraction = () => {
+      isInteractionPaused = false;
+      updateRotation();
+    };
+
+    reviewGrid.addEventListener("pointerenter", pauseForInteraction);
+    reviewGrid.addEventListener("pointerleave", resumeAfterInteraction);
+    reviewGrid.addEventListener("focusin", pauseForInteraction);
+    reviewGrid.addEventListener("focusout", (event) => {
+      if (!reviewGrid.contains(event.relatedTarget)) resumeAfterInteraction();
+    });
+
+    document.addEventListener("visibilitychange", updateRotation);
+
+    if ("IntersectionObserver" in window) {
+      const reviewObserver = new IntersectionObserver(
+        ([entry]) => {
+          isInView = entry.isIntersecting;
+          updateRotation();
+        },
+        { threshold: 0.2 },
+      );
+
+      reviewObserver.observe(reviewGrid);
+    } else {
+      updateRotation();
+    }
+
+  };
+
+  initializeReviewRotator();
+
   const initializeCarousel = (carousel) => {
     const track = carousel.querySelector("[data-carousel-track]");
     if (!track) return;

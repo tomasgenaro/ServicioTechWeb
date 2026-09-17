@@ -1162,6 +1162,7 @@ ol {
 .review-grid {
   display: grid;
   gap: 1rem;
+  border-radius: var(--radius-lg);
 }
 
 .review-card {
@@ -1189,6 +1190,19 @@ ol {
   font-weight: 650;
   line-height: 1.52;
   text-wrap: balance;
+}
+
+.review-card blockquote,
+.review-card footer {
+  transition:
+    opacity 240ms ease,
+    transform 240ms ease;
+}
+
+.review-card.is-review-changing blockquote,
+.review-card.is-review-changing footer {
+  opacity: 0;
+  transform: translateY(0.35rem);
 }
 
 .review-card footer {
