@@ -5,6 +5,61 @@
 
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+  // Shared lifecycle for automatic content; manual carousel controls stay available.
+  const initializeRotationControl = ({ region, button, label, start, stop, enabled = () => true }) => {
+    let userPaused = false;
+    let hovered = false;
+    let focused = false;
+    let visible = !("IntersectionObserver" in window);
+    let running = false;
+
+    const update = () => {
+      button.hidden = !enabled() || reducedMotion.matches;
+      button.textContent = `${userPaused ? "Reanudar" : "Pausar"} ${label}`;
+      button.setAttribute("aria-pressed", String(userPaused));
+      const shouldRun = enabled() && !reducedMotion.matches && !document.hidden &&
+        visible && !userPaused && !hovered && !focused;
+      if (shouldRun === running) return;
+      running = shouldRun;
+      if (running) start();
+      else {
+        stop();
+        // Settle the current frame so pausing never leaves a partially faded image.
+        region.querySelectorAll("img").forEach((image) => {
+          image.getAnimations().forEach((animation) => {
+            try { animation.finish(); } catch { animation.cancel(); }
+          });
+        });
+      }
+    };
+
+    button.addEventListener("click", () => {
+      userPaused = !userPaused;
+      update();
+    });
+    region.addEventListener("pointerenter", (event) => {
+      if (event.pointerType === "touch") return;
+      hovered = true;
+      update();
+    });
+    region.addEventListener("pointerleave", () => { hovered = false; update(); });
+    region.addEventListener("focusin", () => { focused = true; update(); });
+    region.addEventListener("focusout", (event) => {
+      focused = region.contains(event.relatedTarget);
+      update();
+    });
+    document.addEventListener("visibilitychange", update);
+    reducedMotion.addEventListener("change", update);
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(([entry]) => {
+        visible = entry.isIntersecting;
+        update();
+      }, { threshold: 0.01 }).observe(region);
+    }
+    update();
+    return { update, isRunning: () => running };
+  };
+
   const header = document.querySelector("[data-header]");
   const menuToggle = document.querySelector("[data-menu-toggle]");
   const navigation = document.querySelector("[data-navigation]");
@@ -64,8 +119,9 @@
     });
 
     window.addEventListener("resize", () => {
-      if (window.innerWidth >= 1024) closeMenu();
+      if (window.matchMedia("(min-width: 64rem)").matches) closeMenu();
     });
+    document.documentElement.classList.add("navigation-enabled");
   }
 
   const revealElements = [...document.querySelectorAll(".reveal")];
@@ -145,8 +201,8 @@
     let nextCardIndex = 0;
     let nextReviewIndex = cards.length;
     let rotationTimer = null;
-    let isInView = !("IntersectionObserver" in window);
-    let isInteractionPaused = false;
+    let transitionTimer = null;
+    let pendingReview = null;
     const rotationDelay = 6400;
     const transitionDelay = 240;
 
@@ -168,13 +224,16 @@
       const commitReview = () => {
         renderReview(card, review, reviewIndex);
         card.classList.remove("is-review-changing");
+        transitionTimer = null;
+        pendingReview = null;
       };
 
       if (reducedMotion.matches) {
         commitReview();
       } else {
         card.classList.add("is-review-changing");
-        window.setTimeout(commitReview, transitionDelay);
+        pendingReview = commitReview;
+        transitionTimer = window.setTimeout(commitReview, transitionDelay);
       }
 
       nextCardIndex = (nextCardIndex + 1) % cards.length;
@@ -182,50 +241,19 @@
     };
 
     const stopRotation = () => {
-      if (!rotationTimer) return;
       window.clearInterval(rotationTimer);
       rotationTimer = null;
+      window.clearTimeout(transitionTimer);
+      pendingReview?.();
     };
 
-    const updateRotation = () => {
-      stopRotation();
-      if (document.hidden || !isInView || isInteractionPaused) return;
-      rotationTimer = window.setInterval(rotateReview, rotationDelay);
-    };
-
-    const pauseForInteraction = () => {
-      isInteractionPaused = true;
-      updateRotation();
-    };
-
-    const resumeAfterInteraction = () => {
-      isInteractionPaused = false;
-      updateRotation();
-    };
-
-    reviewGrid.addEventListener("pointerenter", pauseForInteraction);
-    reviewGrid.addEventListener("pointerleave", resumeAfterInteraction);
-    reviewGrid.addEventListener("focusin", pauseForInteraction);
-    reviewGrid.addEventListener("focusout", (event) => {
-      if (!reviewGrid.contains(event.relatedTarget)) resumeAfterInteraction();
+    initializeRotationControl({
+      region: reviewGrid,
+      button: document.querySelector("[data-review-rotation-toggle]"),
+      label: "opiniones",
+      start: () => { rotationTimer = window.setInterval(rotateReview, rotationDelay); },
+      stop: stopRotation,
     });
-
-    document.addEventListener("visibilitychange", updateRotation);
-
-    if ("IntersectionObserver" in window) {
-      const reviewObserver = new IntersectionObserver(
-        ([entry]) => {
-          isInView = entry.isIntersecting;
-          updateRotation();
-        },
-        { threshold: 0.2 },
-      );
-
-      reviewObserver.observe(reviewGrid);
-    } else {
-      updateRotation();
-    }
-
   };
 
   initializeReviewRotator();
@@ -241,7 +269,7 @@
     const previousButton = carousel.querySelector("[data-carousel-prev]");
     const nextButton = carousel.querySelector("[data-carousel-next]");
     const dotsContainer = carousel.querySelector("[data-carousel-dots]");
-    const gallerySection = carousel.closest(".work-gallery") || carousel;
+    let rotationControl;
 
     if (
       items.length < 2 ||
@@ -267,7 +295,6 @@
     let desktopCompositeHoldTimer = null;
     let compositeFormationActive = false;
     let compositeHoldActive = false;
-    let galleryInView = false;
     let initialCompositeScheduled = false;
     let desktopSequenceToken = 0;
     const activeDesktopSlots = new Set();
@@ -323,6 +350,8 @@
     const getScrollProgress = () => {
       const step = getItemStep();
       if (step <= 0) return activeIndex;
+      const maximum = track.scrollWidth - track.clientWidth;
+      if (maximum > 0 && track.scrollLeft >= maximum - 1) return items.length - 1;
 
       return Math.max(
         0,
@@ -334,7 +363,7 @@
       if (!dotsTrack || dots.length === 0) return;
 
       const progress = getScrollProgress();
-      const selectedIndex = Math.round(progress);
+      const selectedIndex = activeIndex;
 
       dots.forEach((dot, index) => {
         const distance = Math.abs(index - progress);
@@ -478,6 +507,11 @@
       const revealImage = () => {
         if (revealed) return;
         revealed = true;
+        if (!rotationControl?.isRunning()) {
+          delete image.dataset.galleryTransition;
+          completeTransition();
+          return;
+        }
         parent.append(overlay);
         parent.classList.add("is-changing");
         parent.classList.toggle("is-changing--dissolve", effect === "dissolve");
@@ -531,48 +565,48 @@
               {
                 opacity: 0,
                 filter: "blur(7px) saturate(0.9) brightness(1.035)",
-                transform: "translate3d(0, 1.4%, 0) scale(1.035)",
+                transform: "translate3d(0, 1.4%, 0)",
               },
               {
                 opacity: 0.16,
                 filter: "blur(5.4px) saturate(0.93) brightness(1.025)",
-                transform: "translate3d(0, 1.05%, 0) scale(1.026)",
+                transform: "translate3d(0, 1.05%, 0)",
                 offset: 0.24,
               },
               {
                 opacity: 0.72,
                 filter: "blur(1.8px) saturate(0.98) brightness(1.008)",
-                transform: "translate3d(0, 0.3%, 0) scale(1.008)",
+                transform: "translate3d(0, 0.3%, 0)",
                 offset: 0.74,
               },
               {
                 opacity: 1,
                 filter: "blur(0) saturate(1) brightness(1)",
-                transform: "translate3d(0, 0, 0) scale(1)",
+                transform: "translate3d(0, 0, 0)",
               },
             ]
           : [
               {
                 opacity: 0,
                 filter: "blur(8px) saturate(0.9) brightness(1.045)",
-                transform: `translate3d(${incomingShift}, 1.2%, 0) scale(1.045)`,
+                transform: `translate3d(${incomingShift}, 1.2%, 0)`,
               },
               {
                 opacity: 0.14,
                 filter: "blur(6px) saturate(0.93) brightness(1.032)",
-                transform: `translate3d(${incomingShift}, 0.9%, 0) scale(1.032)`,
+                transform: `translate3d(${incomingShift}, 0.9%, 0)`,
                 offset: 0.22,
               },
               {
                 opacity: 0.68,
                 filter: "blur(2px) saturate(0.98) brightness(1.012)",
-                transform: `translate3d(${revealFromLeft ? "-0.45%" : "0.45%"}, 0.2%, 0) scale(1.009)`,
+                transform: `translate3d(${revealFromLeft ? "-0.45%" : "0.45%"}, 0.2%, 0)`,
                 offset: 0.7,
               },
               {
                 opacity: 1,
                 filter: "blur(0) saturate(1) brightness(1)",
-                transform: "translate3d(0, 0, 0) scale(1)",
+                transform: "translate3d(0, 0, 0)",
               },
             ];
         const outgoingFrames = lowMotion
@@ -605,48 +639,48 @@
               {
                 opacity: 1,
                 filter: "blur(0) saturate(1) brightness(1)",
-                transform: "translate3d(0, 0, 0) scale(1)",
+                transform: "translate3d(0, 0, 0)",
               },
               {
                 opacity: 0.86,
                 filter: "blur(0.5px) saturate(0.98) brightness(0.995)",
-                transform: "translate3d(0, -0.2%, 0) scale(0.997)",
+                transform: "translate3d(0, -0.2%, 0)",
                 offset: 0.34,
               },
               {
                 opacity: 0.28,
                 filter: "blur(3px) saturate(0.9) brightness(0.96)",
-                transform: "translate3d(0, -0.7%, 0) scale(0.982)",
+                transform: "translate3d(0, -0.7%, 0)",
                 offset: 0.82,
               },
               {
                 opacity: 0.06,
                 filter: "blur(4px) saturate(0.86) brightness(0.93)",
-                transform: "translate3d(0, -0.9%, 0) scale(0.977)",
+                transform: "translate3d(0, -0.9%, 0)",
               },
             ]
           : [
               {
                 opacity: 1,
                 filter: "blur(0) saturate(1) brightness(1)",
-                transform: "translate3d(0, 0, 0) scale(1)",
+                transform: "translate3d(0, 0, 0)",
               },
               {
                 opacity: 0.9,
                 filter: "blur(0.35px) saturate(0.985) brightness(0.995)",
-                transform: `translate3d(${outgoingShift}, -0.1%, 0) scale(0.997)`,
+                transform: `translate3d(${outgoingShift}, -0.1%, 0)`,
                 offset: 0.34,
               },
               {
                 opacity: 0.3,
                 filter: "blur(3px) saturate(0.9) brightness(0.955)",
-                transform: `translate3d(${outgoingShift}, -0.55%, 0) scale(0.982)`,
+                transform: `translate3d(${outgoingShift}, -0.55%, 0)`,
                 offset: 0.82,
               },
               {
                 opacity: 0.05,
                 filter: "blur(4.4px) saturate(0.86) brightness(0.925)",
-                transform: `translate3d(${outgoingShift}, -0.75%, 0) scale(0.976)`,
+                transform: `translate3d(${outgoingShift}, -0.75%, 0)`,
               },
             ];
 
@@ -972,7 +1006,7 @@
     const scheduleInitialCompositeIfReady = () => {
       if (
         !desktopMedia.matches ||
-        !galleryInView ||
+        !rotationControl?.isRunning() ||
         initialCompositeScheduled ||
         compositeFormationActive ||
         compositeHoldActive ||
@@ -989,7 +1023,7 @@
 
     const scheduleDesktopRotation = (firstRun = false) => {
       if (desktopTimer) window.clearTimeout(desktopTimer);
-      if (!desktopMedia.matches || document.hidden) return;
+      if (!rotationControl?.isRunning()) return;
 
       const delay = firstRun
         ? 1200
@@ -1094,7 +1128,7 @@
         button.type = "button";
         button.setAttribute(
           "aria-label",
-          `Mostrar la imagen ${index + 1} de ${items.length} en primer lugar`,
+          `Ver imagen ${index + 1} de ${items.length}`,
         );
         button.addEventListener("click", () => scrollToItem(index));
         dotsTrack.append(button);
@@ -1107,11 +1141,12 @@
     const getTargetLeft = (index) => {
       const safeIndex = Math.max(0, Math.min(index, items.length - 1));
       const firstItemOffset = items[0]?.offsetLeft ?? 0;
-      return Math.max(0, items[safeIndex].offsetLeft - firstItemOffset);
+      const maximum = Math.max(0, track.scrollWidth - track.clientWidth);
+      return Math.max(0, Math.min(maximum, items[safeIndex].offsetLeft - firstItemOffset));
     };
 
     const scrollToItem = (index) => {
-      if (desktopMedia.matches) return;
+      if (currentMode === "desktop") return;
       const safeIndex = Math.max(0, Math.min(index, items.length - 1));
       activeIndex = safeIndex;
       updateControls(false);
@@ -1124,6 +1159,8 @@
 
     const findClosestItem = () => {
       const currentLeft = track.scrollLeft;
+      const maximum = track.scrollWidth - track.clientWidth;
+      if (maximum > 0 && currentLeft >= maximum - 1) return items.length - 1;
       let closestIndex = 0;
       let closestDistance = Number.POSITIVE_INFINITY;
 
@@ -1139,7 +1176,7 @@
     };
 
     const updateControls = (deriveFromScroll = true) => {
-      if (desktopMedia.matches) return;
+      if (currentMode === "desktop") return;
 
       if (deriveFromScroll) {
         activeIndex = findClosestItem();
@@ -1152,7 +1189,7 @@
 
     const refreshLayout = () => {
       clearClones();
-      const nextMode = desktopMedia.matches ? "desktop" : "carousel";
+      const nextMode = desktopMedia.matches && !reducedMotion.matches ? "desktop" : "carousel";
 
       if (nextMode === currentMode) {
         if (nextMode === "carousel") {
@@ -1163,6 +1200,7 @@
       }
 
       currentMode = nextMode;
+      stopDesktopRotation();
       restoreGallerySources();
 
       if (nextMode === "desktop") {
@@ -1175,13 +1213,8 @@
         items.forEach((item, index) => {
           item.hidden = index >= 4;
         });
-        desktopCompositeSources.forEach((source) => {
-          const preloader = new Image();
-          preloader.src = source.src;
-        });
         track.scrollTo({ left: 0, behavior: "auto" });
-        scheduleDesktopRotation(true);
-        scheduleInitialCompositeIfReady();
+        rotationControl?.update();
         return;
       }
 
@@ -1196,6 +1229,7 @@
       activeIndex = 0;
       track.scrollTo({ left: 0, behavior: "auto" });
       updateControls(false);
+      rotationControl?.update();
     };
 
     previousButton.addEventListener("click", () => scrollToItem(activeIndex - 1));
@@ -1204,7 +1238,7 @@
     track.addEventListener(
       "scroll",
       () => {
-        if (desktopMedia.matches) return;
+        if (currentMode === "desktop") return;
         if (scrollFrame) window.cancelAnimationFrame(scrollFrame);
         scrollFrame = window.requestAnimationFrame(updateControls);
       },
@@ -1212,7 +1246,7 @@
     );
 
     track.addEventListener("keydown", (event) => {
-      if (desktopMedia.matches) return;
+      if (currentMode === "desktop") return;
 
       if (event.key === "ArrowRight") {
         event.preventDefault();
@@ -1240,36 +1274,25 @@
       resizeFrame = window.requestAnimationFrame(refreshLayout);
     });
 
-    document.addEventListener("visibilitychange", () => {
-      if (!desktopMedia.matches) return;
-      if (document.hidden) {
-        stopDesktopRotation();
+    rotationControl = initializeRotationControl({
+      region: track,
+      button: carousel.querySelector("[data-gallery-rotation-toggle]"),
+      label: "galería",
+      enabled: () => currentMode === "desktop",
+      start: () => {
         restoreGallerySources();
         desktopSourceIndexes = [0, 1, 2, 3];
         initialCompositeScheduled = false;
-        return;
-      }
-
-      scheduleDesktopRotation(true);
-      scheduleInitialCompositeIfReady();
+        desktopCompositeSources.forEach((source) => {
+          const preloader = new Image();
+          preloader.src = source.src;
+        });
+        scheduleDesktopRotation(true);
+        scheduleInitialCompositeIfReady();
+      },
+      stop: stopDesktopRotation,
     });
-
-    if ("IntersectionObserver" in window) {
-      const galleryObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.target !== gallerySection) return;
-            galleryInView = entry.isIntersecting;
-            if (galleryInView) scheduleInitialCompositeIfReady();
-          });
-        },
-        { threshold: 0.2 },
-      );
-
-      galleryObserver.observe(gallerySection);
-    } else {
-      galleryInView = true;
-    }
+    reducedMotion.addEventListener("change", refreshLayout);
 
     track.scrollLeft = 0;
     buildDots();
@@ -1297,17 +1320,14 @@
       return;
     }
 
-    galleryImages.forEach(({ src }) => {
-      if (!src) return;
-      const preload = new Image();
-      preload.src = src;
-    });
-
     const initialSource = showcaseImages[0].getAttribute("src");
     let startIndex = galleryImages.findIndex(({ src }) => src === initialSource);
     if (startIndex < 0) startIndex = 0;
 
     let rotationTimer = null;
+    let rotationControl;
+    let transitionSequence = 0;
+    let imagesPreloaded = false;
 
     const getTransitionSettings = () => {
       if (reducedMotion.matches) {
@@ -1337,6 +1357,7 @@
     };
 
     const transitionImage = (image, source, staggerIndex) => {
+      const sequence = transitionSequence;
       const applySource = () => {
         image.src = source.src;
         image.alt = source.alt;
@@ -1345,6 +1366,7 @@
       const { duration, stagger, blur, lowMotion } = getTransitionSettings();
 
       window.setTimeout(() => {
+        if (sequence !== transitionSequence || !rotationControl.isRunning()) return;
         const parent = image.parentElement;
         if (!parent) return;
 
@@ -1392,6 +1414,12 @@
         const revealOverlay = () => {
           if (revealed) return;
           revealed = true;
+          if (sequence !== transitionSequence || !rotationControl.isRunning()) {
+            if (image.dataset.showcaseTransition === transitionToken) {
+              delete image.dataset.showcaseTransition;
+            }
+            return;
+          }
           parent.append(overlay);
           parent.classList.add("is-transitioning");
           parent.classList.toggle("is-transitioning--reduced", lowMotion);
@@ -1583,23 +1611,30 @@
     };
 
     const stopRotation = () => {
-      if (!rotationTimer) return;
       window.clearInterval(rotationTimer);
       rotationTimer = null;
+      transitionSequence += 1;
     };
 
     const startRotation = () => {
-      stopRotation();
-      if (document.hidden) return;
+      if (!imagesPreloaded) {
+        galleryImages.forEach(({ src }) => {
+          if (!src) return;
+          const preload = new Image();
+          preload.src = src;
+        });
+        imagesPreloaded = true;
+      }
       rotationTimer = window.setInterval(rotateImages, 7800);
     };
 
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) stopRotation();
-      else startRotation();
+    rotationControl = initializeRotationControl({
+      region: showcase,
+      button: document.querySelector("[data-hero-rotation-toggle]"),
+      label: "imágenes",
+      start: startRotation,
+      stop: stopRotation,
     });
-
-    startRotation();
   };
 
   initializeHeroShowcase();

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#0a2735">
     <meta name="color-scheme" content="light">
-    <meta name="application-version" content="27">
+    <meta name="application-version" content="29">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta
       name="description"
@@ -48,7 +48,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
-    <link rel="stylesheet" href="css/styles.css?v=27">
+    <link rel="stylesheet" href="css/styles.css?v=29">
 
     <script type="application/ld+json">
       {
@@ -188,9 +188,10 @@
               </a>
               <a class="button button--ghost-light" href="#servicios">Ver servicios</a>
             </div>
+            <button class="rotation-toggle rotation-toggle--light" type="button" aria-controls="hero-showcase" aria-pressed="false" data-hero-rotation-toggle hidden>Pausar imágenes</button>
           </div>
 
-          <div class="hero-showcase reveal" role="group" aria-label="Servicios destacados de ServicioTech">
+          <div class="hero-showcase reveal" role="group" aria-label="Servicios destacados de ServicioTech" id="hero-showcase">
             <figure class="showcase-card showcase-card--main">
               <img
                 src="assets/images/actualiza-tu-equipo.webp?v=27"
@@ -411,7 +412,7 @@
           </div>
 
           <div class="gallery-shell" data-carousel>
-            <div class="gallery-track" tabindex="0" aria-label="Galería de servicios" data-carousel-track>
+            <div class="gallery-track" id="gallery-track" tabindex="0" aria-label="Galería de servicios" data-carousel-track>
               <figure class="gallery-card">
                 <img src="assets/images/servicio-notebooks.webp?v=27" width="720" height="900" loading="lazy" alt="Servicio técnico de notebooks">
               </figure>
@@ -438,6 +439,7 @@
               </figure>
             </div>
 
+            <button class="rotation-toggle" type="button" aria-controls="gallery-track" aria-pressed="false" data-gallery-rotation-toggle hidden>Pausar galería</button>
             <div class="gallery-controls" hidden data-carousel-controls>
               <button type="button" aria-label="Ver imagen anterior" data-carousel-prev>
                 <svg class="gallery-control-icon" aria-hidden="true" viewBox="0 0 24 24">
@@ -475,10 +477,12 @@
               target="_blank"
               rel="noopener noreferrer"
             >Ver perfil en Google</a>
+            <button class="rotation-toggle rotation-toggle--light" type="button" aria-controls="review-grid" aria-pressed="false" data-review-rotation-toggle hidden>Pausar opiniones</button>
           </div>
 
           <div
             class="review-grid"
+            id="review-grid"
             tabindex="0"
             aria-label="Opiniones de clientes. La rotación se pausa mientras esta sección tiene el foco."
             data-review-rotator
@@ -595,6 +599,6 @@
       <span>WhatsApp</span>
     </a>
 
-    <script src="js/main.js?v=27" defer></script>
+    <script src="js/main.js?v=29" defer></script>
   </body>
 </html>

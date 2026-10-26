@@ -25,7 +25,9 @@ La investigación local mostró que varios competidores presentan listados exten
 - Se utilizó una sola página principal para reducir pasos y favorecer la conversión local.
 - Las tres categorías prioritarias tienen tarjetas completas; los servicios secundarios permanecen visibles en formato compacto.
 - Los estados hover mantienen cada elemento inmóvil y comunican interacción únicamente mediante color, borde y sombra.
-- La galería no avanza automáticamente, puede operarse con teclado, tacto y controles visibles.
+- La galería es manual en celulares y tablets, con teclado, tacto y controles visibles. En escritorio alterna imágenes y una composición de marca automáticamente.
+- El hero, la galería de escritorio y las opiniones tienen controles de pausa independientes. La rotación se detiene fuera de pantalla, al ocultar la pestaña, al interactuar con el contenido y al activar movimiento reducido. En este último caso, la galería de escritorio pasa a navegación manual para mantener accesibles las ocho imágenes.
+- El menú móvil permanece visible cuando JavaScript está deshabilitado o no se carga; el botón desplegable se habilita después de instalar sus eventos.
 - Las reseñas se presentan como contenido propio y enlazan al perfil de Google, sin depender de un widget externo.
 - El mapa se carga de forma diferida para reducir el impacto inicial en rendimiento.
 - No se cargan tipografías externas, analítica ni bibliotecas JavaScript.
@@ -71,8 +73,7 @@ ServicioTechWeb/
 │   └── main.js
 ├── assets/
 │   ├── images/
-│   ├── icons/
-│   └── fonts/
+│   └── icons/
 ├── favicon.ico
 ├── site.webmanifest
 ├── robots.txt
@@ -111,22 +112,22 @@ Si cambia la dirección pública, hay que reemplazar esa URL en `index.html`, `p
 
 Las imágenes de la galería están optimizadas en WebP a 720 × 900 píxeles. Para conservar el rendimiento, las futuras imágenes deberían mantener dimensiones y peso similares.
 
-## Verificaciones realizadas
+## Verificación local — 26 de octubre de 2026
 
-- HTML validado sin errores estructurales.
-- CSS validado sintácticamente.
-- JavaScript validado sintácticamente.
+- Sintaxis de JavaScript comprobada con `node --check`.
 - JSON del manifiesto y XML del sitemap comprobados.
 - Referencias internas, archivos, anclas e identificadores auditados.
 - Todas las imágenes de contenido tienen texto alternativo, dimensiones explícitas y carga diferida cuando corresponde.
 - Menú preparado para teclado, cierre con `Escape` y estados ARIA.
-- Galería preparada para teclado, tacto y `prefers-reduced-motion`.
+- Galería comprobada con teclado y controles en celular, tablet y escritorio; estado final e indicadores sincronizados con el límite de desplazamiento.
+- Rotación comprobada con pausa manual y `prefers-reduced-motion`, incluido el cambio de preferencia con la página abierta.
+- Navegación móvil accesible sin JavaScript y con el archivo de JavaScript bloqueado.
+- Página 404 comprobada en rutas anidadas, incluidos estilos, logo y regreso al inicio.
 - Foco visible y enlace para saltar al contenido.
-- Contraste principal ajustado a criterios WCAG 2.2 AA.
 - Sin enlaces vacíos, contenido de relleno ni mensajes de depuración.
-- Peso total aproximado del proyecto: 317 KiB.
+- Peso aproximado: 478 KiB de archivos del sitio sin `.git`; cambia al editar código, documentación o imágenes.
 
-La medición final de Lighthouse debe repetirse sobre la URL publicada, ya que la respuesta del alojamiento y la carga del mapa de Google influyen en el resultado real.
+Estas comprobaciones locales no equivalen a una certificación de accesibilidad ni a una validación completa de HTML/CSS. Quedan pendientes la medición de Lighthouse sobre la URL publicada y la comprobación de los servicios externos, incluido el mapa de Google.
 
 ## Limitaciones de esta versión
 
