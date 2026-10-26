@@ -1,0 +1,81 @@
+/* Desarrollo web: composición propia con la identidad de ServicioTech. */
+.web-development-page { background: #fcfdfd; }
+.web-development-page .site-header { background: #fcfdfd; border-bottom: 1px solid var(--color-line); }
+.web-back-link { display: inline-flex; align-items: center; gap: .5rem; color: var(--color-ink); font-size: .85rem; font-weight: 700; text-underline-offset: .25rem; }
+.web-intro { padding-block: clamp(3rem, 6vw, 5rem) 2.5rem; }
+.web-kicker { display: flex; align-items: center; gap: .6rem; margin-bottom: 1.5rem; color: var(--color-brand-dark); font-size: .8rem; font-weight: 700; }
+.web-kicker > span { width: .5rem; height: .5rem; border-radius: 50%; background: var(--color-brand-strong); }
+.web-intro h1 { margin-bottom: 2rem; color: var(--color-ink); font-size: clamp(2.6rem, 7.6vw, 6.7rem); line-height: 1.01; letter-spacing: -.06em; }
+.web-intro h1 span, .web-contact h2 span { color: var(--color-brand-dark); background: linear-gradient(transparent 78%, #bfeee3 78%); }
+.web-intro-bottom { display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+.web-intro-bottom p { max-width: 39rem; margin-bottom: 0; color: var(--color-ink-soft); font-size: 1.1rem; }
+.web-intro-bottom .button { flex-shrink: 0; }
+.web-explore { display: inline-flex; align-items: center; gap: .8rem; margin-top: 2rem; color: var(--color-ink-soft); font-size: .85rem; text-underline-offset: .3rem; }
+.web-showcase { padding-block: clamp(2.5rem, 5vw, 4rem); background: #dff4ef; }
+.web-showcase-grid { display: grid; align-items: center; gap: 2.5rem; }
+.web-demo { min-width: 0; margin: 0; }
+.web-browser { overflow: hidden; border: 1px solid #bdd5d1; border-radius: .7rem; background: #fff; box-shadow: .65rem .65rem 0 rgba(7, 81, 106, .07); }
+.web-browser-bar { display: flex; align-items: center; gap: .3rem; padding: .8rem 1rem; border-bottom: 1px solid var(--color-line); background: #f5f8f8; }
+.web-browser-bar > span { width: .4rem; height: .4rem; border-radius: 50%; background: #9ab0b9; }
+.web-browser-bar strong { margin-left: .6rem; color: var(--color-ink-soft); font-size: .65rem; font-weight: 500; }
+.web-browser-content { padding: clamp(1rem, 2.7vw, 2rem); }
+.web-browser-nav { display: flex; justify-content: space-between; align-items: center; gap: .7rem; color: var(--color-ink-soft); font-size: .6rem; }
+.web-browser-nav strong { color: var(--color-ink); font-size: 1rem; }
+.web-browser-example { display: grid; align-items: center; gap: 1rem; padding-block: 2.25rem; }
+.web-preview-tag { color: var(--color-brand-dark); font-size: .65rem; }
+.web-browser-example p { margin-block: .75rem 1.25rem; color: var(--color-ink); font-size: clamp(1.7rem, 3.3vw, 3.2rem); line-height: 1.08; letter-spacing: -.05em; }
+.web-browser-example p strong { color: var(--color-brand-dark); }
+.web-preview-contact { display: inline-block; padding-bottom: .3rem; border-bottom: 1px solid var(--color-ink); color: var(--color-ink); font-size: .7rem; }
+.web-preview-art { display: none; position: relative; width: 100%; aspect-ratio: .9; border-radius: 55% 45% 50% 50%; background: #b8e8df; }
+.web-preview-art > span { position: absolute; top: 14%; left: 6%; width: 80%; aspect-ratio: 1; border-radius: 50%; background: var(--color-brand-strong); }
+.web-preview-art > i { position: absolute; right: 3%; bottom: 2%; width: 58%; height: 51%; border-radius: .5rem; background: #71cebb; transform: rotate(-9deg); }
+.web-browser-foot { display: flex; justify-content: space-between; gap: .75rem; padding-top: .9rem; border-top: 1px solid var(--color-line); color: var(--color-ink-soft); font-size: .65rem; }
+.web-demo figcaption { margin-top: 1.2rem; color: var(--color-brand-dark); font-size: .75rem; }
+.web-index { margin-bottom: 1.25rem; color: var(--color-brand-dark); font-size: .7rem; font-weight: 700; letter-spacing: .1em; }
+.web-showcase-note h2 { margin-bottom: 1.25rem; font-size: clamp(2.2rem, 4vw, 3.4rem); line-height: 1.05; }
+.web-showcase-note h2 em { color: var(--color-brand-dark); font-family: Georgia, 'Times New Roman', serif; font-weight: 400; }
+.web-showcase-note > p:not(.web-index) { max-width: 28rem; color: var(--color-ink-soft); font-size: .95rem; }
+.web-showcase-note ul { margin: 1.5rem 0 0; padding: 0; list-style: none; }
+.web-showcase-note li { padding-block: .5rem; border-bottom: 1px solid rgba(7, 81, 106, .18); color: var(--color-ink); font-size: .85rem; }
+.web-offers { padding-block: clamp(3.5rem, 7vw, 6rem); }
+.web-section-heading { margin-bottom: 2.5rem; }
+.web-section-heading h2, .web-conversation h2 { max-width: 44rem; font-size: clamp(1.9rem, 3.5vw, 3rem); line-height: 1.1; letter-spacing: -.04em; }
+.web-offer-row { display: grid; grid-template-columns: 2rem minmax(0, 1fr); column-gap: .75rem; row-gap: 1rem; padding-block: 1.75rem; border-top: 1px solid #b7cdd1; }
+.web-offer-row:last-child { border-bottom: 1px solid #b7cdd1; }
+.web-offer-number { padding-top: .3rem; color: var(--color-brand-strong); font-size: .8rem; font-weight: 700; }
+.web-offer-row h3 { margin: 0; font-size: clamp(1.5rem, 2.5vw, 2rem); line-height: 1.1; }
+.web-offer-row > div { grid-column: 2; min-width: 0; }
+.web-offer-row p { max-width: 34rem; margin-bottom: .8rem; color: var(--color-ink-soft); font-size: .95rem; }
+.web-offer-meta { color: var(--color-brand-dark); font-size: .75rem; }
+.web-existing-site { max-width: 50rem; margin: 1.5rem 0 0; color: var(--color-ink-soft); font-size: .9rem; }
+.web-conversation { padding-block: clamp(3.5rem, 7vw, 5rem); background: #edf5f6; }
+.web-conversation-grid { display: grid; gap: 2.5rem; }
+.web-conversation-grid > div > p:not(.web-index) { max-width: 28rem; color: var(--color-ink-soft); }
+.web-plan-list { margin: 1.75rem 0 0; padding-left: 1rem; border-left: 2px solid var(--color-brand-strong); list-style: none; }
+.web-plan-list li { padding-block: .35rem; color: var(--color-ink); font-size: .85rem; }
+.web-faq { min-width: 0; }
+.web-faq details { padding-block: 1.1rem; border-top: 1px solid #b7cdd1; }
+.web-faq details:last-child { border-bottom: 1px solid #b7cdd1; }
+.web-faq summary { display: flex; align-items: center; justify-content: space-between; gap: 1rem; color: var(--color-ink); font-weight: 700; line-height: 1.4; list-style: none; cursor: pointer; }
+.web-faq summary::-webkit-details-marker { display: none; }
+.web-faq summary::after { flex: 0 0 1rem; color: var(--color-brand-dark); content: '+'; font-size: 1.5rem; font-weight: 400; text-align: center; }
+.web-faq details[open] summary::after { content: '−'; }
+.web-faq details p { margin: 1rem 0 0; color: var(--color-ink-soft); font-size: .95rem; }
+.web-contact { padding-block: clamp(3.5rem, 7vw, 6rem); }
+.web-contact-inner { display: grid; align-items: center; gap: 2rem; }
+.web-contact h2 { margin-bottom: 1.25rem; font-size: clamp(2.15rem, 4.5vw, 4.2rem); line-height: 1.08; letter-spacing: -.045em; }
+.web-contact p:not(.web-index) { max-width: 33rem; margin-bottom: 0; color: var(--color-ink-soft); }
+.web-contact .button { justify-self: start; }
+.web-page-footer { padding-top: 0; }
+@media (min-width: 48rem) {
+  .web-intro-bottom { flex-direction: row; justify-content: space-between; align-items: center; gap: 3rem; }
+  .web-browser-example { grid-template-columns: 1.2fr 1fr; padding-block: 2.75rem; }
+  .web-preview-art { display: block; }
+  .web-offer-row { grid-template-columns: 3rem minmax(0, 1fr) minmax(0, 1.15fr); gap: 1.5rem; padding-block: 2.25rem; }
+  .web-offer-row > div { grid-column: auto; }
+}
+@media (min-width: 64rem) {
+  .web-showcase-grid { grid-template-columns: minmax(0, 1.8fr) minmax(0, .8fr); gap: 4rem; }
+  .web-conversation-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 5rem; }
+  .web-contact-inner { grid-template-columns: minmax(0, 1fr) auto; gap: 3rem; }
+}

@@ -1438,6 +1438,17 @@ html:not(.navigation-enabled) .menu-toggle {
   text-underline-offset: 0.2rem;
 }
 
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.5rem;
+}
+
+.web-development-link {
+  margin: 2rem 0 0;
+  text-align: center;
+}
+
 /* Floating WhatsApp ------------------------------------------------------- */
 
 .floating-whatsapp {

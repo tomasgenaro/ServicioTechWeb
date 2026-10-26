@@ -45,6 +45,7 @@ Inicio
 ├── Ubicación y horarios
 └── Consulta final
 
+Desarrollo web
 Privacidad
 Página 404
 ```
@@ -66,9 +67,11 @@ Se incluyeron metadatos descriptivos, Open Graph, datos estructurados `LocalBusi
 ServicioTechWeb/
 ├── index.html
 ├── privacidad.html
+├── desarrollo-web.html
 ├── 404.html
 ├── css/
-│   └── styles.css
+│   ├── styles.css
+│   └── desarrollo-web.css
 ├── js/
 │   └── main.js
 ├── assets/
@@ -104,8 +107,9 @@ Si cambia la dirección pública, hay que reemplazar esa URL en `index.html`, `p
 
 ## Actualizaciones frecuentes
 
-- Textos y servicios: `index.html`.
-- Colores, tamaños, espaciados y diseño: `css/styles.css`.
+- Textos y servicios: `index.html` y `desarrollo-web.html`.
+- Colores, tamaños, espaciados y diseño general: `css/styles.css`.
+- Diseño de la página de desarrollo web: `css/desarrollo-web.css`.
 - Menú, animaciones y galería: `js/main.js`.
 - Imágenes promocionales: `assets/images/`.
 - Número y mensajes de WhatsApp: buscar `542346610009` en `index.html`.
@@ -123,9 +127,10 @@ Las imágenes de la galería están optimizadas en WebP a 720 × 900 píxeles. P
 - Rotación comprobada con pausa manual y `prefers-reduced-motion`, incluido el cambio de preferencia con la página abierta.
 - Navegación móvil accesible sin JavaScript y con el archivo de JavaScript bloqueado.
 - Página 404 comprobada en rutas anidadas, incluidos estilos, logo y regreso al inicio.
+- Página de desarrollo web comprobada en seis anchos, con enlaces de entrada y regreso, mensaje de WhatsApp y funcionamiento sin JavaScript.
 - Foco visible y enlace para saltar al contenido.
 - Sin enlaces vacíos, contenido de relleno ni mensajes de depuración.
-- Peso aproximado: 478 KiB de archivos del sitio sin `.git`; cambia al editar código, documentación o imágenes.
+- Peso aproximado: 489 KiB de archivos del sitio sin `.git`; cambia al editar código, documentación o imágenes.
 
 Estas comprobaciones locales no equivalen a una certificación de accesibilidad ni a una validación completa de HTML/CSS. Quedan pendientes la medición de Lighthouse sobre la URL publicada y la comprobación de los servicios externos, incluido el mapa de Google.
 
