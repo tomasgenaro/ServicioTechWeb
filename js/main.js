@@ -424,7 +424,6 @@
       image,
       source,
       {
-        direction = "from-left",
         duration = desktopTransitionDuration,
         effect = "cinematic",
         onComplete,
@@ -457,7 +456,6 @@
       const transitionToken = `${Date.now()}-${Math.random()}`;
       let revealed = false;
       let committed = false;
-      let outgoingAnimation = null;
 
       image.dataset.galleryTransition = transitionToken;
       overlay.className = "gallery-transition-image";
@@ -478,30 +476,22 @@
           return;
         }
 
-        image.src = source.src;
-        image.alt = source.alt;
-        delete image.dataset.galleryTransition;
-        outgoingAnimation?.cancel();
-        const finishCommit = () => {
-          window.requestAnimationFrame(() => {
-            window.requestAnimationFrame(() => {
-              overlay.remove();
-              parent.classList.remove(
-                "is-changing",
-                "is-changing--dissolve",
-                "is-changing--reduced",
-              );
-              parent.style.removeProperty("--gallery-transition-duration");
-              completeTransition();
-            });
-          });
-        };
-
-        if (typeof image.decode === "function") {
-          image.decode().catch(() => {}).finally(finishCommit);
-        } else {
-          finishCommit();
-        }
+        // Keep the decoded incoming node and its compositor layer as the final image.
+        // Swapping src on the old node can re-rasterize the same picture differently.
+        overlay.alt = source.alt;
+        overlay.removeAttribute("aria-hidden");
+        overlay.setAttribute("width", image.getAttribute("width") || "720");
+        overlay.setAttribute("height", image.getAttribute("height") || "900");
+        overlay.classList.remove("gallery-transition-image", "is-visible");
+        image.remove();
+        overlay.getAnimations().forEach((animation) => animation.cancel());
+        parent.classList.remove(
+          "is-changing",
+          "is-changing--dissolve",
+          "is-changing--reduced",
+        );
+        parent.style.removeProperty("--gallery-transition-duration");
+        completeTransition();
       };
 
       const revealImage = () => {
@@ -531,159 +521,13 @@
           return;
         }
 
-        const revealFromLeft = direction === "from-left";
-        const incomingShift = revealFromLeft ? "-3.2%" : "3.2%";
-        const outgoingShift = revealFromLeft ? "1.35%" : "-1.35%";
-        const isDissolve = effect === "dissolve";
-        const incomingFrames = lowMotion
-          ? [
-              {
-                opacity: 0,
-                filter: "none",
-                transform: "none",
-              },
-              {
-                opacity: 0.18,
-                filter: "none",
-                transform: "none",
-                offset: 0.28,
-              },
-              {
-                opacity: 0.76,
-                filter: "none",
-                transform: "none",
-                offset: 0.76,
-              },
-              {
-                opacity: 1,
-                filter: "none",
-                transform: "none",
-              },
-            ]
-          : isDissolve
-          ? [
-              {
-                opacity: 0,
-                filter: "blur(7px) saturate(0.9) brightness(1.035)",
-                transform: "translate3d(0, 1.4%, 0)",
-              },
-              {
-                opacity: 0.16,
-                filter: "blur(5.4px) saturate(0.93) brightness(1.025)",
-                transform: "translate3d(0, 1.05%, 0)",
-                offset: 0.24,
-              },
-              {
-                opacity: 0.72,
-                filter: "blur(1.8px) saturate(0.98) brightness(1.008)",
-                transform: "translate3d(0, 0.3%, 0)",
-                offset: 0.74,
-              },
-              {
-                opacity: 1,
-                filter: "blur(0) saturate(1) brightness(1)",
-                transform: "translate3d(0, 0, 0)",
-              },
-            ]
-          : [
-              {
-                opacity: 0,
-                filter: "blur(8px) saturate(0.9) brightness(1.045)",
-                transform: `translate3d(${incomingShift}, 1.2%, 0)`,
-              },
-              {
-                opacity: 0.14,
-                filter: "blur(6px) saturate(0.93) brightness(1.032)",
-                transform: `translate3d(${incomingShift}, 0.9%, 0)`,
-                offset: 0.22,
-              },
-              {
-                opacity: 0.68,
-                filter: "blur(2px) saturate(0.98) brightness(1.012)",
-                transform: `translate3d(${revealFromLeft ? "-0.45%" : "0.45%"}, 0.2%, 0)`,
-                offset: 0.7,
-              },
-              {
-                opacity: 1,
-                filter: "blur(0) saturate(1) brightness(1)",
-                transform: "translate3d(0, 0, 0)",
-              },
-            ];
-        const outgoingFrames = lowMotion
-          ? [
-              {
-                opacity: 1,
-                filter: "none",
-                transform: "none",
-              },
-              {
-                opacity: 0.84,
-                filter: "none",
-                transform: "none",
-                offset: 0.36,
-              },
-              {
-                opacity: 0.24,
-                filter: "none",
-                transform: "none",
-                offset: 0.84,
-              },
-              {
-                opacity: 0.04,
-                filter: "none",
-                transform: "none",
-              },
-            ]
-          : isDissolve
-          ? [
-              {
-                opacity: 1,
-                filter: "blur(0) saturate(1) brightness(1)",
-                transform: "translate3d(0, 0, 0)",
-              },
-              {
-                opacity: 0.86,
-                filter: "blur(0.5px) saturate(0.98) brightness(0.995)",
-                transform: "translate3d(0, -0.2%, 0)",
-                offset: 0.34,
-              },
-              {
-                opacity: 0.28,
-                filter: "blur(3px) saturate(0.9) brightness(0.96)",
-                transform: "translate3d(0, -0.7%, 0)",
-                offset: 0.82,
-              },
-              {
-                opacity: 0.06,
-                filter: "blur(4px) saturate(0.86) brightness(0.93)",
-                transform: "translate3d(0, -0.9%, 0)",
-              },
-            ]
-          : [
-              {
-                opacity: 1,
-                filter: "blur(0) saturate(1) brightness(1)",
-                transform: "translate3d(0, 0, 0)",
-              },
-              {
-                opacity: 0.9,
-                filter: "blur(0.35px) saturate(0.985) brightness(0.995)",
-                transform: `translate3d(${outgoingShift}, -0.1%, 0)`,
-                offset: 0.34,
-              },
-              {
-                opacity: 0.3,
-                filter: "blur(3px) saturate(0.9) brightness(0.955)",
-                transform: `translate3d(${outgoingShift}, -0.55%, 0)`,
-                offset: 0.82,
-              },
-              {
-                opacity: 0.05,
-                filter: "blur(4.4px) saturate(0.86) brightness(0.925)",
-                transform: `translate3d(${outgoingShift}, -0.75%, 0)`,
-              },
-            ];
-
+        // Keep both image layers on the same pixels throughout the handoff.
+        const incomingFrames = [
+          { opacity: 0 },
+          { opacity: 0.16, offset: 0.24 },
+          { opacity: 0.72, offset: 0.74 },
+          { opacity: 1 },
+        ];
         const incomingAnimation = overlay.animate(
           incomingFrames,
           {
@@ -693,23 +537,17 @@
           },
         );
 
-        outgoingAnimation = image.animate(
-          outgoingFrames,
-          {
-            duration: effectiveDuration,
-            easing: "cubic-bezier(0.32, 0, 0.18, 1)",
-            fill: "forwards",
-          },
-        );
-
-        Promise.allSettled([
-          incomingAnimation.finished,
-          outgoingAnimation.finished,
-        ]).then(commitImage);
+        incomingAnimation.finished.then(commitImage, commitImage);
       };
 
       overlay.addEventListener("load", revealImage, { once: true });
-      overlay.addEventListener("error", commitImage, { once: true });
+      overlay.addEventListener("error", () => {
+        if (image.dataset.galleryTransition === transitionToken) {
+          delete image.dataset.galleryTransition;
+        }
+        overlay.remove();
+        completeTransition();
+      }, { once: true });
       overlay.src = source.src;
 
       if (overlay.complete && overlay.naturalWidth > 0) {
@@ -1085,18 +923,12 @@
             const startTransition = () => {
               const image = items[slot]?.querySelector("img");
               const sourceIndex = desktopSourceIndexes[slot];
-              const direction =
-                (slot + desktopEventCounter) % 2 === 0
-                  ? "from-left"
-                  : "from-right";
-
               if (!image) {
                 activeDesktopSlots.delete(slot);
                 return;
               }
 
               transitionDesktopImage(image, gallerySources[sourceIndex], {
-                direction,
                 onComplete: () => activeDesktopSlots.delete(slot),
               });
             };
